@@ -1,0 +1,21 @@
+<ul nz-menu nzMode="inline" nzTheme="dark" [nzInlineCollapsed]="isCollapsed">
+  <li nz-submenu nzTitle="品种" nzIcon="appstore">
+    <ul>
+      <li nz-menu-item>期货</li>
+      <li nz-menu-item>外汇</li>
+    </ul>
+  </li>
+  <li nz-submenu nzTitle="用户" nzIcon="appstore">
+    <ul>
+      <li nz-menu-item (click)="gotoUserProfit()">用户收益</li>
+      <li nz-menu-item (click)="gotoGroupProfit()">用户组收益</li>
+    </ul>
+  </li>
+  <li nz-submenu nzTitle="系统配置" nzIcon="setting">
+    <ul>
+      <li nz-menu-item (click)="systemConfig()">基本配置</li>
+      <li nz-menu-item (click)="importData()">数据导入</li>
+      <li nz-menu-item (click)="gotoSymbol()">品种管理</li>
+    </ul>
+  </li>
+</ul>

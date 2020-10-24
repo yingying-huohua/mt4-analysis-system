@@ -25,11 +25,14 @@ import {NzModalModule} from 'ng-zorro-antd/modal';
 import {NzAutocompleteModule} from 'ng-zorro-antd/auto-complete';
 import {NzInputNumberModule} from 'ng-zorro-antd/input-number';
 import {NzDatePickerModule} from 'ng-zorro-antd/date-picker';
-import { UserProfitDetailComponent } from './user/user-profit-detail/user-profit-detail.component';
-import {NZ_I18N, zh_CN} from "ng-zorro-antd/i18n";
-import {HttpClientModule} from "@angular/common/http";
-import {NzSelectModule} from "ng-zorro-antd/select";
-import {NzMessageModule} from "ng-zorro-antd/message";
+import {UserProfitDetailComponent} from './user/user-profit-detail/user-profit-detail.component';
+import {NZ_I18N, zh_CN} from 'ng-zorro-antd/i18n';
+import {HttpClientModule} from '@angular/common/http';
+import {NzSelectModule} from 'ng-zorro-antd/select';
+import {NzMessageModule} from 'ng-zorro-antd/message';
+import {MenuComponent} from './menu/menu.component';
+import {NzMenuModule} from 'ng-zorro-antd/menu';
+import {NzIconModule} from 'ng-zorro-antd/icon';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,7 @@ import {NzMessageModule} from "ng-zorro-antd/message";
     SymbolAddComponent,
     LoginComponent,
     UserProfitDetailComponent,
+    MenuComponent,
   ],
   imports: [
     DashboardModule,
@@ -55,6 +59,7 @@ import {NzMessageModule} from "ng-zorro-antd/message";
     NzTableModule,
     NzDividerModule,
     NzFormModule,
+    NzMenuModule,
     NzButtonModule,
     ReactiveFormsModule,
     NzInputModule,
@@ -64,7 +69,8 @@ import {NzMessageModule} from "ng-zorro-antd/message";
     NzInputNumberModule,
     NzDatePickerModule,
     NzSelectModule,
-    NzMessageModule
+    NzMessageModule,
+    NzIconModule
   ],
   providers: [{provide: NZ_I18N, useValue: zh_CN}],
   bootstrap: [AppComponent]

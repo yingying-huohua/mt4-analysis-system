@@ -6,11 +6,13 @@ import {SymbolProfitComponent} from './symbol/symbol-profit/symbol-profit.compon
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {SymbolAddComponent} from './setting/symbol-add/symbol-add.component';
 import {SymbolListComponent} from './symbol/symbol-list/symbol-list.component';
+import {MenuComponent} from './menu/menu.component';
 
 
 const routes: Routes = [
   {path: '',                redirectTo: '',  pathMatch: 'full'},
   {path: 'dashboard',       component: DashboardComponent},
+  {path: 'menu',            component: MenuComponent},
   {path: 'symbol',          component: SymbolListComponent},
   {path: 'symbol/profit',   component: SymbolProfitComponent},
   {path: 'user/profit',     component: UserProfitComponent},

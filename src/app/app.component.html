@@ -1,9 +1,17 @@
-<div class="app">
-  <app-header class="header"></app-header>
-  <!--内容区域-->
-  <div class="content">
-    <router-outlet></router-outlet>
-  </div>
-
-</div>
-
+<nz-layout>
+  <nz-header>
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+      <li nz-menu-item nzSelected>数据看板</li>
+      <li nz-menu-item>数据分析</li>
+    </ul>
+  </nz-header>
+  <nz-layout>
+    <nz-sider nzWidth="200px" nzTheme="dark" >
+      <app-menu></app-menu>
+    </nz-sider>
+    <nz-layout class="inner-layout">
+      <nz-content><router-outlet></router-outlet></nz-content>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>

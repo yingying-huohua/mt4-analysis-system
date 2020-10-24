@@ -13,23 +13,5 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  importData() {
 
-  }
-
-  systemConfig() {
-
-  }
-
-  gotoSymbol() {
-    this.router.navigate(['./symbol']);
-  }
-
-  gotoUserProfit() {
-    this.router.navigate(['./user/profit']);
-  }
-
-  gotoGroupProfit() {
-    this.router.navigate(['./group/profit']);
-  }
 }
