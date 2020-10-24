@@ -27,6 +27,7 @@ import {NzInputNumberModule} from 'ng-zorro-antd/input-number';
 import {NzDatePickerModule} from 'ng-zorro-antd/date-picker';
 import { UserProfitDetailComponent } from './user/user-profit-detail/user-profit-detail.component';
 import {NZ_I18N, zh_CN} from "ng-zorro-antd/i18n";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {NZ_I18N, zh_CN} from "ng-zorro-antd/i18n";
     DashboardModule,
     SettingModule,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NzLayoutModule,
     NzDropDownModule,

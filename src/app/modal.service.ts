@@ -17,7 +17,7 @@ export class ModalService {
         item: symbol,
         name: symbol ? symbol.name : '',
         symbol: symbol ? symbol.symbol : '',
-        standardSymbol: symbol ? symbol.standardSymbol : '',
+        standardSymbol: symbol ? symbol.standard_symbol : '',
         operationType: operationType
       },
       nzMask: true,

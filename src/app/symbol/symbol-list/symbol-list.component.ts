@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalService} from '../../modal.service';
 import {SymbolOperationType} from '../../../constant/SymbolOperationType';
+import {HttpService} from "../../../service/http.service";
 
 @Component({
   selector: 'app-symbol-list',
@@ -12,7 +13,8 @@ export class SymbolListComponent implements OnInit {
   isLoading = true;
   isBorder  = true;
   pagination = true;
-  constructor(private modalService: ModalService) { }
+  constructor(private modalService: ModalService,
+              private httpService: HttpService) { }
 
   ngOnInit(): void {
     this.initData();
@@ -37,40 +39,13 @@ export class SymbolListComponent implements OnInit {
   }
 
   private initData() {
-    this.listOfData = [];
-    for (let i = 1; i< 61; i++) {
-      let object;
-      switch (i % 3) {
-        case 0:
-          object =  {
-            id: i.toString(),
-            name: 'John Brown',
-            symbol: i,
-            standardSymbol: 'New York No. 1 Lake Park'
-          }
-          break;
-        case 1:
-          object = {
-            id: i.toString(),
-            name: 'Jim Green',
-            symbol: i,
-            standardSymbol: 'London No. 1 Lake Park'
-          }
-          break;
-        case 2:
-          object =  {
-            id: i.toString(),
-            name: 'Joe Black',
-            symbol: i,
-            standardSymbol: 'Sidney No. 1 Lake Park'
-          }
-          break;
+    const observer = {
+      next: response => {
+        console.debug(response);
+        this.listOfData = response.result;
+        this.isLoading = false;
       }
-      this.listOfData.push(object);
-    }
-
-    setTimeout(() => {
-      this.isLoading = false
-    }, 2 * 1000);
+    };
+    this.httpService.symbolList().subscribe(observer);
   }
 }
