@@ -1,0 +1,43 @@
+<!--<p>symbol-list works!</p>-->
+<div class="symbol_list">
+  <div class="symbol_list_container">
+
+    <nz-table #basicTable
+              [nzScroll]="false"
+              [nzData]="listOfData"
+              [nzTitle]="title"
+              [nzLoading]="isLoading"
+              [nzBordered]="isBorder"
+              [nzNoResult]="'暂无数据'"
+              [nzShowPagination]="pagination">
+      <!--表头-->
+      <thead>
+        <tr>
+          <th>名称</th>
+          <th [nzSortFn]="sort">简称</th>
+          <th>标准简称</th>
+          <th>修改</th>
+        </tr>
+      </thead>
+      <!--表格数据-->
+      <tbody>
+        <tr *ngFor="let data of basicTable['data']">
+          <td>{{ data.name }}</td>
+          <td>{{ data.symbol }}</td>
+          <td>{{ data.standardSymbol }}</td>
+          <td>
+            <a (click)="edit(data)">编辑</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+
+    <!--头部-->
+    <ng-template #title>
+      <B class="title">金融品种</B>
+      <div class="operation_div">
+        <button nz-button nzType="primary" class="add" (click)="add()">添加</button>
+      </div>
+    </ng-template>
+  </div>
+</div>

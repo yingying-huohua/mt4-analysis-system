@@ -1,0 +1,40 @@
+.user_profit{
+  width: 100%;
+  height: 100%;
+}
+
+.user_profit .user_profit_container{
+  padding: 0 50px;
+  margin-top: 20px;
+}
+
+.user_profit_container .title{
+  height: 40px;
+  font-size: 24px;
+  line-height: 40px;
+}
+.user_profit_container .search_filter_container{
+  width: 100%;
+  height: 30px;
+  display: flex;
+  margin-top: 10px;
+}
+
+.search_filter_container .search{
+  margin-right: 10px;
+  display: flex;
+}
+
+.search_filter_container .search_filter_lable{
+  width: 55px;
+  line-height: 30px;
+}
+
+.user_profit_container .date_filter{
+  margin-left: 10px;
+}
+
+.search_filter_container .search_button{
+  width: 100px;
+  margin-left: 20px;
+}

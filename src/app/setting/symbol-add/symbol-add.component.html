@@ -1,0 +1,47 @@
+<div class="symbol_add">
+  <div class="container">
+    <!--标题-->
+    <p class="title">{{modalTitle}}</p>
+    <!--表单-->
+    <div class="form_content">
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <!--名称输入框-->
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>名称</nz-form-label>
+          <nz-form-control nzErrorTip="请输入名称">
+            <nz-input-group class="input_group">
+              <input type="text" nz-input placeholder="请输入名称" formControlName="name" [value]="name"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <!--简称-->
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>简称</nz-form-label>
+          <nz-form-control nzErrorTip="请输入简称">
+            <nz-input-group class="input_group">
+              <input  type="text" nz-input placeholder="请输入简称" formControlName="symbol" [value]="symbol"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <!--标准简称-->
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>标准简称</nz-form-label>
+          <nz-form-control nzErrorTip="请输入标准简称">
+            <nz-input-group class="input_group">
+              <input type="text" nz-input placeholder="请输入标准简称" formControlName="standardSymbol" [value]="standardSymbol"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <!--保存-->
+        <nz-form-item class="form_item">
+          <nz-form-label [nzSpan]="3" class="item_lable" nzNoColon></nz-form-label>
+          <nz-form-control [nzSpan]="6" class="input_group">
+            <button nz-button nzType="primary" style="margin: auto; width: 120px"
+                    (click)="save()">保存</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+
+</div>

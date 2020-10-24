@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ng-zorro-antd/style/index.css";
+@import "~ng-zorro-antd/layout/style/index.css";
+@import "~ng-zorro-antd/dropdown/style/index.css";
+@import "~ng-zorro-antd/table/style/index.css";
+@import "~ng-zorro-antd/divider/style/index.css";
+@import "~ng-zorro-antd/form/style/index.css";
+@import "~ng-zorro-antd/input/style/index.css";
+@import "~ng-zorro-antd/input-number/style/index.css";
+@import "~ng-zorro-antd/modal/style/index.css";
+@import "~ng-zorro-antd/auto-complete/style/index.css";
+@import "~ng-zorro-antd/input-number/style/index.css";
+@import "~ng-zorro-antd/date-picker/style/index.css";
+
+html, body{
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background: #ffffff;
+}

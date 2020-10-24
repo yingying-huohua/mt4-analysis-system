@@ -1,0 +1,35 @@
+<div class="user_profit">
+  <div class="user_profit_container">
+    <nz-table #basicTable
+              [nzScroll]="false"
+              [nzData]="listOfData"
+              [nzTitle]="title"
+              [nzLoading]="isLoading"
+              [nzBordered]="isBorder"
+              [nzNoResult]="'暂无数据'"
+              [nzShowPagination]="pagination">
+      <!--表头-->
+      <thead>
+      <tr>
+        <th>名称</th>
+        <th>品种</th>
+        <th>平均收益率</th>
+        <th>简称</th>
+      </tr>
+      </thead>
+      <!--表格数据-->
+      <tbody>
+      <tr *ngFor="let data of basicTable['data']">
+        <td>{{ data.name }}</td>
+        <td>{{ data.abbreviation }}</td>
+        <td>{{ data.incomeAverageRate }}</td>
+        <td>{{ data.symbol }}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+    <!--头部-->
+    <ng-template #title>
+      <B class="title">用户收益详细</B>
+    </ng-template>
+  </div>
+</div>

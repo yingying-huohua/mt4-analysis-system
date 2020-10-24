@@ -1,0 +1,18 @@
+<div class="header">
+  <div class="title_container">
+    <p class="title">数据分析系统</p>
+    <div nz-dropdown class="setting"
+         [nzDropdownMenu]="menu"
+         nzPlacement="bottomRight"
+         nzTrigger="click">设置</div>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu style="top: -20px">
+        <li nz-menu-item (click)="importData()">导入数据</li>
+        <li nz-menu-item (click)="systemConfig()">系统配置</li>
+        <li nz-menu-item (click)="gotoSymbol()">金融品种</li>
+        <li nz-menu-item (click)="gotoUserProfit()">用户收益</li>
+      </ul>
+    </nz-dropdown-menu>
+  </div>
+
+</div>

@@ -1,0 +1,30 @@
+.header{
+  width: 100%;
+  height: 64px;
+  line-height: 64px;
+  background: #001529;
+  border-bottom: 1px solid rgba(255, 255, 255, .3);
+}
+.header .title_container{
+  margin: 0 50px;
+  position: relative;
+  display: flex;
+}
+
+.title_container .title{
+  margin: auto;
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.title_container .setting{
+  width: 30px;
+  height: 100%;
+  font-size: 15px;
+  color: #ffffff;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  z-index: 10;
+}
