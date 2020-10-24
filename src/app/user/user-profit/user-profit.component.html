@@ -15,20 +15,24 @@
       <!--表头-->
       <thead>
       <tr>
-        <th nzColumnKey="account_id" [nzSortFn]="true">名称</th>
+        <th nzColumnKey="userId" [nzSortFn]="true">用户</th>
+        <th nzColumnKey="account_id" [nzSortFn]="true">账号</th>
         <th nzColumnKey="totalProfit" [nzSortFn]="true">盈亏金额</th>
         <th>收益率</th>
         <th>品种</th>
+        <th *ngIf="openStart">交易时间</th>
         <th>查看</th>
       </tr>
       </thead>
       <!--表格数据-->
       <tbody>
       <tr *ngFor="let data of basicTable['data']">
+        <td >{{ data.userId }}</td>
         <td >{{ data.account_id }}</td>
         <td>{{ data.totalProfit }}</td>
         <td>{{ data.incomeRate }}</td>
         <td>{{ data.symbol ? data.symbol : '-'}}</td>
+        <td *ngIf="openStart">{{ data.tradeDate }}</td>
         <td>
           <a (click)="detail(data)">查看</a>
         </td>
@@ -56,7 +60,7 @@
         </div>
 
         <!--盈亏范围筛选-->
-        <div class="income_rate_filter">
+        <div *ngIf="false" class="income_rate_filter">
           <span class="search_filter_lable">盈亏范围：</span>
           <!--最小值-->
           <nz-input-number
@@ -79,7 +83,6 @@
             [nzFormatter]="formatterPercent"
             [nzParser]="parserPercent"></nz-input-number>
         </div>
-
 
         <!--日期选择-->
         <div class="date_filter">

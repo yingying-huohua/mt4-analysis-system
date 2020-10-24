@@ -84,6 +84,11 @@ export class UserProfitComponent implements OnInit {
   }
 
   onChange(result: Date[]): void {
+    if (result.length === 0) {
+      this.openStart = '';
+      this.openEnd = '';
+      return;
+    }
     this.openStart = moment(result[0]).format('YYYY-MM-DD');
     this.openEnd = moment(result[1]).format('YYYY-MM-DD');
     // console.debug('From: ',  this.openStart, ', to: ',  this.openEnd);
