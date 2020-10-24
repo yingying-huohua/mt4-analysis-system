@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import endOfMonth from 'date-fns/endOfMonth';
-import {ModalService} from '../../modal.service';
+import {ModalService} from '../../../service/local/modal.service';
 /**
  * 用户收益
  */

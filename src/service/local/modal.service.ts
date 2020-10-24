@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {NzModalService} from 'ng-zorro-antd/modal';
-import {SymbolAddComponent} from './setting/symbol-add/symbol-add.component';
-import {UserProfitDetailComponent} from './user/user-profit-detail/user-profit-detail.component';
+import {SymbolAddComponent} from '../../app/setting/symbol-add/symbol-add.component';
+import {UserProfitDetailComponent} from '../../app/user/user-profit-detail/user-profit-detail.component';
 
 @Injectable({
   providedIn: 'root'
