@@ -26,6 +26,12 @@ export class SymbolAddComponent implements OnInit {
               private httpService: HttpService) {}
 
   ngOnInit(): void {
+    this.type = this.item ? this.item.type : null;
+    this.initValidateForm();
+    this.initModalTitle();
+  }
+
+  private initValidateForm() {
     this.validateForm = this.fb.group({
       name: [this.name ? this.name : null, [Validators.required]],
       symbol: [this.symbol ? this.symbol : null, [Validators.required]],
@@ -34,7 +40,6 @@ export class SymbolAddComponent implements OnInit {
       description: [this.description ? this.description : null],
       api: [this.api ? this.api : null]
     });
-    this.initModalTitle();
   }
 
   submitForm(): void {
