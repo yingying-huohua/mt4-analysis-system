@@ -9,7 +9,7 @@ export class Config {
   // 升序
   public static ASC  = 'ASC';
   // 默认数据条数
-  public static defaultPageSize = 18;
+  public static defaultPageSize = 15;
   // 默认页码
   public static defaultPageNo   = 1;
   // 默认排序字段
