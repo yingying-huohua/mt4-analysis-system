@@ -1,18 +1,22 @@
 <div class="user_profit">
   <div class="user_profit_container">
     <nz-table #basicTable
-              [nzScroll]="false"
-              [nzData]="listOfData"
+              nzBordered
+              [nzData]="userProfitList"
               [nzTitle]="title"
               [nzLoading]="isLoading"
-              [nzBordered]="isBorder"
               [nzNoResult]="'暂无数据'"
-              [nzShowPagination]="pagination">
+              [nzTotal]="totalCount"
+              [nzFrontPagination]="false"
+              [nzPageSize]="pageSize"
+              [(nzPageIndex)]="pageNo"
+              (nzPageIndexChange)="onPageIndexChange($event)"
+              (nzQueryParams)="onQueryParamsChange($event)">
       <!--表头-->
       <thead>
       <tr>
-        <th>名称</th>
-        <th>盈亏金额</th>
+        <th nzColumnKey="account_id" [nzSortFn]="true">名称</th>
+        <th nzColumnKey="totalProfit" [nzSortFn]="true">盈亏金额</th>
         <th>收益率</th>
         <th>品种</th>
         <th>查看</th>
@@ -21,10 +25,10 @@
       <!--表格数据-->
       <tbody>
       <tr *ngFor="let data of basicTable['data']">
-        <td>{{ data.name }}</td>
-        <td>{{ data.amount }}</td>
+        <td >{{ data.account_id }}</td>
+        <td>{{ data.totalProfit }}</td>
         <td>{{ data.incomeRate }}</td>
-        <td>{{ data.symbol }}</td>
+        <td>{{ data.symbol ? data.symbol : '-'}}</td>
         <td>
           <a (click)="detail(data)">查看</a>
         </td>
@@ -41,14 +45,14 @@
         <div class="search">
           <span class="search_filter_lable">名称：</span>
           <input placeholder="请输入名称" nz-input [(ngModel)]="nameInputValue" (input)="onNameInput($event)" [nzAutocomplete]="auto" />
-          <nz-autocomplete [nzDataSource]="nameOptions" nzBackfill #auto></nz-autocomplete>
+          <nz-autocomplete [nzDataSource]="nameSuggestionList" nzBackfill #auto></nz-autocomplete>
         </div>
 
         <!--按品种搜索-->
         <div class="search">
           <span class="search_filter_lable">品种：</span>
           <input placeholder="请输入品种" nz-input [(ngModel)]="symbolInputValue" (input)="onSymbolInput($event)" [nzAutocomplete]="auto" />
-          <nz-autocomplete [nzDataSource]="symbolOption" nzBackfill #auto></nz-autocomplete>
+          <nz-autocomplete [nzDataSource]="symbolSuggestionList" nzBackfill #auto></nz-autocomplete>
         </div>
 
         <!--盈亏范围筛选-->
@@ -84,7 +88,7 @@
         </div>
 
         <!--查询按钮-->
-        <button nz-button nzType="primary" class="search_button" (click)="search()">查询</button>
+        <button nz-button nzType="primary" class="search_button" (click)="search(1)">查询</button>
 
       </div>
 

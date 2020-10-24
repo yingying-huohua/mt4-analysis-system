@@ -13,5 +13,7 @@ export class UrlConfig {
   // 品种新增/修改
   public static symbol       = `${UrlConfig.domain}/symbol`;
 
+  // 用户收益列表
+  public static userProfitList = `${UrlConfig.domain}/order/profit/user/list`
 
 }

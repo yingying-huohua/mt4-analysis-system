@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import endOfMonth from 'date-fns/endOfMonth';
+import {Component, OnInit} from '@angular/core';
 import {ModalService} from '../../../service/local/modal.service';
+import {Config} from "../../../config/Config";
+import {HttpService} from "../../../service/http/http.service";
+import {NzTableQueryParams} from "ng-zorro-antd/table";
+import * as moment from 'moment';
+
 /**
  * 用户收益
  */
@@ -10,47 +14,58 @@ import {ModalService} from '../../../service/local/modal.service';
   styleUrls: ['./user-profit.component.css']
 })
 export class UserProfitComponent implements OnInit {
-  listOfData = [];
+  userProfitList = [];
   isLoading = true;
-  isBorder  = true;
-  pagination = true;
-  nameInputValue?: string;
-  nameOptions: string[] = [];
-  symbolInputValue?:string;
-  symbolOption: string[] = []
-  minValue = -10;
-  maxValue = 100;
+  nameInputValue = ''; // 名称输入框value
+  symbolInputValue = ''; // 品种输入框value
+  nameSuggestionList = [];  // 名称联想
+  symbolSuggestionList = []; //品种搜索联想
+  minValue = ''; // 最小收益率
+  maxValue = ''; // 最大收益率
   date = null;
+  openStart = ''; // 开仓时间
+  openEnd = ''; // 关仓时间
+  sortField = Config.sortField; // 排序字段
+  direction = Config.direction; // 排序方式 desc|ase
+  pageNo    = Config.defaultPageNo;
+  pageSize  = Config.defaultPageSize;
+  totalCount = 0;
+
   // ranges = { Today: [new Date(), new Date()], 'This Month': [new Date(), endOfMonth(new Date())] };
-  constructor(private modalService: ModalService ) { }
+  constructor(private modalService: ModalService,
+              private httpService: HttpService) { }
 
   ngOnInit(): void {
     this.initData();
   }
 
+  onPageIndexChange(pageNo) {
+    this.pageNo = pageNo;
+    this.initData();
+  }
 
   private initData() {
-    this.listOfData = [
-      {
-        id: '1',
-        name: '张三',
-        amount:'5000',
-        incomeRate: '20%',
-        symbol: 'superNB',
-      },
-      {
-        id: '2',
-        name: '李四',
-        amount:'1000000',
-        incomeRate: '20%',
-        symbol: '苹果',
+    const observer = {
+      next: response => {
+       this.isLoading = false;
+       this.userProfitList = response.result;
+       this.totalCount = response.count;
       }
-    ];
+    };
 
-
-    setTimeout(() => {
-      this.isLoading = false
-    }, 2 * 1000);
+    const object = {
+      accountId: this.nameInputValue,
+      symbol: this.symbolInputValue,
+      minReturn: this.minValue,
+      maxReturn: this.maxValue,
+      sortField: this.sortField,
+      direction: this.direction,
+      openStart: this.openStart,
+      openEnd: this.openEnd,
+      pageNo: this.pageNo.toString(),
+      pageSize: this.pageSize.toString()
+    }
+    this.httpService.userProfitlist(object).subscribe(observer)
   }
 
   detail(item) {
@@ -59,23 +74,38 @@ export class UserProfitComponent implements OnInit {
   }
 
   onNameInput(event: Event): void {
-    const value = (event.target as HTMLInputElement).value;
-    this.nameOptions = value ? [value, value + value, value + value + value] : [];
+    // 初始化联想
+
   }
 
   onSymbolInput(event: Event): void {
-    const value = (event.target as HTMLInputElement).value;
-    this.symbolOption = value ? [value, value + value, value + value + value] : [];
+    // 初始化联想
+
   }
 
   onChange(result: Date[]): void {
-    console.log('From: ', result[0], ', to: ', result[1]);
+    this.openStart = moment(result[0]).format('YYYY-MM-DD');
+    this.openEnd = moment(result[1]).format('YYYY-MM-DD');
+    // console.debug('From: ',  this.openStart, ', to: ',  this.openEnd);
   }
 
-  search() {
-
+  search(pageNo) {
+    this.pageNo = pageNo;
+    this.initData();
   }
 
+  onQueryParamsChange(params: NzTableQueryParams) {
+    console.log(params);
+    const currentSort = params.sort.find(item => item.value !== null);
+    this.sortField = (currentSort && currentSort.key) || 'id';
+    const sortOrder = (currentSort && currentSort.value) || null;
+    this.direction = Config.ASC
+    if (!sortOrder || sortOrder === 'descend') {
+      this.direction = Config.DESC;
+    }
+
+    this.initData();
+  }
 
   formatterPercent = (value: number) => `${value} %`;
   parserPercent = (value: string) => value.replace(' %', '');

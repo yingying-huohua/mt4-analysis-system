@@ -42,4 +42,14 @@ export class HttpService {
     const headers = {'content-type': 'application/json'};
     return this.http.put(UrlConfig.symbol, JSON.stringify(object),  {headers: headers});
   }
+
+  /**
+   * 用户收益列表
+   */
+  userProfitlist(params: {accountId: string, symbol: string, minReturn: string, maxReturn: string,
+    sortField: string, direction: string, openStart: string, openEnd: string, pageNo: string, pageSize: string}) {
+
+    return this.http.get(UrlConfig.userProfitList, {params: params});
+  }
+
 }
