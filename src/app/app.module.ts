@@ -28,6 +28,7 @@ import {NzDatePickerModule} from 'ng-zorro-antd/date-picker';
 import { UserProfitDetailComponent } from './user/user-profit-detail/user-profit-detail.component';
 import {NZ_I18N, zh_CN} from "ng-zorro-antd/i18n";
 import {HttpClientModule} from "@angular/common/http";
+import {NzSelectModule} from "ng-zorro-antd/select";
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import {HttpClientModule} from "@angular/common/http";
     FormsModule,
     NzAutocompleteModule,
     NzInputNumberModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NzSelectModule
   ],
   providers: [{provide: NZ_I18N, useValue: zh_CN}],
   bootstrap: [AppComponent]

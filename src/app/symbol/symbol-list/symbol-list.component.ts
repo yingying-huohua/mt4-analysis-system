@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ModalService} from '../../modal.service';
+import {ModalService} from '../../../service/local/modal.service';
 import {SymbolOperationType} from '../../../constant/SymbolOperationType';
-import {HttpService} from "../../../service/http.service";
+import {HttpService} from "../../../service/http/http.service";
 
 @Component({
   selector: 'app-symbol-list',
@@ -47,4 +47,5 @@ export class SymbolListComponent implements OnInit {
     };
     this.httpService.symbolList().subscribe(observer);
   }
+
 }

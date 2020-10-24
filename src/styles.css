@@ -11,6 +11,10 @@
 @import "~ng-zorro-antd/auto-complete/style/index.css";
 @import "~ng-zorro-antd/input-number/style/index.css";
 @import "~ng-zorro-antd/date-picker/style/index.css";
+@import "~ng-zorro-antd/select/style/index.css";
+
+
+
 
 html, body{
   padding: 0;

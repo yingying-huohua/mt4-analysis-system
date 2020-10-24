@@ -10,7 +10,7 @@
           <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>名称</nz-form-label>
           <nz-form-control nzErrorTip="请输入名称">
             <nz-input-group class="input_group">
-              <input type="text" nz-input placeholder="请输入名称" formControlName="name" [value]="name"/>
+              <input type="text" nz-input placeholder="请输入名称" formControlName="name" [(ngModel)]="name"/>
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
@@ -19,7 +19,7 @@
           <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>简称</nz-form-label>
           <nz-form-control nzErrorTip="请输入简称">
             <nz-input-group class="input_group">
-              <input  type="text" nz-input placeholder="请输入简称" formControlName="symbol" [value]="symbol"/>
+              <input  type="text" nz-input placeholder="请输入简称" formControlName="symbol" [(ngModel)]="symbol"/>
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
@@ -28,8 +28,34 @@
           <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>标准简称</nz-form-label>
           <nz-form-control nzErrorTip="请输入标准简称">
             <nz-input-group class="input_group">
-              <input type="text" nz-input placeholder="请输入标准简称" formControlName="standardSymbol" [value]="standardSymbol"/>
+              <input type="text" nz-input placeholder="请输入标准简称" formControlName="standardSymbol" [(ngModel)]="standardSymbol"/>
             </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <!--类型-->
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>类型</nz-form-label>
+          <nz-form-control nzErrorTip="请选择类型">
+            <nz-select class="input_group" nzPlaceHolder="请选择类型" formControlName="type" [(ngModel)]="type">
+              <nz-option nzValue="Futures" nzLabel="期货"></nz-option>
+              <nz-option nzValue="ForeignCurrency" nzLabel="外汇"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+        <!--api-->
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" >API</nz-form-label>
+          <nz-form-control nzErrorTip="请输入API链接">
+            <nz-input-group class="input_group">
+              <input type="text" nz-input placeholder="请输入API链接" formControlName="api" [(ngModel)]="api"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <!--描述-->
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" >描述</nz-form-label>
+          <nz-form-control nzErrorTip="请输入描述">
+            <textarea class="input_group" nz-input placeholder="请输入描述" [nzAutosize]="{minRows: 3, maxRows: 5}" formControlName="description" [(ngModel)]="description"></textarea>
           </nz-form-control>
         </nz-form-item>
         <!--保存-->

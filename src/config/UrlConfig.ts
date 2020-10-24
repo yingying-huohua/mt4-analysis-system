@@ -7,5 +7,11 @@ export class UrlConfig {
   private static domain  = 'http://114.214.164.241:9000';
 
   // 品种列表
-  public static symbolList = `${UrlConfig.domain}/symbol/list`;
+  public static symbolList   = `${UrlConfig.domain}/symbol/list`;
+  // 品种详情
+  public static symbolDetail = `${UrlConfig.domain}/symbol/{{id}}`;
+  // 品种新增/修改
+  public static symbol       = `${UrlConfig.domain}/symbol`;
+
+
 }
