@@ -20,6 +20,7 @@ export class UserProfitComponent implements OnInit {
   symbolOption: string[] = []
   minValue = -10;
   demoValue = 100;
+  date = null;
   // ranges = { Today: [new Date(), new Date()], 'This Month': [new Date(), endOfMonth(new Date())] };
   constructor(private modalService: ModalService ) { }
 

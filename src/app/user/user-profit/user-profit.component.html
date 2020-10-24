@@ -76,7 +76,7 @@
         <!--日期选择-->
         <div class="date_filter">
           <span class="search_filter_lable">时间范围：</span>
-          <nz-range-picker ngModel (ngModelChange)="onChange($event)"></nz-range-picker>
+          <nz-range-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-range-picker>
         </div>
 
         <!--查询按钮-->
