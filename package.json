@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open",
+    "start": "ng serve --port 3200 --open",
     "build": "ng build",
     "build:prod": "ng build --prod",
     "test": "ng test",
@@ -25,7 +25,8 @@
     "zone.js": "0.11.2",
     "echarts": "4.9.0",
     "ngx-echarts": "4.2.2",
-    "ng-zorro-antd": "10.0.2"
+    "ng-zorro-antd": "10.0.2",
+    "moment": "2.29.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.1001.7",
