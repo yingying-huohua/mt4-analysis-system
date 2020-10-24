@@ -5,7 +5,7 @@
  */
 export class Config {
   // 默认数据条数
-  public static defaultPageSize = 10;
+  public static defaultPageSize = 18;
   // 默认页码
   public static defaultPageNo   = 1;
 }

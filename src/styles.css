@@ -24,3 +24,12 @@ html, body{
   overflow: hidden;
   background: #ffffff;
 }
+
+th {
+  font-weight: 600 !important;
+}
+
+td{
+  font-size: 16px !important;
+  padding: 6px 16px !important;
+}
