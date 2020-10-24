@@ -41,7 +41,6 @@ export class SymbolListComponent implements OnInit {
   private initData() {
     const observer = {
       next: response => {
-        console.debug(response);
         this.listOfData = response.result;
         this.isLoading = false;
       }
