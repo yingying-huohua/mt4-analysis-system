@@ -22,3 +22,7 @@ html, body{
   overflow: hidden;
   background: #ffffff;
 }
+
+td{
+  padding: 5px 16px !important;
+}
