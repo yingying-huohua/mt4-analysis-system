@@ -28,4 +28,8 @@ export class HeaderComponent implements OnInit {
   gotoUserProfit() {
     this.router.navigate(['./user/profit']);
   }
+
+  gotoGroupProfit() {
+    this.router.navigate(['./group/profit']);
+  }
 }
