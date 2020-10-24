@@ -1,15 +1,17 @@
-<!--<p>symbol-list works!</p>-->
 <div class="symbol_list">
   <div class="symbol_list_container">
 
     <nz-table #basicTable
-              [nzScroll]="false"
-              [nzData]="listOfData"
+              nzBordered
               [nzTitle]="title"
               [nzLoading]="isLoading"
-              [nzBordered]="isBorder"
               [nzNoResult]="'暂无数据'"
-              [nzShowPagination]="pagination">
+              [nzData]="symbolList"
+              [nzTotal]="totalCount"
+              [nzFrontPagination]="false"
+              [nzPageSize]="pageSize"
+              [(nzPageIndex)]="pageNo"
+              (nzPageIndexChange)="onPageIndexChange($event)">
       <!--表头-->
       <thead>
         <tr>

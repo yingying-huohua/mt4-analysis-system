@@ -29,6 +29,7 @@ import { UserProfitDetailComponent } from './user/user-profit-detail/user-profit
 import {NZ_I18N, zh_CN} from "ng-zorro-antd/i18n";
 import {HttpClientModule} from "@angular/common/http";
 import {NzSelectModule} from "ng-zorro-antd/select";
+import {NzMessageModule} from "ng-zorro-antd/message";
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import {NzSelectModule} from "ng-zorro-antd/select";
     NzAutocompleteModule,
     NzInputNumberModule,
     NzDatePickerModule,
-    NzSelectModule
+    NzSelectModule,
+    NzMessageModule
   ],
   providers: [{provide: NZ_I18N, useValue: zh_CN}],
   bootstrap: [AppComponent]

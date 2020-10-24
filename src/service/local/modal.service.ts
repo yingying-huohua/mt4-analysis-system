@@ -11,7 +11,7 @@ export class ModalService {
   constructor(private nzModalService: NzModalService) { }
 
   showSymbolAddModal(operationType, symbol) {
-    const symbolModal = this.nzModalService.create({
+    return this.nzModalService.create({
       nzContent: SymbolAddComponent,
       nzComponentParams: {
         item: symbol,
