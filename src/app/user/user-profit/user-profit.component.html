@@ -58,18 +58,22 @@
           <nz-input-number
             class="number_input"
             [(ngModel)]="minValue"
-            [nzMin]="1"
-            [nzMax]="100"
-            [nzStep]="1"></nz-input-number>
+            [nzMin]="-1000"
+            [nzMax]="1000"
+            [nzStep]="1"
+            [nzFormatter]="formatterPercent"
+            [nzParser]="parserPercent"></nz-input-number>
           <!--连接符号-->
           <span style="margin: 0 5px"> - </span>
           <!--最大值-->
           <nz-input-number
             class="number_input"
-            [(ngModel)]="demoValue"
-            [nzMin]="1"
-            [nzMax]="100"
-            [nzStep]="1"></nz-input-number>
+            [(ngModel)]="maxValue"
+            [nzMin]="-1000"
+            [nzMax]="1000"
+            [nzStep]="1"
+            [nzFormatter]="formatterPercent"
+            [nzParser]="parserPercent"></nz-input-number>
         </div>
 
 

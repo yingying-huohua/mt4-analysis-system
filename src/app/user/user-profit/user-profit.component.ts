@@ -19,7 +19,7 @@ export class UserProfitComponent implements OnInit {
   symbolInputValue?:string;
   symbolOption: string[] = []
   minValue = -10;
-  demoValue = 100;
+  maxValue = 100;
   date = null;
   // ranges = { Today: [new Date(), new Date()], 'This Month': [new Date(), endOfMonth(new Date())] };
   constructor(private modalService: ModalService ) { }
@@ -75,4 +75,9 @@ export class UserProfitComponent implements OnInit {
   search() {
 
   }
+
+
+  formatterPercent = (value: number) => `${value} %`;
+  parserPercent = (value: string) => value.replace(' %', '');
+
 }
