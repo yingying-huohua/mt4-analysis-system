@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalService} from '../../../service/local/modal.service';
-import {Config} from "../../../config/Config";
 import {HttpService} from "../../../service/http/http.service";
-import {NzTableQueryParams} from "ng-zorro-antd/table";
-import * as moment from 'moment';
 import {BaseComponent} from "../../BaseComponent";
 
 // @ts-ignore
@@ -30,7 +27,6 @@ export class UserProfitComponent extends BaseComponent implements OnInit {
   }
 
   initData() {
-    super.initData();
     const observer = {
       next: response => {
        this.isLoading = false;
@@ -51,7 +47,7 @@ export class UserProfitComponent extends BaseComponent implements OnInit {
       pageNo: this.pageNo.toString(),
       pageSize: this.pageSize.toString()
     }
-    this.httpService.userProfitlist(object).subscribe(observer)
+    this.httpService.userProfitlist(object).subscribe(observer);
   }
 
   detail(item) {
