@@ -4,7 +4,7 @@
     <div nz-col nzSpan="{{showDetail ? '14' : '24'}}" class="group_profit_container">
       <nz-table #basicTable
                 nzBordered
-                [nzData]="systemProfitList"
+                [nzData]="dataList"
                 [nzTitle]="title"
                 [nzLoading]="isLoading"
                 [nzNoResult]="'暂无数据'"
@@ -17,24 +17,21 @@
         <!--表头-->
         <thead>
         <tr>
-          <th  nzColumnKey="userId" [nzSortFn]="true">名称</th>
-          <th  nzColumnKey="account_id" [nzSortFn]="true">用户盈利</th>
-          <th  nzColumnKey="totalProfit" [nzSortFn]="true">用户亏损</th>
-          <th  nzColumnKey="totalProfit" [nzSortFn]="true">用户持平</th>
-          <th >查看</th>
+          <th  nzColumnKey="symbol" [nzSortFn]="true">名称</th>
+          <th  nzColumnKey="profit" [nzSortFn]="true">用户盈利</th>
+          <th  nzColumnKey="loss" [nzSortFn]="true">用户亏损</th>
+          <th  nzColumnKey="breakEven" [nzSortFn]="true">用户持平</th>
+          <th  nzColumnKey="type" [nzSortFn]="true">类型</th>
         </tr>
         </thead>
         <!--表格数据-->
         <tbody>
         <tr *ngFor="let data of basicTable['data']">
-          <td >{{ data.userId }}</td>
-          <td >{{ data.account_id }}</td>
-          <td>{{ data.totalProfit }}</td>
-          <td>{{ data.incomeRate }}</td>
-
-          <td>
-            <a (click)="detail(data)">查看</a>
-          </td>
+          <td >{{ data.symbol }}</td>
+          <td class="table_data_item" (click)="detail(data, 1)">{{ data.profit }}</td>
+          <td class="table_data_item" (click)="detail(data, 2)">-{{ data.loss }}</td>
+          <td class="table_data_item" (click)="detail(data, 3)">{{ data.breakEven }}</td>
+          <td class="table_data_item" >{{ data.type }}</td>
         </tr>
         </tbody>
       </nz-table>
@@ -47,14 +44,18 @@
           <!--按品种搜索-->
           <div class="search">
             <span class="search_filter_lable">品种：</span>
-            <input class="search_input" placeholder="请输入品种" nz-input [(ngModel)]="symbolInputValue" (input)="onSymbolInput($event)" [nzAutocomplete]="auto" />
+            <input class="search_input" placeholder="请输入品种" nz-input
+                   [(ngModel)]="symbolInputValue"
+                   (input)="onSymbolInput($event)"
+                   [nzAutocomplete]="auto"
+                   (keydown.enter)="search(1)"/>
             <nz-autocomplete [nzDataSource]="symbolSuggestionList" nzBackfill #auto></nz-autocomplete>
           </div>
 
           <!--日期选择-->
           <div class="date_filter">
             <span class="search_filter_lable">时间范围：</span>
-            <nz-range-picker class="date_picker" [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-range-picker>
+            <nz-range-picker class="date_picker" [(ngModel)]="date" (ngModelChange)="onDateChange($event)"></nz-range-picker>
           </div>
 
           <!--查询按钮-->
@@ -65,7 +66,7 @@
       </ng-template>
     </div>
     <div *ngIf="showDetail" nz-col nzSpan="10" class="group_profit_container">
-      <app-symbol-profit-detail></app-symbol-profit-detail>
+      <app-symbol-profit-detail [symbol]="currentSymbol" [returnType]="currentReturnType"></app-symbol-profit-detail>
     </div>
   </div>
 

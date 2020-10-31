@@ -1,7 +1,7 @@
-<nz-table #symbolProfitTable
+<nz-table #table
           nzBordered
-          [nzData]="sumbolDetailList"
-          [nzTitle]="symbolProfitTitle"
+          [nzData]="dataList"
+          [nzTitle]="title"
           [nzLoading]="isLoading"
           [nzNoResult]="'暂无数据'">
   <!--表头-->
@@ -15,15 +15,15 @@
   </thead>
   <!--表格数据-->
   <tbody>
-  <tr *ngFor="let data of symbolProfitTable['data']">
+  <tr *ngFor="let data of table['data']">
     <td>{{ data.userId }}</td>
-    <td>{{ data.accountId }}</td>totalProfit
+    <td>{{ data.accountId }}</td>
     <td>{{ data.returnRate }}</td>
-    <td>{{ data.totalProfit }}</td>
+    <td>{{ data.profit }}</td>
   </tr>
   </tbody>
 </nz-table>
 <!--头部-->
-<ng-template #symbolProfitTitle>
+<ng-template #title>
   <B class="title">品种明细</B>
 </ng-template>

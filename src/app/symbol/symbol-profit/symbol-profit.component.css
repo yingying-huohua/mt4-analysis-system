@@ -46,3 +46,7 @@
   width: 100px;
   margin-left: 20px;
 }
+
+.group_profit_container .table_data_item{
+  cursor: pointer;
+}
