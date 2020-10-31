@@ -4,7 +4,7 @@
     <div nz-col nzSpan="{{showDetail ? '14' : '24'}}" class="user_profit_container">
       <nz-table #basicTable
                 nzBordered
-                [nzData]="userProfitList"
+                [nzData]="dataList"
                 [nzTitle]="title"
                 [nzLoading]="isLoading"
                 [nzNoResult]="'暂无数据'"
@@ -89,7 +89,7 @@
           <!--日期选择-->
           <div class="date_filter">
             <span class="search_filter_lable">时间范围：</span>
-            <nz-range-picker class="date_picker" [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-range-picker>
+            <nz-range-picker class="date_picker" [(ngModel)]="date" (ngModelChange)="onDateChange($event)"></nz-range-picker>
           </div>
 
           <!--查询按钮-->
