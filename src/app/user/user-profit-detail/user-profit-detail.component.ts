@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {HttpService} from "../../../service/http/http.service";
 import {BaseComponent} from "../../BaseComponent";
 
@@ -7,7 +7,7 @@ import {BaseComponent} from "../../BaseComponent";
   templateUrl: './user-profit-detail.component.html',
   styleUrls: ['./user-profit-detail.component.css']
 })
-export class UserProfitDetailComponent extends BaseComponent implements OnInit {
+export class UserProfitDetailComponent extends BaseComponent implements OnInit, OnChanges {
   @Input() accountId;
   @Input() symbol;
   @Input() openStart;
@@ -19,6 +19,20 @@ export class UserProfitDetailComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.initData()
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    for (const key in changes) {
+      if (!changes.hasOwnProperty(key)) {
+        continue;
+      }
+
+      if (changes[key].firstChange) {
+        continue;
+      }
+
+      this.initData();
+    }
   }
 
   initData() {
