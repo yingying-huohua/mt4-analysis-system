@@ -33,6 +33,8 @@ import {NzMessageModule} from 'ng-zorro-antd/message';
 import {MenuComponent} from './menu/menu.component';
 import {NzMenuModule} from 'ng-zorro-antd/menu';
 import {NzIconModule} from 'ng-zorro-antd/icon';
+import {NzGridModule} from "ng-zorro-antd/grid";
+import { SymbolProfitDetailComponent } from './symbol/symbol-profit-detail/symbol-profit-detail.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import {NzIconModule} from 'ng-zorro-antd/icon';
     LoginComponent,
     UserProfitDetailComponent,
     MenuComponent,
+    SymbolProfitDetailComponent,
   ],
   imports: [
     DashboardModule,
@@ -70,7 +73,8 @@ import {NzIconModule} from 'ng-zorro-antd/icon';
     NzDatePickerModule,
     NzSelectModule,
     NzMessageModule,
-    NzIconModule
+    NzIconModule,
+    NzGridModule
   ],
   providers: [{provide: NZ_I18N, useValue: zh_CN}],
   bootstrap: [AppComponent]
