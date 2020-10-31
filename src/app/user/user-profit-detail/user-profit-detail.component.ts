@@ -1,40 +1,31 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Config} from "../../../config/Config";
 import {HttpService} from "../../../service/http/http.service";
-import {NzTableQueryParams} from "ng-zorro-antd/table";
+import {BaseComponent} from "../../BaseComponent";
 
 @Component({
   selector: 'app-user-profit-detail',
   templateUrl: './user-profit-detail.component.html',
   styleUrls: ['./user-profit-detail.component.css']
 })
-export class UserProfitDetailComponent implements OnInit {
+export class UserProfitDetailComponent extends BaseComponent implements OnInit {
   @Input() accountId;
   @Input() symbol;
   @Input() openStart;
   @Input() openEnd;
-  detailList = [];
-  pageNo    = Config.defaultPageNo;
-  pageSize  = Config.defaultPageSize;
-  totalCount = 0;
 
-
-  isLoading = true;
-
-  sortField;
-  direction;
-
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService) {
+    super();
+  }
 
   ngOnInit(): void {
     this.initData()
   }
 
-  private initData() {
+  initData() {
     const observer = {
       next: response => {
         this.isLoading = false;
-        this.detailList = response.result;
+        this.dataList = response.result;
         this.totalCount = response.count;
       }
     };
@@ -53,20 +44,4 @@ export class UserProfitDetailComponent implements OnInit {
     this.httpService.userProfitDetail(object).subscribe(observer)
   }
 
-  onPageIndexChange(pageNo) {
-    this.pageNo = pageNo;
-    this.initData()
-  }
-
-  onQueryParamsChange(params: NzTableQueryParams) {
-    const currentSort = params.sort.find(item => item.value !== null);
-    this.sortField = (currentSort && currentSort.key) || 'id';
-    const sortOrder = (currentSort && currentSort.value) || null;
-    this.direction = Config.ASC
-    if (!sortOrder || sortOrder === 'descend') {
-      this.direction = Config.DESC;
-    }
-
-    this.initData();
-  }
 }
