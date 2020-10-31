@@ -15,6 +15,7 @@ const routes: Routes = [
   {path: 'menu',            component: MenuComponent},
   {path: 'symbol',          component: SymbolListComponent},
   {path: 'symbol/profit',   component: SymbolProfitComponent},
+  {path: 'symbol/profit/:type',   component: SymbolProfitComponent},
   {path: 'user/profit',     component: UserProfitComponent},
   {path: 'group/profit',    component: GroupProfitComponent},
   {path: 'setting',         loadChildren: () => import('./setting/setting.module').then(m => m.SettingModule)},

@@ -35,6 +35,11 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['./symbol/profit']);
   }
 
+  gotoSymbolProfitByType(type) {
+    // TODO 需定义品种分类常量， 品种收益列表中需要获取类型
+    this.router.navigate([`./symbol/profit/${type}`]);
+  }
+
   gotoUserProfit() {
     this.router.navigate(['./user/profit']);
   }
