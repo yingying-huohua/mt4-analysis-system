@@ -50,14 +50,22 @@
           <!--按名称搜索-->
           <div class="search">
             <span class="search_filter_lable">名称：</span>
-            <input class="search_input" placeholder="请输入名称" nz-input [(ngModel)]="nameInputValue" (input)="onNameInput($event)" [nzAutocomplete]="auto" />
+            <input class="search_input" placeholder="请输入名称" nz-input
+                   [(ngModel)]="nameInputValue"
+                   (input)="onNameInput($event)"
+                   [nzAutocomplete]="auto"
+                   (keydown.enter)="search(1)"/>
             <nz-autocomplete [nzDataSource]="nameSuggestionList" nzBackfill #auto></nz-autocomplete>
           </div>
 
           <!--按品种搜索-->
           <div class="search">
             <span class="search_filter_lable">品种：</span>
-            <input class="search_input" placeholder="请输入品种" nz-input [(ngModel)]="symbolInputValue" (input)="onSymbolInput($event)" [nzAutocomplete]="auto" />
+            <input class="search_input" placeholder="请输入品种" nz-input
+                   [(ngModel)]="symbolInputValue"
+                   (input)="onSymbolInput($event)"
+                   [nzAutocomplete]="auto"
+                   (keydown.enter)="search(1)"/>
             <nz-autocomplete [nzDataSource]="symbolSuggestionList" nzBackfill #auto></nz-autocomplete>
           </div>
 
