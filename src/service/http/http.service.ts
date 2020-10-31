@@ -52,4 +52,37 @@ export class HttpService {
     return this.http.get(UrlConfig.userProfitList, {params: params});
   }
 
+  /**
+   * 用户收益详细
+   */
+  userProfitDetail(params: {accountId: string, symbol: string, sortField: string, direction: string,
+    openStart: string, openEnd: string, pageNo: string, pageSize: string}) {
+    return this.http.get(UrlConfig.userProfitDetail, {params: params});
+  }
+
+
+  /**
+   * 用户收益详细
+   */
+ groupProfitList(params: {groupName: string, openStart: string, openEnd: string,
+    sortField: string, direction: string, pageNo: string, pageSize: string}) {
+    return this.http.get(UrlConfig.groupProfitList, {params: params});
+  }
+
+  /**
+   * 品种收益列表
+   */
+  symbolProfitList(params: {symbol: string, openStart: string, openEnd: string,
+    sortField: string, direction: string, pageNo: string, pageSize: string}) {
+    return this.http.get(UrlConfig.symbolProfitList, {params: params});
+  }
+
+  /**
+   * 品种收益列表
+   */
+  symbolProfitUserList(params: {returnType: string, symbol: string, openStart: string, openEnd: string,
+    sortField: string, direction: string, pageNo: string, pageSize: string}) {
+    return this.http.get(UrlConfig.symbolProfitUserList, {params: params});
+  }
+
 }

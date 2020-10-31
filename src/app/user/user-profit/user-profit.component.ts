@@ -31,6 +31,9 @@ export class UserProfitComponent implements OnInit {
   pageSize  = Config.defaultPageSize;
   totalCount = 0;
 
+  showDetail = false;
+  accountId;
+
   // ranges = { Today: [new Date(), new Date()], 'This Month': [new Date(), endOfMonth(new Date())] };
   constructor(private modalService: ModalService,
               private httpService: HttpService) { }
@@ -69,8 +72,10 @@ export class UserProfitComponent implements OnInit {
   }
 
   detail(item) {
-    console.debug('查看详细:', item);
-    this.modalService.showUserProfitDetail();
+    // console.debug('查看详细:', item);
+    // this.modalService.showUserProfitDetail();
+    this.showDetail = true;
+    this.accountId = item.accountId;
   }
 
   onNameInput(event: Event): void {

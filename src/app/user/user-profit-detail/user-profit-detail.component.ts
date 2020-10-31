@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Config} from "../../../config/Config";
+import {HttpService} from "../../../service/http/http.service";
+import {NzTableQueryParams} from "ng-zorro-antd/table";
 
 @Component({
   selector: 'app-user-profit-detail',
@@ -6,31 +9,64 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-profit-detail.component.css']
 })
 export class UserProfitDetailComponent implements OnInit {
-  listOfData = [];
+  @Input() accountId;
+  @Input() symbol;
+  @Input() openStart;
+  @Input() openEnd;
+  detailList = [];
+  pageNo    = Config.defaultPageNo;
+  pageSize  = Config.defaultPageSize;
+  totalCount = 0;
+
+
   isLoading = true;
-  isBorder  = true;
-  pagination = true;
-  constructor() { }
+
+  sortField;
+  direction;
+
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
     this.initData()
   }
 
   private initData() {
-    for (let i = 0; i < 15; i++) {
-      const object =  {
-          id: '1',
-          name: '张三',
-          abbreviation: '苹果',
-          incomeAverageRate: '20%',
-          symbol: 'superNB'
-        }
-      this.listOfData.push(object);
-    }
+    const observer = {
+      next: response => {
+        this.isLoading = false;
+        this.detailList = response.result;
+        this.totalCount = response.count;
+      }
+    };
 
-    setTimeout(() => {
-      this.isLoading = false
-    }, 2 * 1000);
+    const object = {
+      accountId: this.accountId,
+      symbol: this.symbol,
+      sortField: this.sortField,
+      direction: this.direction,
+      openStart: this.openStart,
+      openEnd: this.openEnd,
+      pageNo: this.pageNo.toString(),
+      pageSize: this.pageSize.toString()
+    };
+
+    this.httpService.userProfitDetail(object).subscribe(observer)
   }
 
+  onPageIndexChange(pageNo) {
+    this.pageNo = pageNo;
+    this.initData()
+  }
+
+  onQueryParamsChange(params: NzTableQueryParams) {
+    const currentSort = params.sort.find(item => item.value !== null);
+    this.sortField = (currentSort && currentSort.key) || 'id';
+    const sortOrder = (currentSort && currentSort.value) || null;
+    this.direction = Config.ASC
+    if (!sortOrder || sortOrder === 'descend') {
+      this.direction = Config.DESC;
+    }
+
+    this.initData();
+  }
 }

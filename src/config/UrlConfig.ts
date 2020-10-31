@@ -14,6 +14,13 @@ export class UrlConfig {
   public static symbol       = `${UrlConfig.domain}/symbol`;
 
   // 用户收益列表
-  public static userProfitList = `${UrlConfig.domain}/order/profit/user/list`
-
+  public static userProfitList = `${UrlConfig.domain}/order/profit/user/list`;
+  // 用户收益列表
+  public static userProfitDetail = `${UrlConfig.domain}/order/profit/user/detail`;
+  // 用户组收益列表
+  public static groupProfitList = `${UrlConfig.domain}/order/profit/group/list`;
+  // 品种收益列表
+  public static symbolProfitList = `${UrlConfig.domain}/order/profit/symbol/list`;
+  // 品种收益盈亏用户列表
+  public static symbolProfitUserList = `${UrlConfig.domain}/order/profit/symbol/user/list`;
 }

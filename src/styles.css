@@ -14,8 +14,7 @@
 @import "~ng-zorro-antd/select/style/index.css";
 @import "~ng-zorro-antd/menu/style/index.css";
 @import "~ng-zorro-antd/icon/style/index.css";
-
-
+@import "~ng-zorro-antd/grid/style/index.css";
 
 
 html, body{
@@ -27,9 +26,11 @@ html, body{
 
 th {
   font-weight: 600 !important;
+  text-align: center !important;
 }
 
 td{
   font-size: 16px !important;
   padding: 6px 16px !important;
+  text-align: center !important;
 }
