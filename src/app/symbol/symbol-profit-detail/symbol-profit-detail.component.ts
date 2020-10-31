@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./symbol-profit-detail.component.css']
 })
 export class SymbolProfitDetailComponent implements OnInit {
-
+  sumbolDetailList = [];
+  isLoading = false
   constructor() { }
 
   ngOnInit(): void {

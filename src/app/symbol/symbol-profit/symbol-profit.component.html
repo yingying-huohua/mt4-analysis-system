@@ -1,1 +1,73 @@
-<p>symbol-profit works!</p>
+<div class="group_profit">
+  <div nz-row>
+    <!--品种收益排名-->
+    <div nz-col nzSpan="{{showDetail ? '14' : '24'}}" class="group_profit_container">
+      <nz-table #basicTable
+                nzBordered
+                [nzData]="systemProfitList"
+                [nzTitle]="title"
+                [nzLoading]="isLoading"
+                [nzNoResult]="'暂无数据'"
+                [nzTotal]="totalCount"
+                [nzFrontPagination]="false"
+                [nzPageSize]="pageSize"
+                [(nzPageIndex)]="pageNo"
+                (nzPageIndexChange)="onPageIndexChange($event)"
+                (nzQueryParams)="onQueryParamsChange($event)">
+        <!--表头-->
+        <thead>
+        <tr>
+          <th  nzColumnKey="userId" [nzSortFn]="true">名称</th>
+          <th  nzColumnKey="account_id" [nzSortFn]="true">用户盈利</th>
+          <th  nzColumnKey="totalProfit" [nzSortFn]="true">用户亏损</th>
+          <th  nzColumnKey="totalProfit" [nzSortFn]="true">用户持平</th>
+          <th >查看</th>
+        </tr>
+        </thead>
+        <!--表格数据-->
+        <tbody>
+        <tr *ngFor="let data of basicTable['data']">
+          <td >{{ data.userId }}</td>
+          <td >{{ data.account_id }}</td>
+          <td>{{ data.totalProfit }}</td>
+          <td>{{ data.incomeRate }}</td>
+
+          <td>
+            <a (click)="detail(data)">查看</a>
+          </td>
+        </tr>
+        </tbody>
+      </nz-table>
+      <!--头部-->
+      <ng-template #title>
+        <B class="title">品种收益排名</B>
+
+        <!--筛选与搜索-->
+        <div class="search_filter_container">
+          <!--按品种搜索-->
+          <div class="search">
+            <span class="search_filter_lable">品种：</span>
+            <input class="search_input" placeholder="请输入品种" nz-input [(ngModel)]="symbolInputValue" (input)="onSymbolInput($event)" [nzAutocomplete]="auto" />
+            <nz-autocomplete [nzDataSource]="symbolSuggestionList" nzBackfill #auto></nz-autocomplete>
+          </div>
+
+          <!--日期选择-->
+          <div class="date_filter">
+            <span class="search_filter_lable">时间范围：</span>
+            <nz-range-picker class="date_picker" [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-range-picker>
+          </div>
+
+          <!--查询按钮-->
+          <button nz-button nzType="primary" class="search_button" (click)="search(1)">查询</button>
+
+        </div>
+
+      </ng-template>
+    </div>
+    <div *ngIf="showDetail" nz-col nzSpan="10" class="group_profit_container">
+      <app-symbol-profit-detail></app-symbol-profit-detail>
+    </div>
+  </div>
+
+</div>
+

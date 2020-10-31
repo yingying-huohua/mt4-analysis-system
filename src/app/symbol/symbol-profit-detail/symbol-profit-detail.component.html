@@ -1,1 +1,29 @@
-<p>symbol-profit-detail works!</p>
+<nz-table #symbolProfitTable
+          nzBordered
+          [nzData]="sumbolDetailList"
+          [nzTitle]="symbolProfitTitle"
+          [nzLoading]="isLoading"
+          [nzNoResult]="'暂无数据'">
+  <!--表头-->
+  <thead>
+  <tr>
+    <th>用户</th>
+    <th>账号</th>
+    <th>用户盈利</th>
+    <th>金额</th>
+  </tr>
+  </thead>
+  <!--表格数据-->
+  <tbody>
+  <tr *ngFor="let data of symbolProfitTable['data']">
+    <td>{{ data.userId }}</td>
+    <td>{{ data.accountId }}</td>totalProfit
+    <td>{{ data.returnRate }}</td>
+    <td>{{ data.totalProfit }}</td>
+  </tr>
+  </tbody>
+</nz-table>
+<!--头部-->
+<ng-template #symbolProfitTitle>
+  <B class="title">品种明细</B>
+</ng-template>
