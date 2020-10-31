@@ -35,6 +35,7 @@ import {NzMenuModule} from 'ng-zorro-antd/menu';
 import {NzIconModule} from 'ng-zorro-antd/icon';
 import {NzGridModule} from "ng-zorro-antd/grid";
 import { SymbolProfitDetailComponent } from './symbol/symbol-profit-detail/symbol-profit-detail.component';
+import { GroupProfitDetailComponent } from './user/group-profit-detail/group-profit-detail.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { SymbolProfitDetailComponent } from './symbol/symbol-profit-detail/symbo
     UserProfitDetailComponent,
     MenuComponent,
     SymbolProfitDetailComponent,
+    GroupProfitDetailComponent,
   ],
   imports: [
     DashboardModule,
