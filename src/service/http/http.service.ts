@@ -62,7 +62,7 @@ export class HttpService {
 
 
   /**
-   * 用户收益详细
+   * 用户组收益详细
    */
  groupProfitList(params: {groupName: string, openStart: string, openEnd: string,
     sortField: string, direction: string, pageNo: string, pageSize: string}) {

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ModalService} from "../../../service/local/modal.service";
+import {BaseComponent} from "../../BaseComponent";
+import {HttpService} from "../../../service/http/http.service";
 
 /**
  * 用户组收益
@@ -10,70 +12,38 @@ import {ModalService} from "../../../service/local/modal.service";
   templateUrl: './group-profit.component.html',
   styleUrls: ['./group-profit.component.css']
 })
-export class GroupProfitComponent implements OnInit {
-  userGroupProfitList = [];
-  userProfitList = [];
-  isLoading = false;
-  isBorder  = true;
-  pagination = true;
+export class GroupProfitComponent extends BaseComponent implements OnInit {
   showUserProfit = false;
 
 
-  listOfParentData= [];
-  listOfChildrenData = [];
-  constructor(private modalService: ModalService ) { }
+  constructor(private modalService: ModalService,
+              private httpService: HttpService) {
+    super();
+  }
 
   ngOnInit(): void {
     this.initData();
   }
 
-  private initData() {
-    this.userGroupProfitList = [
-      {
-        id: '1',
-        name: '超级牛散群',
-        amount:'20000',
-        incomeRate: '20%',
-        peopleNum: '20',
-        symbol: 'superNB',
+  initData() {
+    const observer = {
+      next: response => {
+        this.isLoading = false;
+        this.dataList = response.result;
+        this.totalCount = response.count;
       }
-    ];
+    };
 
-    this.userProfitList = [
-      {
-        id: '1',
-        name: '张三',
-        incomeRate: '20%',
-        symbol: 'superNB',
-      },
-      {
-        id: '2',
-        name: '李四',
-        incomeRate: '20%',
-        symbol: '苹果',
-      }
-    ]
-
-    for (let i = 0; i < 3; ++i) {
-      this.listOfParentData.push({
-        key: i,
-        name: 'Screem',
-        platform: 'iOS',
-        version: '10.3.4.5654',
-        upgradeNum: 500,
-        creator: 'Jack',
-        createdAt: '2014-12-24 23:12:00',
-        expand: false
-      });
+    const object = {
+      groupName: '',
+      sortField: this.sortField,
+      direction: this.direction,
+      openStart: this.openStart,
+      openEnd: this.openEnd,
+      pageNo: this.pageNo.toString(),
+      pageSize: this.pageSize.toString()
     }
-    for (let i = 0; i < 3; ++i) {
-      this.listOfChildrenData.push({
-        key: i,
-        date: '2014-12-24 23:12:00',
-        name: 'This is production name',
-        upgradeNum: 'Upgraded: 56'
-      });
-    }
+    this.httpService.groupProfitList(object).subscribe(observer);
 
   }
 
@@ -85,4 +55,5 @@ export class GroupProfitComponent implements OnInit {
   groupProfitDetail() {
     this.showUserProfit = true;
   }
+
 }
