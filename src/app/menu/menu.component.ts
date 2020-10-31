@@ -31,6 +31,10 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['./symbol']);
   }
 
+  gotoSymbolProfit() {
+    this.router.navigate(['./symbol/profit']);
+  }
+
   gotoUserProfit() {
     this.router.navigate(['./user/profit']);
   }
