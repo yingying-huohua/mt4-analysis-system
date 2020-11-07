@@ -17,4 +17,7 @@ export class Config {
   // 默认排序 desc||asc
   public static direction = Config.DESC
 
+  // 品种看板，活跃用户数据条数
+  public static symbolDashboardPageSize = 10;
+
 }

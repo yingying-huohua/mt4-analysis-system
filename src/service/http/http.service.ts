@@ -96,15 +96,23 @@ export class HttpService {
   /**
    * 品种看板用户收益列表
    */
-  symoblDashboardUserProfitList() {
+  symoblDashboardUserProfitList(pageNo: string, pageSize: string) {
+    const params = {
+      pageNo: pageNo,
+      pageSize: pageSize
+    }
     return this.http.get(UrlConfig.symoblDashboardUserProfitList);
   }
 
   /**
    * 品种看板活跃用户列表
    */
-  symoblDashboardActiveUserList() {
-    return this.http.get(UrlConfig.symoblDashboardActiveUserList);
+  symoblDashboardActiveUserList(pageNo: string, pageSize: string) {
+    const params = {
+      pageNo: pageNo,
+      pageSize: pageSize
+    }
+    return this.http.get(UrlConfig.symoblDashboardActiveUserList, {params: params});
   }
 
 }
