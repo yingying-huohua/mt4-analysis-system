@@ -19,7 +19,7 @@
           <tr>
             <th>名称</th>
             <th>盈亏金额</th>
-            <th>收益率</th>
+<!--            <th>收益率</th>-->
             <th>人数</th>
             <th>简称</th>
             <th>操作</th>
@@ -29,12 +29,12 @@
           <tbody>
           <tr *ngFor="let data of groupProfitTable['data']">
             <td>{{ data.groupName }}</td>
-            <td>{{ data.profit }}</td>
-            <td>{{ data.returnRate }}</td>
+            <td>{{ moneyFormat(data.profit) }}</td>
+<!--            <td>{{ data.returnRate }}</td>-->
             <td>{{ data.userCount }}</td>
-            <td>{{ data.symbol }}</td>
+            <td>{{ data.groupAbbr }}</td>
             <td>
-              <a (click)="groupProfitDetail()">查看</a>
+              <a (click)="groupProfitDetail(data)">查看</a>
             </td>
           </tr>
           </tbody>
@@ -47,7 +47,7 @@
 
     <!--用户收益-->
     <div *ngIf="showUserProfit" class="container">
-      <app-group-profit-detail></app-group-profit-detail>
+      <app-group-profit-detail [groupId]="currentGroupId"></app-group-profit-detail>
     </div>
 
   </div>

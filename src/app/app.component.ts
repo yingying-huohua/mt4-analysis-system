@@ -12,7 +12,7 @@ registerLocaleData(zh)
 export class AppComponent implements OnInit{
   title = 'md4-analysis-system';
   headerMenu = [];
-  selectedId = HeaderMenu.symbol;
+  selectedId = HeaderMenu.data;
   showLeftPanel = false;
   constructor(private router: Router) {}
 

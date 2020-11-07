@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ModalService} from "../../../service/local/modal.service";
 import {BaseComponent} from "../../BaseComponent";
 import {HttpService} from "../../../service/http/http.service";
+import {AppService} from "../../app.service";
 
 /**
  * 用户组收益
@@ -14,10 +15,11 @@ import {HttpService} from "../../../service/http/http.service";
 })
 export class GroupProfitComponent extends BaseComponent implements OnInit {
   showUserProfit = false;
-
+  currentGroupId;
 
   constructor(private modalService: ModalService,
-              private httpService: HttpService) {
+              private httpService: HttpService,
+              private appService: AppService) {
     super();
   }
 
@@ -47,13 +49,14 @@ export class GroupProfitComponent extends BaseComponent implements OnInit {
 
   }
 
-  detail(item) {
+  groupProfitDetail(item) {
     console.debug('查看详细:', item);
-    this.modalService.showUserProfitDetail();
+    this.showUserProfit = true;
+    this.currentGroupId = item.groupId;
   }
 
-  groupProfitDetail() {
-    this.showUserProfit = true;
+  moneyFormat(value) {
+    return this.appService.moneyFormat(value.toString());
   }
 
 }

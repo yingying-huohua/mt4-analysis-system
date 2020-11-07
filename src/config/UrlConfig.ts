@@ -19,6 +19,8 @@ export class UrlConfig {
   public static userProfitDetail = `${UrlConfig.domain}/order/profit/user/detail`;
   // 用户组收益列表
   public static groupProfitList = `${UrlConfig.domain}/order/profit/group/list`;
+
+  public static groupUserList   = `${UrlConfig.domain}/user/group/member/list`
   // 品种收益列表
   public static symbolProfitList = `${UrlConfig.domain}/order/profit/symbol/list`;
   // 品种收益盈亏用户列表

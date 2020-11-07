@@ -9,7 +9,7 @@ import {BaseComponent} from "../../BaseComponent";
 })
 export class UserProfitDetailComponent extends BaseComponent implements OnInit, OnChanges {
   @Input() accountId;
-  @Input() symbol;
+  @Input() symbol = '';
   @Input() openStart;
   @Input() openEnd;
 
