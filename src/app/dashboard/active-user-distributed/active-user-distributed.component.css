@@ -1,0 +1,16 @@
+.active_user_distributed{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.active_user_distributed .chart_style{
+  width: 100%;
+  height: 200px !important;
+}
+
+.active_user_distributed .echarts{
+  height: 200px;
+  background: #fff;
+  border: 15px solid #fff;
+}

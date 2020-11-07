@@ -1,0 +1,47 @@
+.dashboard{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #001529;
+  padding: 20px;
+  color: #fff;
+}
+.dashboard .container{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border:1px solid #56517B;
+
+}
+.dashboard .header_dashboard{
+  width: 100%;
+  height: 230px;
+  border-bottom:1px solid #56517B;
+}
+
+.dashboard .item{
+  padding: 20px;
+  height: 100%;
+}
+
+.header_dashboard .number{
+  font-size: 35px;
+  font-weight: 500;
+}
+
+.header_dashboard .small_number{
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.header_dashboard .progress{
+ margin-top: 52px;
+}
+
+.container .border_right{
+  border-right:1px solid #56517B;
+}
+
+.dashboard .bottom_dashboard{
+  width: 100%;
+  height: calc(100% - 230px);
+}

@@ -1,1 +1,40 @@
-<p>profit-distributed works!</p>
+<div class="profit_distributed">
+  <h3 class="dashboard_item_title">盈亏分布</h3>
+
+  <div nz-row class="container">
+    <!--其他用户-->
+    <div nz-col nzSpan="8" class="progress_item_div">
+      <nz-progress [nzPercent]="75" nzType="circle"  [nzFormat]="format1"></nz-progress>
+      <ng-template #format1>
+        <div class="format_div">
+          <p class="percent"><span class="number">40</span>%</p>
+          <p class="progress_title">其他用户</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <!--意向注册-->
+    <div nz-col nzSpan="8"  class="progress_item_div">
+      <nz-progress [nzPercent]="40" nzType="circle" nzStatus="exception" [nzFormat]="format2"></nz-progress>
+      <ng-template #format2>
+        <div class="format_div">
+          <p class="percent"><span class="number">40</span>%</p>
+          <p class="progress_title">意向注册</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <!--当日绑卡-->
+    <div nz-col nzSpan="8" class="progress_item_div">
+      <nz-progress [nzPercent]="100" nzType="circle" [nzFormat]="format3"></nz-progress>
+      <ng-template #format3>
+        <div class="format_div">
+          <p class="percent"><span class="number">40</span>%</p>
+          <p class="progress_title">当日绑卡</p>
+        </div>
+      </ng-template>
+    </div>
+
+
+  </div>
+</div>

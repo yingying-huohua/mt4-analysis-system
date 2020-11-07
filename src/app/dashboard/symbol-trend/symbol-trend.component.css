@@ -4,19 +4,6 @@
   height: 100%;
   position: relative;
 }
-.symbol_trend .symbol_trend_container{
-  /*border:1px solid #56517B;*/
-  border-radius:5px;
-  padding: 5px;
-}
-
-.symbol_trend_container .title{
-  width: 100%;
-  font-size: 20px;
-  color: #ffffff;
-  padding-left: 20px;
-  padding-right: 20px;
-}
 
 .symbol_trend_container .chart_style{
   width: 100%;
@@ -24,7 +11,7 @@
 }
 
 .symbol_trend_container .echarts{
-  height: 200px;
+  height: 250px;
   background: #fff;
   border: 15px solid #fff;
 }

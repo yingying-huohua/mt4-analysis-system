@@ -1,1 +1,11 @@
-<p>total-profit works!</p>
+<div class="total_profit">
+  <h3 class="dashboard_item_title">总盈亏</h3>
+  <!--金额-->
+  <p><span class="number" style="color: deepskyblue">285.36</span>万元</p>
+  <!--XXXt-->
+  <p><span class="small_number">23589</span>T</p>
+
+  <div class="progress">
+    <nz-progress [nzPercent]="50" nzSize="small" [nzShowInfo]="false" [nzStrokeColor]="'deepskyblue'"></nz-progress>
+  </div>
+</div>

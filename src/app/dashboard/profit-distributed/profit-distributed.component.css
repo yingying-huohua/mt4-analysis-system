@@ -1,0 +1,27 @@
+.profit_distributed{
+  width: 100%;
+  height: 100%;
+  position: relative
+}
+
+.profit_distributed .container{
+  display: flex;
+  margin-top: 20px;
+}
+
+.container .progress_item_div{
+  display: flex
+}
+
+.progress_item_div .format_div{
+  color: #ffffff
+}
+
+.format_div .percent{
+  margin-bottom: 10px
+}
+
+.format_div .progress_title{
+  text-align: center;
+  font-size: 16px;
+}

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./symbol-trend.component.css']
 })
 export class SymbolTrendComponent implements OnInit {
-  componentActive;
+  option;
   constructor() { }
 
   ngOnInit(): void {
@@ -14,7 +14,7 @@ export class SymbolTrendComponent implements OnInit {
   }
 
   initData() {
-    this.componentActive = {
+    this.option = {
       textStyle: {
         fontSize: '10px',
         color: '#B1B0B0'

@@ -15,7 +15,7 @@
 @import "~ng-zorro-antd/menu/style/index.css";
 @import "~ng-zorro-antd/icon/style/index.css";
 @import "~ng-zorro-antd/grid/style/index.css";
-
+@import "~ng-zorro-antd/progress/style/index.css";
 
 html, body{
   padding: 0;
@@ -40,8 +40,20 @@ td{
   text-align: center !important;
 }
 
+nz-progress {
+  margin: auto;
+}
+
 .title{
   height: 40px;
   font-size: 24px;
   line-height: 40px;
+}
+
+.dashboard_item_title{
+  width: 100%;
+  font-size: 20px;
+  color: #ffffff;
+  /*padding-left: 20px;*/
+  /*padding-right: 20px;*/
 }
