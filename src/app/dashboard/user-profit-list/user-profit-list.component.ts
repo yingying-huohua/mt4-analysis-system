@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Config} from "../../../config/Config";
+import {HttpService} from "../../../service/http/http.service";
 
 @Component({
   selector: 'app-user-profit-list',
@@ -7,41 +9,66 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfitListComponent implements OnInit {
   option;
-  constructor() { }
+  dataList = [];
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
-    this.initData()
+    this.getData();
   }
 
-  initData() {
+  /**
+   * 服务端接口获取数据
+   */
+  getData() {
+    const observer = {
+      next: response => {
+        if (!response) {
+          return;
+        }
+        this.formatSourceData(response.result);
+        this.setOption();
+      }
+    }
+    this.httpService.symoblDashboardUserProfitList(Config.defaultPageNo.toString(),
+      Config.symbolDashboardPageSize.toString()).subscribe(observer);
+  }
+
+  /**
+   * 格式化数据
+   * @param data
+   */
+  private formatSourceData(data) {
+    const axis =  ['profit', 'accountId'];
+    this.dataList.push(axis);
+    for (const dataItem of data) {
+      const dataItemArray = [];
+      dataItemArray.push(dataItem.profit);
+      dataItemArray.push(dataItem.accountId);
+      this.dataList.push(dataItemArray);
+    }
+  }
+
+  /**
+   * 设置option
+   */
+  private setOption() {
     this.option = {
       dataset: {
-        source: [
-          ['score', 'amount', 'product'],
-          [89.3, 58212, 'Matcha Latte'],
-          [57.1, 78254, 'Milk Tea'],
-          [74.4, 41032, 'Cheese Cocoa'],
-          [50.1, 12755, 'Cheese Brownie'],
-          [89.7, 20145, 'Matcha Cocoa'],
-          [68.1, 79146, 'Tea'],
-          [19.6, 91852, 'Orange Juice'],
-          [10.6, 101852, 'Lemon Juice'],
-          [32.7, 20112, 'Walnut Brownie']
-        ]
+        source: this.dataList
       },
       textStyle: {
         fontSize: '10px',
         color: '#B1B0B0'
       },
       grid: {containLabel: true},
-      xAxis: {name: 'amount'},
+      xAxis: {name: 'profit'},
       yAxis: {type: 'category'},
       visualMap: {
         orient: 'horizontal',
         left: 'center',
-        min: 10,
-        max: 100,
-        text: ['High Score', 'Low Score'],
+        min: 0,
+        max: 1000,
+        text: ['High', 'Low'],
         textStyle: {
           fontSize: '10px',
           color: '#B1B0B0'
@@ -57,13 +84,12 @@ export class UserProfitListComponent implements OnInit {
           type: 'bar',
           encode: {
             // Map the "amount" column to X axis.
-            x: 'amount',
+            x: 'profit',
             // Map the "product" column to Y axis
-            y: 'product'
+            y: 'accountId'
           }
         }
       ]
     };
-
   }
 }

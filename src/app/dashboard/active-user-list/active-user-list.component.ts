@@ -39,7 +39,7 @@ export class ActiveUserListComponent implements OnInit {
     this.dataList.push(axis);
     for (const dataItem of data) {
       const dataItemArray = [];
-      dataItemArray.push(Number.parseInt(dataItem.totalCount));
+      dataItemArray.push(dataItem.totalCount);
       dataItemArray.push(dataItem.accountId);
       this.dataList.push(dataItemArray);
     }

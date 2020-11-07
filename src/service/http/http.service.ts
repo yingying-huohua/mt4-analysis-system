@@ -101,7 +101,7 @@ export class HttpService {
       pageNo: pageNo,
       pageSize: pageSize
     }
-    return this.http.get(UrlConfig.symoblDashboardUserProfitList);
+    return this.http.get(UrlConfig.symoblDashboardUserProfitList, {params: params});
   }
 
   /**
