@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-total-user',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./total-user.component.css']
 })
 export class TotalUserComponent implements OnInit {
-
+  @Input() totalUser;
   constructor() { }
 
   ngOnInit(): void {
