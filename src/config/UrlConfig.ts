@@ -23,4 +23,12 @@ export class UrlConfig {
   public static symbolProfitList = `${UrlConfig.domain}/order/profit/symbol/list`;
   // 品种收益盈亏用户列表
   public static symbolProfitUserList = `${UrlConfig.domain}/order/profit/symbol/user/list`;
+
+
+  //品种看板meta信息
+  public static symoblDashboardMeta                = `${UrlConfig.domain}/dashboard/symbol/meta`;
+  //品种看板活跃用户列表
+  public static symoblDashboardActiveUserList      = `${UrlConfig.domain}/dashboard/symbol/user/active/list`;
+  //品种看板用户收益列表
+  public static symoblDashboardUserProfitList      = `${UrlConfig.domain}/dashboard/symbol/user/profit/list`;
 }

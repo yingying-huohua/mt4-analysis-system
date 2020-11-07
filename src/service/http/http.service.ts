@@ -85,4 +85,26 @@ export class HttpService {
     return this.http.get(UrlConfig.symbolProfitUserList, {params: params});
   }
 
+
+  /**
+   * 品种看板meta信息
+   */
+  symoblDashboardMeta(symbol: string) {
+    return this.http.get(UrlConfig.symoblDashboardMeta, {params: {symbol: symbol}});
+  }
+
+  /**
+   * 品种看板用户收益列表
+   */
+  symoblDashboardUserProfitList() {
+    return this.http.get(UrlConfig.symoblDashboardUserProfitList);
+  }
+
+  /**
+   * 品种看板活跃用户列表
+   */
+  symoblDashboardActiveUserList() {
+    return this.http.get(UrlConfig.symoblDashboardActiveUserList);
+  }
+
 }
