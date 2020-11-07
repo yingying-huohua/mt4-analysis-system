@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BaseComponent} from "../../BaseComponent";
 import {HttpService} from "../../../service/http/http.service";
 import {ActivatedRoute} from "@angular/router";
+import {AppService} from "../../app.service";
 
 @Component({
   selector: 'app-symbol-profit',
@@ -13,7 +14,8 @@ export class SymbolProfitComponent extends BaseComponent implements OnInit {
   currentSymbol;
   currentReturnType;
   constructor(private httpService: HttpService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private appService: AppService) {
     super();
   }
 
@@ -51,5 +53,9 @@ export class SymbolProfitComponent extends BaseComponent implements OnInit {
     this.currentSymbol = item.symbol;
     this.currentReturnType = returnType;
     this.showDetail = true;
+  }
+
+  rateForamt(value) {
+    return this.appService.rateFormat(value);
   }
 }

@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {AppService} from "../../app.service";
 
 @Component({
   selector: 'app-total-profit',
@@ -7,9 +8,14 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TotalProfitComponent implements OnInit {
   @Input() totalMoney;
-  constructor() { }
+  constructor(private appService: AppService) { }
 
   ngOnInit(): void {
+    this.formatNum();
+  }
+
+  formatNum() {
+    this.totalMoney = this.appService.moneyFormat(this.totalMoney.toString());
   }
 
 }

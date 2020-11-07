@@ -28,9 +28,9 @@
         <tbody>
         <tr *ngFor="let data of basicTable['data']">
           <td >{{ data.symbol }}</td>
-          <td class="table_data_item" (click)="detail(data, 1)">{{ data.profit }}</td>
-          <td class="table_data_item" (click)="detail(data, 2)">-{{ data.loss }}</td>
-          <td class="table_data_item" (click)="detail(data, 3)">{{ data.breakEven }}</td>
+          <td class="table_data_item" (click)="detail(data, 1)">{{ rateForamt(data.profit)}}</td>
+          <td class="table_data_item" (click)="detail(data, 2)">-{{ rateForamt(data.loss)}}</td>
+          <td class="table_data_item" (click)="detail(data, 3)">{{ rateForamt(data.breakEven) }}</td>
           <td class="table_data_item" >{{ data.type }}</td>
         </tr>
         </tbody>
