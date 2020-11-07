@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BaseComponent} from "../../BaseComponent";
 import {HttpService} from "../../../service/http/http.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-symbol-profit',
@@ -11,14 +12,18 @@ export class SymbolProfitComponent extends BaseComponent implements OnInit {
   showDetail = false;
   currentSymbol;
   currentReturnType;
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService,
+              private route: ActivatedRoute) {
     super();
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe((params: {type: string}) => {
+      this.initData(params.type);
+    });
   }
 
-  initData() {
+  initData(type?) {
     const observer = {
       next: response => {
         this.isLoading = false;
@@ -28,6 +33,7 @@ export class SymbolProfitComponent extends BaseComponent implements OnInit {
     };
 
     const object = {
+      type: type? type : '',
       symbol: this.symbolInputValue,
       sortField: this.sortField,
       direction: this.direction,

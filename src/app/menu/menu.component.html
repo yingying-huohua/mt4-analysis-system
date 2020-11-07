@@ -1,8 +1,8 @@
 <ul nz-menu nzMode="inline" nzTheme="dark" [nzInlineCollapsed]="isCollapsed">
   <li nz-submenu nzTitle="品种" nzIcon="appstore">
     <ul>
-      <li nz-menu-item (click)="gotoSymbolProfitByType(1)">期货</li>
-      <li nz-menu-item (click)="gotoSymbolProfitByType(2)">外汇</li>
+      <li nz-menu-item (click)="gotoSymbolProfitByType('期货')">期货</li>
+      <li nz-menu-item (click)="gotoSymbolProfitByType('外汇')">外汇</li>
       <li nz-menu-item (click)="gotoSymbolProfit()">品种收益</li>
     </ul>
   </li>

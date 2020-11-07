@@ -72,7 +72,7 @@ export class HttpService {
   /**
    * 品种收益列表
    */
-  symbolProfitList(params: {symbol: string, openStart: string, openEnd: string,
+  symbolProfitList(params: {type: string, symbol: string, openStart: string, openEnd: string,
     sortField: string, direction: string, pageNo: string, pageSize: string}) {
     return this.http.get(UrlConfig.symbolProfitList, {params: params});
   }
