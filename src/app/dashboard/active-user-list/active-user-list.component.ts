@@ -65,7 +65,7 @@ export class ActiveUserListComponent implements OnInit {
         left: 'center',
         min: 10000,
         max: 50000,
-        text: ['High', 'Low'],
+        text: ['高', '低'],
         textStyle: {
           fontSize: '10px',
           color: '#B1B0B0'

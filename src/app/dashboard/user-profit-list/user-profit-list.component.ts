@@ -68,7 +68,7 @@ export class UserProfitListComponent implements OnInit {
         left: 'center',
         min: 0,
         max: 1000,
-        text: ['High', 'Low'],
+        text: ['高', '低'],
         textStyle: {
           fontSize: '10px',
           color: '#B1B0B0'
