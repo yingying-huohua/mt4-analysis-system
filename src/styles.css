@@ -24,6 +24,11 @@ html, body{
   background: #ffffff;
 }
 
+h3{
+  margin: 0;
+  padding: 0;
+}
+
 th {
   font-weight: 600 !important;
   text-align: center !important;
