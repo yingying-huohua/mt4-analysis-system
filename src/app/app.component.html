@@ -2,13 +2,13 @@
   <nz-header>
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-      <li nz-menu-item >综合看板</li>
-      <li nz-menu-item >品种看板</li>
-      <li nz-menu-item nzSelected>数据分析</li>
+      <li nz-menu-item *ngFor="let item of headerMenu"
+          [nzSelected]="item.id === selectedId"
+      (click)="renderTab(item.id)">{{item.title}}</li>
     </ul>
   </nz-header>
   <nz-layout>
-    <nz-sider nzWidth="200px" nzTheme="dark" >
+    <nz-sider *ngIf="showLeftPanel" nzWidth="200px" nzTheme="dark" >
       <app-menu></app-menu>
     </nz-sider>
     <nz-layout class="inner-layout">
