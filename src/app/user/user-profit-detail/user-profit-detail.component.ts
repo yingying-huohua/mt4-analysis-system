@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {HttpService} from "../../../service/http/http.service";
 import {BaseComponent} from "../../BaseComponent";
+import {AppService} from "../../app.service";
 
 @Component({
   selector: 'app-user-profit-detail',
@@ -14,7 +15,8 @@ export class UserProfitDetailComponent extends BaseComponent implements OnInit, 
   @Input() openStart;
   @Input() openEnd;
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService,
+              private appService: AppService) {
     super();
   }
 
@@ -57,6 +59,10 @@ export class UserProfitDetailComponent extends BaseComponent implements OnInit, 
     };
 
     this.httpService.userProfitDetail(object).subscribe(observer)
+  }
+
+  moneyFormat(value) {
+    return this.appService.moneyFormat(value.toString());
   }
 
 }
