@@ -10,7 +10,6 @@ registerLocaleData(zh)
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'md4-analysis-system';
   headerMenu = [];
   selectedId = HeaderMenu.symbol;
   showLeftPanel = false;
@@ -18,7 +17,6 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.initHeaderMenu();
-    this.renderTab(this.selectedId)
   }
 
   /**
@@ -32,7 +30,7 @@ export class AppComponent implements OnInit{
       //   break;
       case HeaderMenu.data:
         this.showLeftPanel = true;
-        this.router.navigate(['./']);
+        this.router.navigate(['./symbol/profit']);
         break;
       case HeaderMenu.symbol:
         this.showLeftPanel = false;
