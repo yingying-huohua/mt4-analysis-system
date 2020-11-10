@@ -10,8 +10,9 @@ import {MenuComponent} from './menu/menu.component';
 
 
 const routes: Routes = [
-  {path: '',                redirectTo: '',  pathMatch: 'full'},
+  {path: '',                redirectTo: 'dashboard',  pathMatch: 'full'},
   {path: 'dashboard',       component: DashboardComponent},
+  {path: 'dashboard/:id',   component: DashboardComponent},
   {path: 'menu',            component: MenuComponent},
   {path: 'symbol',          component: SymbolListComponent},
   {path: 'symbol/profit',   component: SymbolProfitComponent},
