@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ModalService} from '../../../service/local/modal.service';
 import {HttpService} from "../../../service/http/http.service";
 import {BaseComponent} from "../../BaseComponent";
+import {AppService} from "../../app.service";
 
 // @ts-ignore
 /**
@@ -17,7 +18,8 @@ export class UserProfitComponent extends BaseComponent implements OnInit {
   accountId;
   userId;
   constructor(private modalService: ModalService,
-              private httpService: HttpService) {
+              private httpService: HttpService,
+              private appService: AppService) {
     super();
   }
 
@@ -55,5 +57,8 @@ export class UserProfitComponent extends BaseComponent implements OnInit {
     this.userId    = item.userId;
   }
 
+  moneyFormat(value) {
+    return this.appService.moneyFormat(value.toString());
+  }
 
 }

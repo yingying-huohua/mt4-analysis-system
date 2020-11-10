@@ -18,26 +18,30 @@
         <thead>
         <tr>
           <th  nzColumnKey="symbol" [nzSortFn]="true">名称</th>
+          <th  nzColumnKey="tradeDate" [nzSortFn]="true">日期</th>
           <th  nzColumnKey="profit" [nzSortFn]="true">用户盈利</th>
           <th  nzColumnKey="loss" [nzSortFn]="true">用户亏损</th>
           <th  nzColumnKey="breakEven" [nzSortFn]="true">用户持平</th>
           <th  nzColumnKey="type" [nzSortFn]="true">类型</th>
+
         </tr>
         </thead>
         <!--表格数据-->
         <tbody>
         <tr *ngFor="let data of basicTable['data']">
           <td >{{ data.symbol }}</td>
+          <td class="table_data_item" >{{ dateFormat(data.tradeDate)}}</td>
           <td class="table_data_item" (click)="detail(data, 1)">{{ rateForamt(data.profit)}}</td>
           <td class="table_data_item" (click)="detail(data, 2)">-{{ rateForamt(data.loss)}}</td>
           <td class="table_data_item" (click)="detail(data, 3)">{{ rateForamt(data.breakEven) }}</td>
           <td class="table_data_item" >{{ data.type }}</td>
+
         </tr>
         </tbody>
       </nz-table>
       <!--头部-->
       <ng-template #title>
-        <B class="title">品种收益排名</B>
+        <B class="title">品种收益</B>
 
         <!--筛选与搜索-->
         <div class="search_filter_container">

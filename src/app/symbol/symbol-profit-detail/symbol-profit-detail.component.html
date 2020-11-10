@@ -9,8 +9,7 @@
   <tr>
     <th>用户</th>
     <th>账号</th>
-    <th>用户盈利</th>
-    <th>金额</th>
+    <th>盈亏</th>
   </tr>
   </thead>
   <!--表格数据-->
@@ -18,7 +17,7 @@
   <tr *ngFor="let data of table['data']">
     <td>{{ data.userId }}</td>
     <td>{{ data.accountId }}</td>
-    <td>{{ data.returnRate }}</td>
+<!--    <td>{{ data.returnRate }}</td>-->
     <td>{{ data.profit }}</td>
   </tr>
   </tbody>

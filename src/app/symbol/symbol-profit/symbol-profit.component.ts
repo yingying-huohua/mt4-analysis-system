@@ -58,4 +58,8 @@ export class SymbolProfitComponent extends BaseComponent implements OnInit {
   rateForamt(value) {
     return this.appService.rateFormat(value);
   }
+
+  dateFormat(date) {
+    return this.appService.dateFormat(date);
+  }
 }

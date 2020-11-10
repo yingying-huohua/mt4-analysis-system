@@ -31,7 +31,7 @@
         <tr *ngFor="let data of basicTable['data']">
           <td >{{ data.userId }}</td>
           <td >{{ data.accountId }}</td>
-          <td>{{ data.totalProfit }}</td>
+          <td>{{ moneyFormat(data.totalProfit) }}</td>
 <!--          <td>{{ data.incomeRate }}</td>-->
           <td>{{ data.symbol ? data.symbol : '-'}}</td>
           <td *ngIf="openStart">{{ data.tradeDate }}</td>
@@ -43,7 +43,7 @@
       </nz-table>
       <!--头部-->
       <ng-template #title>
-        <B class="title">用户收益排名</B>
+        <B class="title">用户收益</B>
 
         <!--筛选与搜索-->
         <div class="search_filter_container">
