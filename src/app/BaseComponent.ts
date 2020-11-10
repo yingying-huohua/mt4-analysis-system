@@ -48,6 +48,7 @@ export class BaseComponent {
    * @param params
    */
   onQueryParamsChange(params: NzTableQueryParams) {
+    this.isLoading = true;
     // console.log(params);
     const currentSort = params.sort.find(item => item.value !== null);
     this.sortField = (currentSort && currentSort.key) || Config.sortField;
