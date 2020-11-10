@@ -1,9 +1,16 @@
 <nz-table #table
           nzBordered
+          nzBordered
           [nzData]="dataList"
           [nzTitle]="title"
           [nzLoading]="isLoading"
-          [nzNoResult]="'暂无数据'">
+          [nzNoResult]="'暂无数据'"
+          [nzTotal]="totalCount"
+          [nzFrontPagination]="false"
+          [nzPageSize]="pageSize"
+          [(nzPageIndex)]="pageNo"
+          (nzPageIndexChange)="onPageIndexChange($event)"
+          (nzQueryParams)="onQueryParamsChange($event)">
   <!--表头-->
   <thead>
   <tr>
@@ -24,5 +31,5 @@
 </nz-table>
 <!--头部-->
 <ng-template #title>
-  <B class="title">品种明细</B>
+  <B class="title">品种【{{symbol}}】明细</B>
 </ng-template>
