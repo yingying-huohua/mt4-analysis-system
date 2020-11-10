@@ -39,6 +39,7 @@ export class ModalService {
       nzClosable: true,
       nzMaskClosable: false,
       nzFooter: null,
+      nzStyle: {width: '800px'},
       nzBodyStyle: {padding: '0px'},
     });
 
