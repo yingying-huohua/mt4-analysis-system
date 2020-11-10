@@ -8,6 +8,7 @@ import {BaseComponent} from "../../BaseComponent";
   styleUrls: ['./user-profit-detail.component.css']
 })
 export class UserProfitDetailComponent extends BaseComponent implements OnInit, OnChanges {
+  @Input() userId;
   @Input() accountId;
   @Input() symbol = '';
   @Input() openStart;

@@ -15,8 +15,7 @@ import {BaseComponent} from "../../BaseComponent";
 export class UserProfitComponent extends BaseComponent implements OnInit {
   showDetail = false;
   accountId;
-
-
+  userId;
   constructor(private modalService: ModalService,
               private httpService: HttpService) {
     super();
@@ -53,6 +52,7 @@ export class UserProfitComponent extends BaseComponent implements OnInit {
   detail(item) {
     this.showDetail = true;
     this.accountId = item.accountId;
+    this.userId    = item.userId;
   }
 
 

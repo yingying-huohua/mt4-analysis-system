@@ -58,8 +58,8 @@ export class ActiveUserListComponent implements OnInit {
         color: '#B1B0B0'
       },
       grid: {containLabel: true},
-      xAxis: {name: 'totalCount'},
-      yAxis: {type: 'category'},
+      xAxis: {name: '交易笔数'},
+      yAxis: {name: '用户账号', type: 'category'},
       visualMap: {
         orient: 'horizontal',
         left: 'center',
@@ -81,7 +81,7 @@ export class ActiveUserListComponent implements OnInit {
           type: 'bar',
           encode: {
             // Map the "amount" column to X axis.
-            x: 'totalCount',
+            x: '交易笔数',
             // Map the "product" column to Y axis
             y: 'accountId'
           }

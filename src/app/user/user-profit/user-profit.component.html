@@ -49,7 +49,7 @@
         <div class="search_filter_container">
           <!--按名称搜索-->
           <div class="search">
-            <span class="search_filter_lable">名称：</span>
+            <span class="search_filter_lable">账号：</span>
             <input class="search_input" placeholder="请输入名称" nz-input
                    [(ngModel)]="nameInputValue"
                    (input)="onNameInput($event)"
@@ -108,7 +108,7 @@
       </ng-template>
     </div>
     <div *ngIf="showDetail" nz-col nzSpan="10" class="user_profit_container">
-      <app-user-profit-detail [accountId]="accountId" [symbol]="symbolInputValue"
+      <app-user-profit-detail [userId]="userId" [accountId]="accountId" [symbol]="symbolInputValue"
       [openStart]="openStart" [openEnd]="openEnd"></app-user-profit-detail>
     </div>
   </div>

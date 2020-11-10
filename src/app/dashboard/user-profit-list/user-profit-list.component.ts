@@ -61,8 +61,8 @@ export class UserProfitListComponent implements OnInit {
         color: '#B1B0B0'
       },
       grid: {containLabel: true},
-      xAxis: {name: 'profit'},
-      yAxis: {type: 'category'},
+      xAxis: {name: '利润'},
+      yAxis: {name: '用户账号', type: 'category'},
       visualMap: {
         orient: 'horizontal',
         left: 'center',
@@ -84,7 +84,7 @@ export class UserProfitListComponent implements OnInit {
           type: 'bar',
           encode: {
             // Map the "amount" column to X axis.
-            x: 'profit',
+            x: '利润',
             // Map the "product" column to Y axis
             y: 'accountId'
           }
