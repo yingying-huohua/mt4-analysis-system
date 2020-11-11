@@ -27,6 +27,23 @@ export class BaseComponent {
 
   totalCount = 0;
 
+  constructor() {
+    this.initDafaultDate()
+  }
+
+  /**
+   * 初始化时间选择显示的默认时间
+   */
+  initDafaultDate() {
+    const startDate = new Date(new Date().setDate(new Date().getDate() - 30));
+    const endDate = new Date();
+
+    this.openStart = moment(startDate).format('YYYY-MM-DD');
+    this.openEnd   = moment(endDate).format('YYYY-MM-DD');
+
+    this.date = [this.openStart, this.openEnd];
+  }
+
   /**
    * 初始化数据
    */
@@ -66,6 +83,7 @@ export class BaseComponent {
    * @param result
    */
   onDateChange(result: Date[]) {
+    console.debug('选择日期:', result);
     if (result.length === 0) {
       this.openStart = '';
       this.openEnd = '';
