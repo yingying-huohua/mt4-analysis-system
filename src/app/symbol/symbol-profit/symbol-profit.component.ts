@@ -49,10 +49,11 @@ export class SymbolProfitComponent extends BaseComponent implements OnInit {
   }
 
 
-  detail(item, returnType) {
-    console.debug('查看详情');
+  detail(item, returnType, index) {
+    console.debug('查看详情:', item);
     this.currentSymbol = item.symbol;
     this.currentReturnType = returnType;
+    this.selectedIndex = index;
     this.showDetail = true;
   }
 

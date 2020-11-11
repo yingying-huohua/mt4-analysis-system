@@ -16,7 +16,7 @@ import {AppService} from "../../app.service";
 export class GroupProfitComponent extends BaseComponent implements OnInit {
   showUserProfit = false;
   currentGroupId;
-
+  currenrGroupName;
   constructor(private modalService: ModalService,
               private httpService: HttpService,
               private appService: AppService) {
@@ -48,10 +48,12 @@ export class GroupProfitComponent extends BaseComponent implements OnInit {
 
   }
 
-  groupProfitDetail(item) {
+  groupProfitDetail(item, index) {
     console.debug('查看详细:', item);
     this.showUserProfit = true;
     this.currentGroupId = item.groupId;
+    this.currenrGroupName = item.groupName;
+    this.selectedIndex = index;
   }
 
   moneyFormat(value) {

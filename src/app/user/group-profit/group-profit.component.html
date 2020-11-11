@@ -28,7 +28,7 @@
           </thead>
           <!--表格数据-->
           <tbody>
-          <tr *ngFor="let data of groupProfitTable['data']">
+          <tr *ngFor="let data of groupProfitTable['data']; index as i" [class.selected]="i === selectedIndex">
             <td>{{ data.groupName }}</td>
             <td>{{ dateFormat(data.tradeDate) }}</td>
             <td>{{ moneyFormat(data.profit) }}</td>
@@ -36,20 +36,20 @@
             <td>{{ data.userCount }}</td>
             <td>{{ data.groupAbbr }}</td>
             <td>
-              <a (click)="groupProfitDetail(data)">查看</a>
+              <a (click)="groupProfitDetail(data, i)">查看</a>
             </td>
           </tr>
           </tbody>
         </nz-table>
         <!--头部-->
         <ng-template #title>
-          <B class="title">用户组收益</B>
+          <B class="title">用户组收益排名</B>
         </ng-template>
     </div>
 
     <!--用户收益-->
     <div *ngIf="showUserProfit" nz-col nzSpan="10" class="group_profit_container">
-      <app-group-profit-detail [groupId]="currentGroupId"></app-group-profit-detail>
+      <app-group-profit-detail [groupId]="currentGroupId" [groupName]="currenrGroupName"></app-group-profit-detail>
     </div>
 
   </div>

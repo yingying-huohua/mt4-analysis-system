@@ -8,6 +8,7 @@ import {Config} from "../config/Config";
  *@date 2020/10/31 11:00
  */
 export class BaseComponent {
+  selectedIndex;
   dataList = [];
   isLoading = true; // 是否显示加载页面
   date = null;

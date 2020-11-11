@@ -50,10 +50,11 @@ export class UserProfitComponent extends BaseComponent implements OnInit {
     this.httpService.userProfitlist(object).subscribe(observer);
   }
 
-  detail(item) {
+  detail(item, index) {
     this.showDetail = true;
     this.accountId = item.accountId;
     this.userId    = item.userId;
+    this.selectedIndex = index;
   }
 
   moneyFormat(value) {

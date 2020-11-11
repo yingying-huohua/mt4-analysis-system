@@ -10,6 +10,7 @@ import {ModalService} from "../../../service/local/modal.service";
 })
 export class GroupProfitDetailComponent extends BaseComponent implements OnInit, OnChanges {
   @Input() groupId;
+  @Input() groupName;
   constructor(private httpService: HttpService,
               private modalService: ModalService) {
     super();

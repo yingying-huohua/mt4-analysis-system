@@ -28,12 +28,12 @@
         </thead>
         <!--表格数据-->
         <tbody>
-        <tr *ngFor="let data of basicTable['data']">
+        <tr *ngFor="let data of basicTable['data']; index as i" [class.selected]="i === selectedIndex">
           <td >{{ data.symbol }}</td>
           <td class="table_data_item" >{{ dateFormat(data.tradeDate)}}</td>
-          <td class="table_data_item" (click)="detail(data, 1)">{{ rateForamt(data.profit)}}</td>
-          <td class="table_data_item" (click)="detail(data, 2)">-{{ rateForamt(data.loss)}}</td>
-          <td class="table_data_item" (click)="detail(data, 3)">{{ rateForamt(data.breakEven) }}</td>
+          <td class="table_data_item" (click)="detail(data, 1, i)">{{ rateForamt(data.profit)}}</td>
+          <td class="table_data_item" (click)="detail(data, 2, i)">-{{ rateForamt(data.loss)}}</td>
+          <td class="table_data_item" (click)="detail(data, 3, i)">{{ rateForamt(data.breakEven) }}</td>
           <td class="table_data_item" >{{ data.type }}</td>
 
         </tr>
@@ -41,7 +41,7 @@
       </nz-table>
       <!--头部-->
       <ng-template #title>
-        <B class="title">品种收益</B>
+        <B class="title">品种收益排名</B>
 
         <!--筛选与搜索-->
         <div class="search_filter_container">

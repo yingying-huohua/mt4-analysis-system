@@ -28,7 +28,7 @@
         </thead>
         <!--表格数据-->
         <tbody>
-        <tr *ngFor="let data of basicTable['data']">
+        <tr *ngFor="let data of basicTable['data']; index as i" [class.selected]="i === selectedIndex">
           <td >{{ data.userId }}</td>
           <td >{{ data.accountId }}</td>
           <td>{{ moneyFormat(data.totalProfit) }}</td>
@@ -36,14 +36,14 @@
           <td>{{ data.symbol ? data.symbol : '-'}}</td>
 <!--          <td *ngIf="openStart && symbolInputValue">{{ data.tradeDate }}</td>-->
           <td>
-            <a (click)="detail(data)">查看</a>
+            <a (click)="detail(data, i)">查看</a>
           </td>
         </tr>
         </tbody>
       </nz-table>
       <!--头部-->
       <ng-template #title>
-        <B class="title">用户收益</B>
+        <B class="title">用户收益排名</B>
 
         <!--筛选与搜索-->
         <div class="search_filter_container">
