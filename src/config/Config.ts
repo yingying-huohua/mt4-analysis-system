@@ -21,6 +21,9 @@ export class Config {
   // 品种看板，活跃用户数据条数
   public static symbolDashboardPageSize = 10;
 
+  // 默认选中的品种
+  public static defaultSelectedSymbol = 'XNGUSD';
+
   static ECHARTS_PIE_Distribution_COLOR = [
     new echarts.graphic.LinearGradient(
       0, 0, 0, 1,
