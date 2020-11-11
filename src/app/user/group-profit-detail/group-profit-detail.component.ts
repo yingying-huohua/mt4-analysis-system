@@ -54,6 +54,7 @@ export class GroupProfitDetailComponent extends BaseComponent implements OnInit,
   }
 
   detail(item) {
-    this.modalService.showUserProfitDetail(item.accountId);
+    console.debug(item)
+    this.modalService.showUserProfitDetail(item);
   }
 }

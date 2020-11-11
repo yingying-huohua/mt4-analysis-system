@@ -1,7 +1,7 @@
 <div class="group_profit">
-  <div class="content">
+  <div nz-row>
     <!--用户组收益-->
-    <div class="container" >
+    <div nz-col nzSpan="14" class="group_profit_container" >
         <nz-table #groupProfitTable
                   nzBordered
                   [nzData]="dataList"
@@ -48,7 +48,7 @@
     </div>
 
     <!--用户收益-->
-    <div *ngIf="showUserProfit" class="container">
+    <div *ngIf="showUserProfit" nz-col nzSpan="10" class="group_profit_container">
       <app-group-profit-detail [groupId]="currentGroupId"></app-group-profit-detail>
     </div>
 

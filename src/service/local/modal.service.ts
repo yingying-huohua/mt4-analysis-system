@@ -29,11 +29,12 @@ export class ModalService {
 
   }
 
-  showUserProfitDetail(accountId) {
+  showUserProfitDetail(item) {
      this.nzModalService.create({
       nzContent: UserProfitDetailComponent,
        nzComponentParams: {
-         accountId: accountId
+         accountId: item.accountId,
+         userId: item.userId
        },
       nzMask: true,
       nzClosable: true,

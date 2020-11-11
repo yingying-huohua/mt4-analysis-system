@@ -1,23 +1,23 @@
-.group_profit{
+.symbol_profit{
   width: 100%;
   height: 100%;
 }
 
-.group_profit .content{
+.symbol_profit .content{
   display: flex;
 }
 
-.group_profit .group_profit_container{
+.symbol_profit .symbol_profit_container{
   padding: 0 30px;
   margin-top: 20px;
 }
 
-.group_profit_container .title{
+.symbol_profit_container .title{
   height: 40px;
   font-size: 24px;
   line-height: 40px;
 }
-.group_profit_container .search_filter_container{
+.symbol_profit_container .search_filter_container{
   width: 100%;
   height: 30px;
   display: flex;
@@ -38,7 +38,7 @@
   line-height: 30px;
 }
 
-.group_profit_container .date_filter{
+.symbol_profit_container .date_filter{
   margin-left: 10px;
 }
 
@@ -47,6 +47,6 @@
   margin-left: 20px;
 }
 
-.group_profit_container .table_data_item{
+.symbol_profit_container .table_data_item{
   cursor: pointer;
 }

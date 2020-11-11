@@ -7,14 +7,46 @@
   display: flex;
 }
 
-.content .container{
-  width: 100%;
+.group_profit .group_profit_container{
   padding: 0 30px;
   margin-top: 20px;
 }
 
-.container .title{
+.group_profit_container .title{
   height: 40px;
   font-size: 24px;
   line-height: 40px;
+}
+.group_profit_container .search_filter_container{
+  width: 100%;
+  height: 30px;
+  display: flex;
+  margin-top: 10px;
+}
+
+.search_filter_container .search{
+  margin-right: 10px;
+  display: flex;
+}
+
+.search .search_input{
+  width: 120px;
+}
+
+.search_filter_container .search_filter_lable{
+  width: 55px;
+  line-height: 30px;
+}
+
+.group_profit_container .date_filter{
+  margin-left: 10px;
+}
+
+.search_filter_container .search_button{
+  width: 100px;
+  margin-left: 20px;
+}
+
+.group_profit_container .table_data_item{
+  cursor: pointer;
 }
