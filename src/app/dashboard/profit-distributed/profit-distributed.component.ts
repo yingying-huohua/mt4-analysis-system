@@ -39,6 +39,6 @@ export class ProfitDistributedComponent implements OnInit {
   }
 
   formatPercent(value) {
-    return value * 100;
+    return (value * 100).toFixed(2);
   }
 }
