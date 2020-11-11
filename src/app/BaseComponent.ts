@@ -13,6 +13,7 @@ export class BaseComponent {
   date = null;
   openStart = ''; // 开仓时间
   openEnd = ''; // 关仓时间
+  ranges = {};
   sortField = Config.sortField; // 排序字段
   direction = Config.direction; // 排序方式 desc|ase
   pageNo    = Config.defaultPageNo;
@@ -28,7 +29,8 @@ export class BaseComponent {
   totalCount = 0;
 
   constructor() {
-    this.initDafaultDate()
+    this.initDafaultDate();
+    this.initDateRange();
   }
 
   /**
@@ -42,6 +44,21 @@ export class BaseComponent {
     this.openEnd   = moment(endDate).format('YYYY-MM-DD');
 
     this.date = [this.openStart, this.openEnd];
+  }
+
+  initDateRange() {
+    const one_week = new Date(new Date().setDate(new Date().getDate() - 7));
+    const one_month = new Date(new Date().setDate(new Date().getDate() - 30));
+    const half_year = new Date(new Date().setDate(new Date().getDate() - 120));
+    const one_year = new Date(new Date().setDate(new Date().getDate() - 365));
+    const today = new Date();
+    this.ranges = {
+      '今天':   [today, today],
+      '近一周': [one_week, today],
+      '近一月': [one_month, today],
+      '近半年': [half_year, today],
+      '近一年': [one_year,  today]
+    };
   }
 
   /**
@@ -83,14 +100,14 @@ export class BaseComponent {
    * @param result
    */
   onDateChange(result: Date[]) {
-    console.debug('选择日期:', result);
     if (result.length === 0) {
       this.openStart = '';
       this.openEnd = '';
       return;
     }
     this.openStart = moment(result[0]).format('YYYY-MM-DD');
-    this.openEnd = moment(result[1]).format('YYYY-MM-DD');
+    this.openEnd   = moment(result[1]).format('YYYY-MM-DD');
+    this.initData();
   }
 
   /**
