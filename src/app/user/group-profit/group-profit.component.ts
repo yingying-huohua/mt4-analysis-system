@@ -23,9 +23,7 @@ export class GroupProfitComponent extends BaseComponent implements OnInit {
     super();
   }
 
-  ngOnInit(): void {
-    this.initData();
-  }
+  ngOnInit(): void {}
 
   initData() {
     super.initData();

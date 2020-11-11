@@ -14,9 +14,7 @@ export class SymbolProfitDetailComponent extends BaseComponent implements OnInit
     super();
   }
 
-  ngOnInit(): void {
-    this.initData();
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
     for (const key in changes) {
