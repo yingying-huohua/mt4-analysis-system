@@ -59,4 +59,7 @@ export class GroupProfitComponent extends BaseComponent implements OnInit {
     return this.appService.moneyFormat(value.toString());
   }
 
+  dateFormat(date) {
+    return this.appService.dateFormat(date);
+  }
 }
