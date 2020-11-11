@@ -39,6 +39,7 @@ export class UserProfitDetailComponent extends BaseComponent implements OnInit, 
   }
 
   initData() {
+    super.initData();
     const observer = {
       next: response => {
         this.isLoading = false;

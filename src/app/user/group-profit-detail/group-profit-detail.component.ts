@@ -34,7 +34,7 @@ export class GroupProfitDetailComponent extends BaseComponent implements OnInit,
   }
 
   initData() {
-
+    super.initData();
     // 用户组中用户收益列表
     const observable = {
       next: response => {

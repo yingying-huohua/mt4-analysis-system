@@ -26,6 +26,7 @@ export class SymbolProfitComponent extends BaseComponent implements OnInit {
   }
 
   initData(type?) {
+    super.initData();
     const observer = {
       next: response => {
         this.isLoading = false;
