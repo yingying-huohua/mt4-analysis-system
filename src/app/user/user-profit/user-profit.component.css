@@ -3,10 +3,6 @@
   height: 100%;
 }
 
-.user_profit .content{
-  display: flex;
-}
-
 .user_profit .user_profit_container{
   padding: 0 30px;
   margin-top: 20px;

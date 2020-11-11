@@ -1,6 +1,7 @@
 <div class="user_profit">
   <div class="user_profit_container">
     <nz-table #basicTable
+              nzBordered
               [nzData]="dataList"
               [nzTitle]="title"
               [nzLoading]="isLoading"
@@ -19,6 +20,7 @@
         <th>品种</th>
         <th nzColumnKey="profit" [nzSortFn]="true">盈亏</th>
         <th>简称</th>
+        <th>买卖点</th>
       </tr>
       </thead>
       <!--表格数据-->
@@ -29,6 +31,7 @@
         <td>{{ data.symbol }}</td>
         <td>{{ moneyFormat(data.profit) }}</td>
         <td>{{ data.standardSymbol }}</td>
+        <td><a style="color: #ff0000">待开发</a></td>
       </tr>
       </tbody>
     </nz-table>

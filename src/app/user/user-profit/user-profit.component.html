@@ -1,7 +1,7 @@
 <div class="user_profit">
   <div nz-row>
     <!--用户收益排名-->
-    <div nz-col nzSpan="{{showDetail ? '14' : '24'}}" class="user_profit_container">
+    <div nz-col nzSpan="14" class="user_profit_container">
       <nz-table #basicTable
                 nzBordered
                 [nzData]="dataList"
@@ -22,7 +22,7 @@
           <th  nzColumnKey="totalProfit" [nzSortFn]="true">盈亏金额（$）</th>
 <!--          <th>收益率</th>-->
           <th>品种</th>
-          <th *ngIf="openStart">交易时间</th>
+<!--          <th *ngIf="openStart && symbolInputValue">交易时间</th>-->
           <th>查看</th>
         </tr>
         </thead>
@@ -34,7 +34,7 @@
           <td>{{ moneyFormat(data.totalProfit) }}</td>
 <!--          <td>{{ data.incomeRate }}</td>-->
           <td>{{ data.symbol ? data.symbol : '-'}}</td>
-          <td *ngIf="openStart">{{ data.tradeDate }}</td>
+<!--          <td *ngIf="openStart && symbolInputValue">{{ data.tradeDate }}</td>-->
           <td>
             <a (click)="detail(data)">查看</a>
           </td>
