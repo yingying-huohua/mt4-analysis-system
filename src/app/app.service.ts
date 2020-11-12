@@ -9,6 +9,9 @@ export class AppService {
   constructor() { }
 
   moneyFormat(value: string) {
+    if (!value) {
+      return '';
+    }
     return Number.parseFloat(value).toFixed(2);
   }
 

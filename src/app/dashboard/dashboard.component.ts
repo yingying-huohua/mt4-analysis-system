@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpService} from "../../service/http/http.service";
 import {SymbolMeta} from "../../entity/SymbolMeta";
 import {ActivatedRoute} from "@angular/router";
+import {HeaderMenu} from "../../constant/HeaderMenu";
 
 @Component({
   selector: 'app-dashboard',
@@ -10,22 +11,22 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class DashboardComponent implements OnInit {
   meta: SymbolMeta;
+  id = 'AUDCHF';
   constructor(private httpService: HttpService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: {id: string}) => {
       console.debug(params.id);
-      let id = 'AUDCHF';
       if (params.id) {
-        id = params.id;
+        this.id = params.id;
       }
-      this.getMetaData(id);
+      this.getMetaData();
     });
 
   }
 
-  getMetaData(id) {
+  getMetaData() {
     const observable = {
       next: response => {
         if (!response) {
@@ -35,6 +36,23 @@ export class DashboardComponent implements OnInit {
       }
     }
 
-    this.httpService.symoblDashboardMeta(id).subscribe(observable);
+    this.httpService.symoblDashboardMeta(this.id).subscribe(observable);
+  }
+
+  /**
+   * 检查当前看板是否为综合看板
+   */
+  isIntegrativeDashboard() {
+    let isIntegrative;
+    switch (this.id) {
+      case HeaderMenu.futures:
+      case HeaderMenu.foreign_exchange:
+        isIntegrative = true;
+        break;
+      default:
+        isIntegrative = false;
+        break;
+    }
+    return isIntegrative;
   }
 }

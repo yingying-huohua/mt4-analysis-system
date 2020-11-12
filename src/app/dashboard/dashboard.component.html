@@ -1,30 +1,31 @@
 <div class="dashboard">
-  <div class="container" *ngIf="meta">
+  <div class="container" >
     <!--top-->
     <div nz-row class="header_dashboard">
-
       <!--总盈亏-->
-      <app-total-profit [totalMoney]="meta.profitMoney" nz-col nzSpan="4" class="item border_right"></app-total-profit>
+      <app-total-profit [totalMoney]="meta ? meta.profitMoney : ''" nz-col nzSpan="4" class="item border_right"></app-total-profit>
       <!--总投资人数-->
-      <app-total-user [totalUser]="meta.userCount" nz-col nzSpan="4" class="item border_right"></app-total-user>
+      <app-total-user [totalUser]="meta ? meta.userCount : ''" nz-col nzSpan="4" class="item border_right"></app-total-user>
       <!--品种趋势图-->
       <app-symbol-trend nz-col nzSpan="8" class="item border_right"></app-symbol-trend>
       <!--盈亏分布-->
-      <app-profit-distributed [lossRate]="meta.lossRate" [breakEvenRate]="meta.breakEvenRate" [profitRate]="meta.profitRate"
+      <app-profit-distributed [lossRate]="meta ? meta.lossRate : ''"
+                              [breakEvenRate]="meta ? meta.breakEvenRate: ''"
+                              [profitRate]="meta ? meta.profitRate: ''"
                               nz-col nzSpan="8" class="item"></app-profit-distributed>
     </div>
 
     <!--bottom-->
     <div nz-row class="bottom_dashboard">
       <!--活跃用户列表-->
-      <app-active-user-list nz-col nzSpan="8" class="item border_right"></app-active-user-list>
+      <app-active-user-list nz-col nzSpan="{{isIntegrativeDashboard() === true ? '6' : '8'}}" class="item border_right"></app-active-user-list>
       <!--活跃用户分布-->
 <!--      <app-active-user-distributed nz-col nzSpan="8" class="item border_right"></app-active-user-distributed>-->
-      <div nz-col nzSpan="8" class="item border_right"></div>
+      <div *ngIf="isIntegrativeDashboard() === false" nz-col nzSpan="8" class="item border_right"></div>
+      <app-active-symbol-list *ngIf="isIntegrativeDashboard()" nz-col nzSpan="12" class="item border_right"></app-active-symbol-list>
       <!--用户收益排行-->
-      <app-user-profit-list nz-col nzSpan="8" class="item border_right"></app-user-profit-list>
+      <app-user-profit-list nz-col nzSpan="{{isIntegrativeDashboard() === true ? '6' : '8'}}" class="item border_right"></app-user-profit-list>
     </div>
 
   </div>
-
 </div>
