@@ -19,7 +19,7 @@ export class Config {
   public static direction = Config.DESC
 
   // 品种看板，活跃用户数据条数
-  public static symbolDashboardPageSize = 10;
+  public static symbolDashboardPageSize = 15;
 
   // 默认选中的品种
   public static defaultSelectedSymbol = 'XNGUSD';

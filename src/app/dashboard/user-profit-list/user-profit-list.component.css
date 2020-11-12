@@ -3,3 +3,7 @@
   height: 100%;
   position: relative;
 }
+
+.user_profit_list .echarts{
+  height: 550px;
+}
