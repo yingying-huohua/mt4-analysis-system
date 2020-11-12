@@ -1,0 +1,5 @@
+<div class="active_symbol_list">
+  <!--标题-->
+  <h3 class="dashboard_item_title">活跃品种</h3>
+  <!--排名-->
+  <div echarts [options]="option" class="echarts" (chartInit)="initedChart($event)" (chartClick)="initEvent($event)"></div></div>

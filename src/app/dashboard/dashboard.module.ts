@@ -15,6 +15,7 @@ import {NzProgressModule} from "ng-zorro-antd/progress";
 import {NzGridModule} from "ng-zorro-antd/grid";
 import {NzTableModule} from "ng-zorro-antd/table";
 import {NzAutocompleteModule} from "ng-zorro-antd/auto-complete";
+import { ActiveSymbolListComponent } from './active-symbol-list/active-symbol-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {NzAutocompleteModule} from "ng-zorro-antd/auto-complete";
     ProfitDistributedComponent,
     ActiveUserListComponent,
     ActiveUserDistributedComponent,
-    UserProfitListComponent],
+    UserProfitListComponent,
+    ActiveSymbolListComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
