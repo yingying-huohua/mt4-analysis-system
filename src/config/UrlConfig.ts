@@ -6,6 +6,9 @@
 export class UrlConfig {
   private static domain  = 'http://114.214.164.241:9000';
 
+  // 用户联想
+  public static userList    = `${UrlConfig.domain}/user/list`;
+
   // 品种列表
   public static symbolList   = `${UrlConfig.domain}/symbol/list`;
   // 品种详情
@@ -33,4 +36,6 @@ export class UrlConfig {
   public static symoblDashboardActiveUserList      = `${UrlConfig.domain}/dashboard/symbol/user/active/list`;
   //品种看板用户收益列表
   public static symoblDashboardUserProfitList      = `${UrlConfig.domain}/dashboard/symbol/user/profit/list`;
+
+
 }

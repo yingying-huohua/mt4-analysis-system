@@ -46,12 +46,17 @@
           <!--按名称搜索-->
           <div class="search">
             <span class="search_filter_lable">账号：</span>
-            <input class="search_input" placeholder="请输入名称" nz-input
+            <input #nameInput class="search_input" placeholder="请输入名称" nz-input
+                   [maxLength]="20"
                    [(ngModel)]="nameInputValue"
-                   (input)="onNameInput($event)"
+                   (input)="onNameInput(nameInput.value)"
                    [nzAutocomplete]="auto"
                    (keydown.enter)="search(1)"/>
-            <nz-autocomplete [nzDataSource]="nameSuggestionList" nzBackfill #auto></nz-autocomplete>
+            <nz-autocomplete nzBackfill #auto>
+              <nz-auto-option *ngFor="let userItem of nameSuggestionList"
+                              [nzValue]="userItem.accountId.toString()"
+                              (click)="selectedNameSuggestionItem(userItem.accountId)">{{userItem.accountId.toString()}}</nz-auto-option>
+            </nz-autocomplete>
           </div>
 
           <!--按品种搜索-->

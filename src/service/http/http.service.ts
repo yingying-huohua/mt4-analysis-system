@@ -10,6 +10,18 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   /**
+   * 用户列表（联想）
+   */
+  userList(accountId: string, pageNo: string, pageSize: string) {
+    const params = {
+      accountId: accountId,
+      pageNo: pageNo,
+      pageSize: pageSize
+    }
+    return this.http.get(UrlConfig.userList, {params: params});
+  }
+
+  /**
    * 品种列表
    */
   symbolList(pageNo: string, pageSize: string) {

@@ -30,6 +30,7 @@ export class BaseComponent {
 
   totalCount = 0;
 
+  isResetSuggestion = true;
   constructor() {
     this.initDafaultDate();
     this.initDateRange();
@@ -39,7 +40,7 @@ export class BaseComponent {
   /**
    * 初始化时间选择显示的默认时间
    */
-  initDafaultDate() {
+  private initDafaultDate() {
     const startDate = new Date(new Date().setDate(new Date().getDate() - 30));
     const endDate = new Date();
 
@@ -49,7 +50,7 @@ export class BaseComponent {
     this.date = [this.openStart, this.openEnd];
   }
 
-  initDateRange() {
+  private initDateRange() {
     const one_week = new Date(new Date().setDate(new Date().getDate() - 7));
     const one_month = new Date(new Date().setDate(new Date().getDate() - 30));
     const half_year = new Date(new Date().setDate(new Date().getDate() - 120));
@@ -64,7 +65,7 @@ export class BaseComponent {
     };
   }
 
-  initSymbolSuggestionList() {
+  private initSymbolSuggestionList() {
     const listStr = localStorage.getItem(LocalstorageKey.symbol_list);
     if (!listStr) {
       return;
@@ -73,6 +74,13 @@ export class BaseComponent {
     this.symbolInputValue = this.symbolSuggestionList[1].symbol;
 
   }
+
+  /**
+   * 初始化名称输入框联想数据
+   * @param searchText
+   */
+  initNameSuggestionList(searchText) {}
+
 
   /**
    * 初始化数据
@@ -126,9 +134,32 @@ export class BaseComponent {
    * 名称输入框
    * @param event
    */
-  onNameInput(event: Event): void {
-    // 初始化联想
+  onNameInput(value): void {
+    console.debug('名称输入框', value);
+    if (value.trim().length === 0) {
+      this.nameSuggestionList = [];
+      return;
+    }
 
+    if (!this.isResetSuggestion) {
+      return;
+    }
+    this.isResetSuggestion = false;
+    // 初始化联想
+    this.initNameSuggestionList(value);
+    // 延迟500ms后，将isResetSuggestion设置为true；
+    setTimeout(() => {
+      this.isResetSuggestion = true;
+    }, 500);
+  }
+
+  /**
+   * 选中联想item
+   * @param value
+   */
+  selectedNameSuggestionItem(value) {
+    this.nameInputValue = value;
+    this.search(1);
   }
 
   /**

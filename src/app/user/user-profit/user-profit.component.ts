@@ -3,6 +3,7 @@ import {ModalService} from '../../../service/local/modal.service';
 import {HttpService} from "../../../service/http/http.service";
 import {BaseComponent} from "../../BaseComponent";
 import {AppService} from "../../app.service";
+import {Config} from "../../../config/Config";
 
 // @ts-ignore
 /**
@@ -35,9 +36,11 @@ export class UserProfitComponent extends BaseComponent implements OnInit {
       }
     };
 
+    console.debug(this.nameInputValue);
+
     const object = {
-      accountId: this.nameInputValue.trim(),
-      symbol:    this.symbolInputValue?this.symbolInputValue.trim():'',
+      accountId: this.nameInputValue ? this.nameInputValue.trim() : '',
+      symbol:    this.symbolInputValue ? this.symbolInputValue.trim() :'',
       minReturn: this.minValue,
       maxReturn: this.maxValue,
       sortField: this.sortField,
@@ -48,6 +51,19 @@ export class UserProfitComponent extends BaseComponent implements OnInit {
       pageSize: this.pageSize.toString()
     }
     this.httpService.userProfitlist(object).subscribe(observer);
+  }
+
+  initNameSuggestionList(searchText){
+    const observer = {
+      next: response => {
+        if (!response || !response.result) {
+          return;
+        }
+        this.nameSuggestionList = response.result
+      }
+    };
+    this.httpService.userList(searchText, Config.defaultPageNo.toString(),
+      Config.defaultPageSize.toString()).subscribe(observer);
   }
 
   detail(item, index) {
