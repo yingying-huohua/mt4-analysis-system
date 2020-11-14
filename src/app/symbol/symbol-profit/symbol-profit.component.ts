@@ -52,7 +52,6 @@ export class SymbolProfitComponent extends BaseComponent implements OnInit {
     this.httpService.symbolProfitList(object).subscribe(observer);
   }
 
-
   detail(item, returnType, index) {
     console.debug('查看详情:', item);
     this.currentSymbol = item.symbol;
