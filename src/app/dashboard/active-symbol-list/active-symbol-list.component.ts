@@ -85,6 +85,11 @@ export class ActiveSymbolListComponent implements OnInit, OnChanges {
     }
 
     this.option = {
+      tooltip: {
+        show: true,
+        trigger: 'axis',
+        transitionDuration: 0
+      },
       xAxis: {
         name: '品种名称',
         nameTextStyle:{
@@ -142,7 +147,7 @@ export class ActiveSymbolListComponent implements OnInit, OnChanges {
           barGap: '-100%',
           barCategoryGap: '40%',
           data: dataShadow,
-          animation: false
+          animation: false,
         },
         {
           type: 'bar',

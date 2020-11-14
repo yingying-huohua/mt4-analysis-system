@@ -99,6 +99,11 @@ export class UserTradeAmountListComponent implements OnInit, OnChanges {
    */
   private setOption() {
     this.option = {
+      tooltip: {
+        show: true,
+        trigger: 'axis',
+        transitionDuration: 0
+      },
       dataset: {
         source: this.dataList
       },
