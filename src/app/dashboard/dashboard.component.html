@@ -33,7 +33,7 @@
       <!--综合看板活跃品种列表-->
       <app-active-symbol-list [category]="category" *ngIf="isIntegrativeDashboard()" nz-col nzSpan="12" class="item border_right"></app-active-symbol-list>
       <!--用户收益排行-->
-      <app-user-profit-list [category]="category" [standardSymbol]="symbol" nz-col nzSpan="{{isIntegrativeDashboard() === true ? '6' : '8'}}" class="item border_right"></app-user-profit-list>
+      <app-user-profit-list [category]="category" [standardSymbol]="standardSymbol" nz-col nzSpan="{{isIntegrativeDashboard() === true ? '6' : '8'}}" class="item border_right"></app-user-profit-list>
     </div>
 
   </div>

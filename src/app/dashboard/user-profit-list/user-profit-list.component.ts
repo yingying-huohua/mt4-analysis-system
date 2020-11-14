@@ -73,7 +73,6 @@ export class UserProfitListComponent implements OnInit, OnChanges {
 
   /**
    * 格式化数据
-   * @param data
    */
   private formatSourceData(data) {
     this.dataList = [];
