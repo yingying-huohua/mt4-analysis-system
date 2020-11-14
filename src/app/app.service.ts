@@ -89,4 +89,26 @@ export class AppService {
     };
     this.httpService.symbolList(Config.defaultPageNo.toString(), Config.pageSize_1000.toString()).subscribe(observer);
   }
+
+  getSymbolListFromStorage(type?) {
+    const listStr = localStorage.getItem(LocalstorageKey.symbol_list);
+    // 数据不存在时
+    if (!listStr) {
+      return [];
+    }
+    const list = JSON.parse(listStr);
+    // 类型不存在时
+    if (!type) {
+      return list;
+    }
+
+    // 遍历列表，获取当前类型下所有品种
+    const symbolList = [];
+    for (const item of list) {
+      if (item.type === type) {
+        symbolList.push(item);
+      }
+    }
+    return symbolList;
+  }
 }

@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Config} from "../../../config/Config";
 import {HttpService} from "../../../service/http/http.service";
 import {NzDrawerRef} from "ng-zorro-antd/drawer";
 import {Router} from "@angular/router";
@@ -24,16 +23,7 @@ export class SymbolListDrawerComponent implements OnInit {
   }
 
   initData() {
-    const observer = {
-      next: response => {
-        if (!response || !response.result) {
-          return;
-        }
-        this.symbolList = response.result;
-      }
-    };
-    this.httpService.symbolList(Config.defaultPageNo.toString(), Config.pageSize_1000.toString(),
-      this.radioValue).subscribe(observer);
+    this.symbolList = this.appService.getSymbolListFromStorage(this.radioValue);
   }
 
   switchType() {
