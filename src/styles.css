@@ -51,6 +51,10 @@ nz-progress {
 .ant-table-tbody > tr.ant-table-row:hover > td {
   background: #acd06a;
 }
+/*修复带筛选功能的表头，高度显示问题*/
+.ant-table-column-sorters{
+  padding: 0 !important;
+}
 
 .title{
   height: 40px;
@@ -70,3 +74,4 @@ nz-progress {
   background: #6097d4;
   color:white;
 }
+
