@@ -22,6 +22,7 @@ export class Config {
 
   // 品种看板，活跃用户数据条数
   public static symbolDashboardPageSize = 15;
+  public static symbolDashboardPageSize_30 = 30;
 
   // 默认选中的品种
   public static defaultSelectedSymbol = 'XNGUSD';

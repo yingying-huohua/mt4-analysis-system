@@ -238,7 +238,7 @@ export class HttpService {
   }
 
   /**
-   * 外汇看板活跃用户列表
+   * 外汇看板活跃品种列表
    */
   forexDashboardActiveSymbolList(symbol: string, pageNo: string, pageSize: string) {
     const params = {

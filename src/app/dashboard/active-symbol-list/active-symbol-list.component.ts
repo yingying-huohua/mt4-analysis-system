@@ -1,62 +1,124 @@
-import {AfterContentInit, Component, ElementRef, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import * as echarts from 'echarts';
+import {HeaderMenu} from "../../../constant/HeaderMenu";
+import {Config} from "../../../config/Config";
+import {HttpService} from "../../../service/http/http.service";
 
 @Component({
   selector: 'app-active-symbol-list',
   templateUrl: './active-symbol-list.component.html',
   styleUrls: ['./active-symbol-list.component.css']
 })
-export class ActiveSymbolListComponent implements OnInit, AfterContentInit {
+export class ActiveSymbolListComponent implements OnInit, OnChanges {
   @Input() category;
   option;
-  dataAxis = ['点', '击', '柱', '子', '或', '者', '两', '指', '在', '触', '屏', '上', '滑', '动', '能', '够', '自', '动', '缩', '放'];
-  data = [220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125, 220];
+  dataAxis = [];
+  data = [];
   myChart;
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
-    this.initOption();
+    this.getData();
   }
 
-  ngAfterContentInit() {
+  ngOnChanges(changes: SimpleChanges) {
+    for (const key in changes) {
+      if (!changes.hasOwnProperty(key)) {
+        continue;
+      }
+
+      if (changes[key].firstChange) {
+        continue;
+      }
+    }
+
+    this.getData();
+  }
+
+  /**
+   * 服务端接口获取数据
+   */
+  getData() {
+    const observer = {
+      next: response => {
+        this.formatSourceData(response.result);
+        this.setOption();
+      },
+      error: () => {
+        this.formatSourceData([]);
+        this.setOption();
+      }
+    }
+
+    // 综合看板时
+    if(this.category === HeaderMenu.futures) {
+      this.httpService.futuresIndexDashboardActiveSymbolList(this.category, Config.defaultPageNo.toString(),
+        Config.symbolDashboardPageSize_30.toString()).subscribe(observer);
+      return;
+    }
+    if(this.category === HeaderMenu.foreign_exchange) {
+      this.httpService.forexDashboardActiveSymbolList(this.category, Config.defaultPageNo.toString(),
+        Config.symbolDashboardPageSize_30.toString()).subscribe(observer);
+      return;
+    }
 
   }
 
-  initOption() {
+  private formatSourceData(data) {
+    this.dataAxis = [];
+    this.data = [];
+    if (!data) {
+      return;
+    }
+    for (const dataItem of data) {
+      this.dataAxis.push(dataItem.symbol);
+      this.data.push(dataItem.totalCount);
+    }
 
+  }
+
+  setOption() {
     const yMax = 500;
     const dataShadow = [];
-    for (var i = 0; i < this.data.length; i++) {
+    for (let i = 0; i < this.data.length; i++) {
       dataShadow.push(yMax);
     }
 
     this.option = {
       xAxis: {
+        name: '品种名称',
         data: this.dataAxis,
+        textStyle: {
+          fontSize: '10px',
+          color: '#ffffff'
+        },
         axisLabel: {
           inside: true,
           textStyle: {
-            color: '#fff'
+            color: '#fff',
+            fontSize: '10px',
           }
         },
         axisTick: {
           show: false
         },
         axisLine: {
-          show: false
+          show: true
         },
         z: 10
       },
       yAxis: {
+        name: '交易次数',
         axisLine: {
-          show: false
+          show: true
         },
         axisTick: {
           show: false
         },
         axisLabel: {
           textStyle: {
-            color: '#999'
+            fontSize: '10px',
+            color: '#ffffff'
           }
         }
       },
@@ -114,9 +176,6 @@ export class ActiveSymbolListComponent implements OnInit, AfterContentInit {
     console.debug(params);
     // Enable data zoom when user click bar.
     const zoomSize = 6;
-    // this.myChart.on('click', function (params) {
-    //
-    // });
     console.log(this.dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
     this.myChart.dispatchAction({
       type: 'dataZoom',
