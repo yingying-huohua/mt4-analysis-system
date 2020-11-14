@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {NzMessageService} from "ng-zorro-antd/message";
 import {AppService} from "../../app.service";
 import {ObserverService} from "../../../service/local/observer.service";
+import {HttpService} from "../../../service/http/http.service";
 
 @Component({
   selector: 'app-login',
@@ -11,20 +12,21 @@ import {ObserverService} from "../../../service/local/observer.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  account;
-  password;
+  account = 'admin';
+  password = '123123';
   validateForm: FormGroup;
 
   constructor(private fb: FormBuilder,
               private router: Router,
               private msgService: NzMessageService,
               private appService: AppService,
-              private observerService: ObserverService) { }
+              private observerService: ObserverService,
+              private httpService: HttpService) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      account:  ['', Validators.compose([ Validators.required ])],
-      password: ['', Validators.compose([ Validators.required ])  ],
+      account:  [this.account, Validators.compose([ Validators.required ])],
+      password: [this.password, Validators.compose([ Validators.required ])  ],
     });
   }
 
@@ -39,9 +41,13 @@ export class LoginComponent implements OnInit {
     if ( this.validateForm.status !== 'VALID') {
       return;
     }
-    // todo 调用登录接口
-    this.observerService.getLoginObserver().next(true);
 
-
+    const observer = {
+      next: response => {
+        console.log('登录成功：', response.userId);
+        this.observerService.getLoginObserver().next(true);
+      }
+    }
+    this.httpService.login(this.account, this.password).subscribe(observer);
   }
 }

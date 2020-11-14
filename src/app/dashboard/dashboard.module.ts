@@ -9,13 +9,14 @@ import { ProfitDistributedComponent } from './profit-distributed/profit-distribu
 import { ActiveUserListComponent } from './active-user-list/active-user-list.component';
 import { ActiveUserDistributedComponent } from './active-user-distributed/active-user-distributed.component';
 import { UserProfitListComponent } from './user-profit-list/user-profit-list.component';
-import {NzSpinModule} from "ng-zorro-antd/spin";
-import {NgxEchartsModule} from "ngx-echarts";
-import {NzProgressModule} from "ng-zorro-antd/progress";
-import {NzGridModule} from "ng-zorro-antd/grid";
-import {NzTableModule} from "ng-zorro-antd/table";
-import {NzAutocompleteModule} from "ng-zorro-antd/auto-complete";
+import {NzSpinModule} from 'ng-zorro-antd/spin';
+import {NgxEchartsModule} from 'ngx-echarts';
+import {NzProgressModule} from 'ng-zorro-antd/progress';
+import {NzGridModule} from 'ng-zorro-antd/grid';
+import {NzTableModule} from 'ng-zorro-antd/table';
+import {NzAutocompleteModule} from 'ng-zorro-antd/auto-complete';
 import { ActiveSymbolListComponent } from './active-symbol-list/active-symbol-list.component';
+import { UserTradeAmountListComponent } from './user-trade-amount-list/user-trade-amount-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ActiveSymbolListComponent } from './active-symbol-list/active-symbol-li
     ActiveUserListComponent,
     ActiveUserDistributedComponent,
     UserProfitListComponent,
-    ActiveSymbolListComponent],
+    ActiveSymbolListComponent,
+    UserTradeAmountListComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

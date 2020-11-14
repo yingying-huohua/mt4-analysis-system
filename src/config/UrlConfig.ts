@@ -8,6 +8,7 @@ export class UrlConfig {
 
   // 用户联想
   public static userList    = `${UrlConfig.domain}/user/list`;
+  public static login       = `${UrlConfig.domain}/user/auth/login`
 
   // 品种列表
   public static symbolList   = `${UrlConfig.domain}/symbol/list`;
@@ -36,6 +37,6 @@ export class UrlConfig {
   public static symoblDashboardActiveUserList      = `${UrlConfig.domain}/dashboard/symbol/user/active/list`;
   //品种看板用户收益列表
   public static symoblDashboardUserProfitList      = `${UrlConfig.domain}/dashboard/symbol/user/profit/list`;
-
-
+  //品种看板用户交易额列表
+  public static symbolDashboardUserAmountList      = `${UrlConfig.domain}/dashboard/symbol/user/amount/list`;
 }

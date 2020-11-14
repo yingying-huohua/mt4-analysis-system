@@ -22,6 +22,17 @@ export class HttpService {
   }
 
   /**
+   * 登录
+   */
+  login(username: string, password: string) {
+   const params = {
+     username: username,
+     password: password
+   }
+    return this.http.post(UrlConfig.login, null, {params: params});
+  }
+
+  /**
    * 品种列表
    */
   symbolList(pageNo: string, pageSize: string) {
@@ -135,6 +146,17 @@ export class HttpService {
       pageSize: pageSize
     }
     return this.http.get(UrlConfig.symoblDashboardActiveUserList, {params: params});
+  }
+  /**
+   * 品种看板用户交易额列表
+   */
+  symbolDashboardUserAmountList(symbol: string, pageNo: string, pageSize: string) {
+    const params = {
+      symbol: symbol,
+      pageNo: pageNo,
+      pageSize: pageSize
+    }
+    return this.http.get(UrlConfig.symbolDashboardUserAmountList, {params: params});
   }
 
 }
