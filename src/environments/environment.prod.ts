@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  domain : 'http://47.99.133.60:9000'
+  domain : 'http://47.99.133.60/cas'
 };
