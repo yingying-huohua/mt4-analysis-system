@@ -67,7 +67,7 @@ export class AppComponent implements OnInit, OnDestroy{
         break;
       case HeaderMenu.symbol:
         this.showLeftPanel = false;
-        this.router.navigate([`./dashboard/symbol/`]);
+        this.router.navigate([`./dashboard/${HeaderMenu.symbol}/`]);
         break;
     }
   }
