@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, OnDestroy{
   headerMenu = [];
   selectedId = HeaderMenu.futures;
   showLeftPanel = false;
-  isLoggedIn = false;
+  isLoggedIn = true;
   loginSubscription;
   constructor(private router: Router,
               private appService: AppService,
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.initHeaderMenu();
-    this.initObserver();
+    // this.initObserver();
     this.appService.saveSymbolListToStorage();
   }
 

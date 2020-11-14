@@ -37,7 +37,8 @@ export class SymbolListDrawerComponent implements OnInit {
   }
 
   selectedSymbol(symbolItem) {
-    console.debug('选中品种：', symbolItem);
+    // console.debug('选中品种：', symbolItem);
     this.drawerRef.close();
+    // TODO  选中品种，更新路由
   }
 }
