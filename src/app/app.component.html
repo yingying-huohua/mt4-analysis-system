@@ -1,14 +1,9 @@
-<nz-layout *ngIf="isLoggedIn === true">
-  <nz-header>
-    <div class="logo"></div>
-    <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-      <li nz-menu-item *ngFor="let item of headerMenu"
-          [nzSelected]="item.id === selectedId"
-      (click)="renderTab(item.id)">{{item.title}}</li>
-    </ul>
+<nz-layout >
+  <nz-header *ngIf="isLoggedIn">
+    <app-header [selectedId]="selectedId" [headerMenu]="headerMenu" (tabClick)="renderTab($event)"></app-header>
   </nz-header>
   <nz-layout>
-    <nz-sider *ngIf="showLeftPanel" nzWidth="200px" nzTheme="dark" >
+    <nz-sider *ngIf="showLeftPanel && isLoggedIn" nzWidth="200px" nzTheme="dark" >
       <app-menu></app-menu>
     </nz-sider>
     <nz-layout class="inner-layout">
@@ -18,5 +13,3 @@
     </nz-layout>
   </nz-layout>
 </nz-layout>
-
-<router-outlet *ngIf="isLoggedIn === false"></router-outlet>
