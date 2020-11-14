@@ -8,6 +8,7 @@ export class UrlConfig {
 
   // 用户联想
   public static userList    = `${UrlConfig.domain}/user/list`;
+  public static login       = `${UrlConfig.domain}/user/auth/login`
 
   // 品种列表
   public static symbolList   = `${UrlConfig.domain}/symbol/list`;

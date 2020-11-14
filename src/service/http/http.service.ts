@@ -22,6 +22,17 @@ export class HttpService {
   }
 
   /**
+   * 登录
+   */
+  login(username: string, password: string) {
+   const params = {
+     username: username,
+     password: password
+   }
+    return this.http.post(UrlConfig.login, null, {params: params});
+  }
+
+  /**
    * 品种列表
    */
   symbolList(pageNo: string, pageSize: string) {
