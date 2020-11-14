@@ -57,7 +57,7 @@ export class ProfitDistributedComponent implements OnInit, OnChanges {
       },
       {
         lable: this.breakEvenUserCount + '人 持平',
-        value: this.formatPercent(this.profitRate),
+        value: this.formatPercent(this.breakEvenRate),
         strokeStyle: '#108ee9'
       }
     ];
@@ -65,6 +65,9 @@ export class ProfitDistributedComponent implements OnInit, OnChanges {
   }
 
   formatPercent(value) {
+    if (!value) {
+      value = 0;
+    }
     return (value* 100).toFixed(2);
   }
 }
