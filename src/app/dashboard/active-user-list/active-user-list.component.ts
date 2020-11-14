@@ -17,8 +17,7 @@ export class ActiveUserListComponent implements OnInit, OnChanges {
   minValue = 0;
   maxValue = 0;
 
-  constructor(private httpService: HttpService,
-              private appService: AppService) { }
+  constructor(private httpService: HttpService) { }
 
 
   ngOnInit(): void {
@@ -113,7 +112,8 @@ export class ActiveUserListComponent implements OnInit, OnChanges {
       tooltip: {
         show: true,
         trigger: 'axis',
-        transitionDuration: 0
+        transitionDuration: 0,
+        formatter: '用户账号: {b0}<br />交易次数: {c0}'
       },
       dataset: {
         source: this.dataList
@@ -124,7 +124,7 @@ export class ActiveUserListComponent implements OnInit, OnChanges {
       },
       grid: {containLabel: true},
       xAxis: {
-        name: '交易笔数',
+        name: '交易次数',
         nameTextStyle:{
           color: '#ffffff'
         },

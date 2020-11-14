@@ -88,7 +88,8 @@ export class ActiveSymbolListComponent implements OnInit, OnChanges {
       tooltip: {
         show: true,
         trigger: 'axis',
-        transitionDuration: 0
+        transitionDuration: 0,
+        formatter: `品种名称: {b1}<br /> 交易次数: {c1}`
       },
       xAxis: {
         name: '品种名称',

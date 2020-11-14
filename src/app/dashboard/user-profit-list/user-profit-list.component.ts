@@ -117,7 +117,8 @@ export class UserProfitListComponent implements OnInit, OnChanges {
       tooltip: {
         show: true,
         trigger: 'axis',
-        transitionDuration: 0
+        transitionDuration: 0,
+        formatter: '用户账号: {b0}<br />利润: {c0}'
       },
       dataset: {
         source: this.dataList

@@ -22,10 +22,8 @@ export class SymbolTrendComponent implements OnInit {
       tooltip: {
         show: true,
         trigger: 'axis',
-        // axisPointer: {
-        //   type: 'shadow'
-        // },
-        transitionDuration: 0
+        transitionDuration: 0,
+        formatter: '日期: {b0}<br />点数: {c0}'
       },
       xAxis: {
         type: 'category',
