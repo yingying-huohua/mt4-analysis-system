@@ -18,6 +18,10 @@
 @import "~ng-zorro-antd/progress/style/index.css";
 @import "~ng-zorro-antd/radio/style/index.css";
 @import "~ng-zorro-antd/drawer/style/index.css";
+@import "~ng-zorro-antd/message/style/index.css";
+
+
+
 
 html, body{
   padding: 0;

@@ -44,8 +44,12 @@ export class LoginComponent implements OnInit {
 
     const observer = {
       next: response => {
-        console.log('登录成功：', response.userId);
-        this.observerService.getLoginObserver().next(true);
+        if (response.code == 1) {
+          this.observerService.getLoginObserver().next(true);
+          return;
+        }
+        this.msgService.error(response.msg);
+
       }
     }
     this.httpService.login(this.account, this.password).subscribe(observer);
