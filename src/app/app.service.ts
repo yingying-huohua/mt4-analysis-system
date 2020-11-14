@@ -10,6 +10,7 @@ import {LocalstorageKey} from "../constant/LocalstorageKey";
 })
 export class AppService {
   public isLogin = false;
+  public currentSymbol = 'AUDCHF';
   constructor(private httpService: HttpService) { }
 
   /**

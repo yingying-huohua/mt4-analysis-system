@@ -4,6 +4,7 @@ import {HttpService} from "../../../service/http/http.service";
 import {NzDrawerRef} from "ng-zorro-antd/drawer";
 import {Router} from "@angular/router";
 import {HeaderMenuTitle} from "../../../constant/HeaderMenu";
+import {AppService} from "../../app.service";
 
 @Component({
   selector: 'app-symbol-list-drawer',
@@ -15,7 +16,8 @@ export class SymbolListDrawerComponent implements OnInit {
   radioValue = HeaderMenuTitle.foreign_exchange;
   constructor(private httpService: HttpService,
               private drawerRef: NzDrawerRef,
-              private router: Router) { }
+              private router: Router,
+              private appService: AppService) { }
 
   ngOnInit(): void {
     this.initData();
@@ -40,6 +42,7 @@ export class SymbolListDrawerComponent implements OnInit {
 
   selectedSymbol(symbolItem) {
     this.drawerRef.close();
+    this.appService.currentSymbol = symbolItem.symbol
     this.router.navigate([`./dashboard/symbol/${symbolItem.symbol}`]);
   }
 }

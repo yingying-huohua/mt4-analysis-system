@@ -29,8 +29,9 @@ export class DashboardComponent implements OnInit {
       if (params.id) {
         this.symbol = params.id;
       } else {
-        this.symbol = 'AUDCHF';
+        this.symbol = this.appService.currentSymbol;
       }
+
       console.debug(`this.category:${this.category}, this.symbol:${this.symbol}`);
       this.getMetaData();
     });
