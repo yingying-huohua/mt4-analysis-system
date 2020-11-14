@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {BaseComponent} from "../../BaseComponent";
 import {HttpService} from "../../../service/http/http.service";
+import {AppService} from 'src/app/app.service';
 
 @Component({
   selector: 'app-symbol-profit-detail',
@@ -11,7 +12,8 @@ export class SymbolProfitDetailComponent extends BaseComponent implements OnInit
   @Input() returnType; // 1:盈利， 2：亏损， 3：持平
   @Input() symbol; //品种
   @Input() date; //日期
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService,
+              private appService: AppService) {
     super();
   }
 
@@ -51,5 +53,9 @@ export class SymbolProfitDetailComponent extends BaseComponent implements OnInit
       pageSize: this.pageSize.toString()
     }
     this.httpService.symbolProfitUserList(object).subscribe(observer);
+  }
+
+  moneyFormat(value) {
+    return this.appService.moneyFormat(value.toString());
   }
 }
