@@ -32,7 +32,7 @@
           <td >{{ data.accountId }}</td>
           <td>{{ moneyFormat(data.totalProfit) }}</td>
 <!--          <td>{{ data.incomeRate }}</td>-->
-          <td>{{ data.symbol ? data.symbol : '-'}}</td>
+          <td>{{ data.standardSymbol ? data.standardSymbol : '-'}}</td>
 <!--          <td *ngIf="openStart && symbolInputValue">{{ data.tradeDate }}</td>-->
         </tr>
         </tbody>
@@ -66,8 +66,8 @@
                        [(ngModel)]="symbolInputValue"
                        (ngModelChange)="onSymbolInput($event)">
               <nz-option *ngFor="let symbolItem of symbolSuggestionList"
-                         nzLabel="{{symbolItem.symbol}}"
-                         nzValue="{{symbolItem.symbol}}"></nz-option>
+                         nzLabel="{{symbolItem.standardSymbol}}"
+                         nzValue="{{symbolItem.standardSymbol}}"></nz-option>
             </nz-select>
           </div>
 
@@ -113,7 +113,7 @@
       </ng-template>
     </div>
     <div *ngIf="showDetail" nz-col nzSpan="10" class="user_profit_container">
-      <app-user-profit-detail [userId]="userId" [accountId]="accountId" [symbol]="symbolInputValue"
+      <app-user-profit-detail [userId]="userId" [accountId]="accountId" [standardSymbol]="symbolInputValue"
       [openStart]="openStart" [openEnd]="openEnd"></app-user-profit-detail>
     </div>
   </div>

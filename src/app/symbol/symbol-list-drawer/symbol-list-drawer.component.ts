@@ -32,7 +32,7 @@ export class SymbolListDrawerComponent implements OnInit {
 
   selectedSymbol(symbolItem) {
     this.drawerRef.close();
-    this.appService.currentSymbol = symbolItem.symbol
-    this.router.navigate([`./dashboard/symbol/${symbolItem.symbol}`]);
+    this.appService.currentSymbol = symbolItem.standardSymbol
+    this.router.navigate([`./dashboard/symbol/${symbolItem.standardSymbol}`]);
   }
 }

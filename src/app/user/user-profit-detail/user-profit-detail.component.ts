@@ -11,7 +11,7 @@ import {AppService} from "../../app.service";
 export class UserProfitDetailComponent extends BaseComponent implements OnInit, OnChanges {
   @Input() userId;
   @Input() accountId;
-  @Input() symbol = '';
+  @Input() standardSymbol = '';
   @Input() openStart;
   @Input() openEnd;
 
@@ -48,7 +48,7 @@ export class UserProfitDetailComponent extends BaseComponent implements OnInit, 
 
     const object = {
       accountId: this.accountId,
-      symbol: this.symbol,
+      standardSymbol: this.standardSymbol,
       sortField: this.sortField,
       direction: this.direction,
       openStart: this.openStart,

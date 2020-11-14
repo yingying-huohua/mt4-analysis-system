@@ -1,7 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Config} from '../../../config/Config';
 import {HttpService} from '../../../service/http/http.service';
-import {AppService} from '../../app.service';
 import {HeaderMenu} from 'src/constant/HeaderMenu';
 
 @Component({
@@ -10,15 +9,14 @@ import {HeaderMenu} from 'src/constant/HeaderMenu';
   styleUrls: ['./user-profit-list.component.css']
 })
 export class UserProfitListComponent implements OnInit, OnChanges {
-  @Input() symbol;
+  @Input() standardSymbol;
   @Input() category;
   option;
   dataList = [];
   maxValue = 0;
   minValue = 0;
 
-  constructor(private httpService: HttpService,
-              private appService: AppService) { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
     this.getData();
@@ -58,18 +56,18 @@ export class UserProfitListComponent implements OnInit, OnChanges {
 
     // 综合看板时
     if(this.category === HeaderMenu.futures) {
-      this.httpService.futuresIndexDashboardUserProfitList(this.symbol, Config.defaultPageNo.toString(),
+      this.httpService.futuresIndexDashboardUserProfitList(this.standardSymbol, Config.defaultPageNo.toString(),
         Config.symbolDashboardPageSize.toString()).subscribe(observer);
       return;
     }
     if(this.category === HeaderMenu.foreign_exchange) {
-      this.httpService.forexDashboardUserProfitList(this.symbol, Config.defaultPageNo.toString(),
+      this.httpService.forexDashboardUserProfitList(this.standardSymbol, Config.defaultPageNo.toString(),
         Config.symbolDashboardPageSize.toString()).subscribe(observer);
       return;
     }
 
     // 品种看板时
-    this.httpService.symoblDashboardUserProfitList(this.symbol, Config.defaultPageNo.toString(),
+    this.httpService.symoblDashboardUserProfitList(this.standardSymbol, Config.defaultPageNo.toString(),
       Config.symbolDashboardPageSize.toString()).subscribe(observer);
   }
 

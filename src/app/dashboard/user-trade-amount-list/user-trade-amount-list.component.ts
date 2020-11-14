@@ -1,6 +1,5 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {HttpService} from 'src/service/http/http.service';
-import {AppService} from 'src/app/app.service';
 import {Config} from 'src/config/Config';
 
 @Component({
@@ -9,7 +8,7 @@ import {Config} from 'src/config/Config';
   styleUrls: ['./user-trade-amount-list.component.css']
 })
 export class UserTradeAmountListComponent implements OnInit, OnChanges {
-  @Input() symbol;
+  @Input() standardSymbol;
   option;
   dataList = [];
   maxValue = 0;
@@ -55,7 +54,7 @@ export class UserTradeAmountListComponent implements OnInit, OnChanges {
 
     // 品种看板时
     // TODO 交易额接口
-    this.httpService.symbolDashboardUserAmountList(this.symbol, Config.defaultPageNo.toString(),
+    this.httpService.symbolDashboardUserAmountList(this.standardSymbol, Config.defaultPageNo.toString(),
       Config.symbolDashboardPageSize.toString()).subscribe(observer);
     return;
   }

@@ -10,7 +10,7 @@ import {AppService} from 'src/app/app.service';
 })
 export class SymbolProfitDetailComponent extends BaseComponent implements OnInit, OnChanges {
   @Input() returnType; // 1:盈利， 2：亏损， 3：持平
-  @Input() symbol; //品种
+  @Input() standardSymbol; //品种
   @Input() date; //日期
   constructor(private httpService: HttpService,
               private appService: AppService) {
@@ -44,7 +44,7 @@ export class SymbolProfitDetailComponent extends BaseComponent implements OnInit
     };
     const object = {
       returnType: this.returnType,
-      symbol: this.symbol.trim(),
+      standardSymbol: this.standardSymbol.trim(),
       sortField: this.sortField,
       direction: this.direction,
       openStart: this.date,

@@ -37,7 +37,6 @@ export class GroupProfitDetailComponent extends BaseComponent implements OnInit,
     // 用户组中用户收益列表
     const observable = {
       next: response => {
-        console.debug(response);
         this.isLoading = false;
         this.totalCount = response.count;
         this.dataList = response.result;
@@ -53,7 +52,6 @@ export class GroupProfitDetailComponent extends BaseComponent implements OnInit,
   }
 
   detail(item) {
-    console.debug(item)
     this.modalService.showUserProfitDetail(item);
   }
 }

@@ -62,9 +62,9 @@ export class AppService {
   /**
    * 检查当前看板是否为综合看板
    */
-  isIntegrativeDashboard(symbol) {
+  isIntegrativeDashboard(standardSymbol) {
     let isIntegrative;
-    switch (symbol) {
+    switch (standardSymbol) {
       case HeaderMenu.futures:
       case HeaderMenu.foreign_exchange:
         isIntegrative = true;

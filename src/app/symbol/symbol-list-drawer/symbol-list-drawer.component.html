@@ -10,7 +10,7 @@
   <ul class="symbol_list" *ngIf="symbolList.length > 0">
     <li *ngFor="let symbolItem of symbolList"
         class="symbol_list_item"
-        (click)="selectedSymbol(symbolItem)">{{symbolItem.symbol}}</li>
+        (click)="selectedSymbol(symbolItem)">{{symbolItem.standardSymbol}}</li>
   </ul>
 
   <!--暂无数据-->

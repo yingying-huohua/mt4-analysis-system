@@ -17,7 +17,7 @@
         <!--表头-->
         <thead>
         <tr>
-          <th  nzColumnKey="symbol" [nzSortFn]="true">名称</th>
+          <th  nzColumnKey="standardSymbol" [nzSortFn]="true">名称</th>
           <th  nzColumnKey="tradeDate" [nzSortFn]="true">日期</th>
           <th  nzColumnKey="profit" [nzSortFn]="true">用户盈利</th>
           <th  nzColumnKey="loss" [nzSortFn]="true">用户亏损</th>
@@ -30,7 +30,7 @@
         <tbody>
         <tr *ngFor="let data of basicTable['data']; index as i" [class.selected]="i === selectedIndex"
             (click)="detail(data, '', i)">
-          <td >{{ data.symbol }}</td>
+          <td >{{ data.standardSymbol }}</td>
           <td class="table_data_item" >{{ dateFormat(data.tradeDate)}}</td>
           <td class="table_data_item" >{{ rateForamt(data.profit)}}</td>
           <td class="table_data_item" >-{{ rateForamt(data.loss)}}</td>
@@ -53,8 +53,8 @@
                        [(ngModel)]="symbolInputValue"
                       (ngModelChange)="onSymbolInput($event)">
               <nz-option *ngFor="let symbolItem of symbolSuggestionList"
-                         nzLabel="{{symbolItem.symbol}}"
-                         nzValue="{{symbolItem.symbol}}"></nz-option>
+                         nzLabel="{{symbolItem.standardSymbol}}"
+                         nzValue="{{symbolItem.standardSymbol}}"></nz-option>
             </nz-select>
           </div>
 

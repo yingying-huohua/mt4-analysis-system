@@ -14,7 +14,7 @@ import {HeaderMenu} from 'src/constant/HeaderMenu';
 export class DashboardComponent implements OnInit {
   meta: SymbolMeta;
   category: string;
-  symbol = '';
+  standardSymbol = '';
 
   constructor(private httpService: HttpService,
               private route: ActivatedRoute,
@@ -27,12 +27,12 @@ export class DashboardComponent implements OnInit {
         this.category = params.category;
       }
       if (params.id) {
-        this.symbol = params.id;
+        this.standardSymbol = params.id;
       } else {
-        this.symbol = this.appService.currentSymbol;
+        this.standardSymbol = this.appService.currentSymbol;
       }
 
-      console.debug(`this.category:${this.category}, this.symbol:${this.symbol}`);
+      console.debug(`this.category:${this.category}, this.standardSymbol:${this.standardSymbol}`);
       this.getMetaData();
     });
   }
@@ -51,15 +51,15 @@ export class DashboardComponent implements OnInit {
       }
     }
     if(this.category === HeaderMenu.futures) {
-      this.httpService.futuresIndexDashboardMeta(this.symbol).subscribe(observable);
+      this.httpService.futuresIndexDashboardMeta(this.standardSymbol).subscribe(observable);
       return;
     }
     if(this.category === HeaderMenu.foreign_exchange) {
-      this.httpService.forexIndexDashboardMeta(this.symbol).subscribe(observable);
+      this.httpService.forexIndexDashboardMeta(this.standardSymbol).subscribe(observable);
       return;
     }
     // 默认为单品种
-    this.httpService.symoblDashboardMeta(this.symbol).subscribe(observable);
+    this.httpService.symoblDashboardMeta(this.standardSymbol).subscribe(observable);
   }
 
   /**

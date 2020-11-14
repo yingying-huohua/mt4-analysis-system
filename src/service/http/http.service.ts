@@ -70,7 +70,7 @@ export class HttpService {
   /**
    * 用户收益列表
    */
-  userProfitlist(params: {accountId: string, symbol: string, minReturn: string, maxReturn: string,
+  userProfitlist(params: {accountId: string, standardSymbol: string, minReturn: string, maxReturn: string,
     sortField: string, direction: string, openStart: string, openEnd: string, pageNo: string, pageSize: string}) {
 
     return this.http.get(UrlConfig.userProfitList, {params: params});
@@ -79,7 +79,7 @@ export class HttpService {
   /**
    * 用户收益详细
    */
-  userProfitDetail(params: {accountId: string, symbol: string, sortField: string, direction: string,
+  userProfitDetail(params: {accountId: string, standardSymbol: string, sortField: string, direction: string,
     openStart: string, openEnd: string, pageNo: string, pageSize: string}) {
     return this.http.get(UrlConfig.userProfitDetail, {params: params});
   }
@@ -104,7 +104,7 @@ export class HttpService {
   /**
    * 品种收益列表
    */
-  symbolProfitList(params: {type: string, symbol: string, openStart: string, openEnd: string,
+  symbolProfitList(params: {type: string, standardSymbol: string, openStart: string, openEnd: string,
     sortField: string, direction: string, pageNo: string, pageSize: string}) {
     return this.http.get(UrlConfig.symbolProfitList, {params: params});
   }
@@ -112,7 +112,7 @@ export class HttpService {
   /**
    * 品种收益列表
    */
-  symbolProfitUserList(params: {returnType: string, symbol: string, openStart: string, openEnd: string,
+  symbolProfitUserList(params: {returnType: string, standardSymbol: string, openStart: string, openEnd: string,
     sortField: string, direction: string, pageNo: string, pageSize: string}) {
     return this.http.get(UrlConfig.symbolProfitUserList, {params: params});
   }
@@ -120,16 +120,16 @@ export class HttpService {
   /**
    * 品种看板meta信息
    */
-  symoblDashboardMeta(symbol: string) {
-    return this.http.get(UrlConfig.symoblDashboardMeta, {params: {symbol: symbol}});
+  symoblDashboardMeta(standardSymbol: string) {
+    return this.http.get(UrlConfig.symoblDashboardMeta, {params: {standardSymbol: standardSymbol}});
   }
 
   /**
    * 品种看板用户收益列表
    */
-  symoblDashboardUserProfitList(symbol: string, pageNo: string, pageSize: string) {
+  symoblDashboardUserProfitList(standardSymbol: string, pageNo: string, pageSize: string) {
     const params = {
-      symbol: symbol,
+      standardSymbol: standardSymbol,
       pageNo: pageNo,
       pageSize: pageSize
     }
@@ -139,9 +139,9 @@ export class HttpService {
   /**
    * 品种看板活跃用户列表
    */
-  symoblDashboardActiveUserList(symbol: string, pageNo: string, pageSize: string) {
+  symoblDashboardActiveUserList(standardSymbol: string, pageNo: string, pageSize: string) {
     const params = {
-      symbol: symbol,
+      standardSymbol: standardSymbol,
       pageNo: pageNo,
       pageSize: pageSize
     }
@@ -150,9 +150,9 @@ export class HttpService {
   /**
    * 品种看板用户交易额列表
    */
-  symbolDashboardUserAmountList(symbol: string, pageNo: string, pageSize: string) {
+  symbolDashboardUserAmountList(standardSymbol: string, pageNo: string, pageSize: string) {
     const params = {
-      symbol: symbol,
+      standardSymbol: standardSymbol,
       pageNo: pageNo,
       pageSize: pageSize
     }
@@ -164,16 +164,16 @@ export class HttpService {
   /**
    * 期货看板meta信息
    */
-  futuresIndexDashboardMeta(symbol: string) {
-    return this.http.get(UrlConfig.futuresIndexDashboardMeta, {params: {symbol: symbol}});
+  futuresIndexDashboardMeta(standardSymbol: string) {
+    return this.http.get(UrlConfig.futuresIndexDashboardMeta, {params: {standardSymbol: standardSymbol}});
   }
 
   /**
    * 期货看板活跃用户列表
    */
-  futuresIndexDashboardActiveUserList(symbol: string, pageNo: string, pageSize: string) {
+  futuresIndexDashboardActiveUserList(standardSymbol: string, pageNo: string, pageSize: string) {
     const params = {
-      symbol: symbol,
+      standardSymbol: standardSymbol,
       pageNo: pageNo,
       pageSize: pageSize
     }
@@ -183,9 +183,9 @@ export class HttpService {
   /**
    * 期货看板用户收益列表
    */
-  futuresIndexDashboardUserProfitList(symbol: string, pageNo: string, pageSize: string) {
+  futuresIndexDashboardUserProfitList(standardSymbol: string, pageNo: string, pageSize: string) {
     const params = {
-      symbol: symbol,
+      standardSymbol: standardSymbol,
       pageNo: pageNo,
       pageSize: pageSize
     }
@@ -195,9 +195,9 @@ export class HttpService {
   /**
    * 期货看板活跃用户列表
    */
-  futuresIndexDashboardActiveSymbolList(symbol: string, pageNo: string, pageSize: string) {
+  futuresIndexDashboardActiveSymbolList(standardSymbol: string, pageNo: string, pageSize: string) {
     const params = {
-      symbol: symbol,
+      standardSymbol: standardSymbol,
       pageNo: pageNo,
       pageSize: pageSize
     }
@@ -209,16 +209,16 @@ export class HttpService {
   /**
    * 外汇看板meta信息
    */
-  forexIndexDashboardMeta(symbol: string) {
-    return this.http.get(UrlConfig.forexIndexDashboardMeta, {params: {symbol: symbol}});
+  forexIndexDashboardMeta(standardSymbol: string) {
+    return this.http.get(UrlConfig.forexIndexDashboardMeta, {params: {standardSymbol: standardSymbol}});
   }
 
   /**
    * 外汇看板活跃用户列表
    */
-  forexDashboardActiveUserList(symbol: string, pageNo: string, pageSize: string) {
+  forexDashboardActiveUserList(standardSymbol: string, pageNo: string, pageSize: string) {
     const params = {
-      symbol: symbol,
+      standardSymbol: standardSymbol,
       pageNo: pageNo,
       pageSize: pageSize
     }
@@ -228,9 +228,9 @@ export class HttpService {
   /**
    * 外汇看板用户收益列表
    */
-  forexDashboardUserProfitList(symbol: string, pageNo: string, pageSize: string) {
+  forexDashboardUserProfitList(standardSymbol: string, pageNo: string, pageSize: string) {
     const params = {
-      symbol: symbol,
+      standardSymbol: standardSymbol,
       pageNo: pageNo,
       pageSize: pageSize
     }
@@ -240,9 +240,9 @@ export class HttpService {
   /**
    * 外汇看板活跃品种列表
    */
-  forexDashboardActiveSymbolList(symbol: string, pageNo: string, pageSize: string) {
+  forexDashboardActiveSymbolList(standardSymbol: string, pageNo: string, pageSize: string) {
     const params = {
-      symbol: symbol,
+      standardSymbol: standardSymbol,
       pageNo: pageNo,
       pageSize: pageSize
     }

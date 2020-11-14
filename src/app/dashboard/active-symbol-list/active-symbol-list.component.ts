@@ -71,7 +71,7 @@ export class ActiveSymbolListComponent implements OnInit, OnChanges {
       return;
     }
     for (const dataItem of data) {
-      this.dataAxis.push(dataItem.symbol);
+      this.dataAxis.push(dataItem.standardSymbol);
       this.data.push(dataItem.totalCount);
     }
 

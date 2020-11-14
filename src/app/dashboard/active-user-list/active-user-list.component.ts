@@ -1,7 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {HttpService} from '../../../service/http/http.service';
 import {Config} from '../../../config/Config';
-import {AppService} from '../../app.service';
 import {HeaderMenu} from 'src/constant/HeaderMenu';
 
 @Component({
@@ -10,7 +9,7 @@ import {HeaderMenu} from 'src/constant/HeaderMenu';
   styleUrls: ['./active-user-list.component.css']
 })
 export class ActiveUserListComponent implements OnInit, OnChanges {
-  @Input() symbol;
+  @Input() standardSymbol;
   @Input() category;
   option;
   dataList = [];
@@ -55,18 +54,18 @@ export class ActiveUserListComponent implements OnInit, OnChanges {
 
     // 综合看板时
     if(this.category === HeaderMenu.futures) {
-      this.httpService.futuresIndexDashboardActiveUserList(this.symbol, Config.defaultPageNo.toString(),
+      this.httpService.futuresIndexDashboardActiveUserList(this.standardSymbol, Config.defaultPageNo.toString(),
         Config.symbolDashboardPageSize.toString()).subscribe(observer);
       return;
     }
     if(this.category === HeaderMenu.foreign_exchange) {
-      this.httpService.forexDashboardActiveUserList(this.symbol, Config.defaultPageNo.toString(),
+      this.httpService.forexDashboardActiveUserList(this.standardSymbol, Config.defaultPageNo.toString(),
         Config.symbolDashboardPageSize.toString()).subscribe(observer);
       return;
     }
 
     // 品种看板时
-    this.httpService.symoblDashboardActiveUserList(this.symbol, Config.defaultPageNo.toString(),
+    this.httpService.symoblDashboardActiveUserList(this.standardSymbol, Config.defaultPageNo.toString(),
       Config.symbolDashboardPageSize.toString()).subscribe(observer);
   }
 

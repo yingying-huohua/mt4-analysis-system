@@ -41,7 +41,7 @@ export class SymbolProfitComponent extends BaseComponent implements OnInit {
 
     const object = {
       type: type? type : '',
-      symbol:    this.symbolInputValue?this.symbolInputValue.trim():'',
+      standardSymbol:    this.symbolInputValue?this.symbolInputValue.trim():'',
       sortField: this.sortField,
       direction: this.direction,
       openStart: this.openStart,
@@ -54,7 +54,7 @@ export class SymbolProfitComponent extends BaseComponent implements OnInit {
 
   detail(item, returnType, index) {
     console.debug('查看详情:', item);
-    this.currentSymbol = item.symbol;
+    this.currentSymbol = item.standardSymbol;
     this.currentReturnType = returnType;
     this.currentDate = this.dateFormat(item.tradeDate);
     this.selectedIndex = index;
