@@ -6,6 +6,7 @@
 .user_profit .user_profit_container{
   padding: 0 20px;
   margin-top: 20px;
+  cursor: pointer;
 }
 
 .user_profit_container .title{
