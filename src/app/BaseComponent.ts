@@ -71,7 +71,7 @@ export class BaseComponent {
       return;
     }
     this.symbolSuggestionList = JSON.parse(listStr);
-    this.symbolInputValue = this.symbolSuggestionList[1].symbol;
+    // this.symbolInputValue = this.symbolSuggestionList[1].symbol;
 
   }
 
