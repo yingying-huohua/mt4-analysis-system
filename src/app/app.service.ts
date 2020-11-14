@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import * as moment from "moment";
 import {HeaderMenu} from "../constant/HeaderMenu";
+import {HttpService} from "../service/http/http.service";
+import {Config} from "../config/Config";
+import {LocalstorageKey} from "../constant/LocalstorageKey";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
   public isLogin = true;
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   /**
    * 数字格式化，保留两位小数
@@ -70,5 +73,19 @@ export class AppService {
         break;
     }
     return isIntegrative;
+  }
+
+  saveSymbolListToStorage() {
+    console.debug('保存品种列表至storage');
+    const observer = {
+      next: response => {
+        if (!response || !response.result) {
+          return;
+        }
+        const symbolList = response.result;
+        localStorage.setItem(LocalstorageKey.symbol_list, JSON.stringify(symbolList));
+      }
+    };
+    this.httpService.symbolList(Config.defaultPageNo.toString(), Config.pageSize_1000.toString()).subscribe(observer);
   }
 }

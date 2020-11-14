@@ -13,6 +13,8 @@ export class Config {
   public static defaultPageSize = 20;
   // 默认页码
   public static defaultPageNo   = 1;
+
+  public static pageSize_1000 = 1000;
   // 默认排序字段
   public static sortField = 'id';
   // 默认排序 desc||asc

@@ -48,12 +48,13 @@
           <!--按品种搜索-->
           <div class="search">
             <span class="search_filter_lable">品种：</span>
-            <input class="search_input" placeholder="请输入品种" nz-input
-                   [(ngModel)]="symbolInputValue"
-                   (input)="onSymbolInput($event)"
-                   [nzAutocomplete]="auto"
-                   (keydown.enter)="search(1)"/>
-            <nz-autocomplete [nzDataSource]="symbolSuggestionList" nzBackfill #auto></nz-autocomplete>
+            <nz-select class="search_input" nzShowSearch nzAllowClear nzPlaceHolder="请输入品种"
+                       [(ngModel)]="symbolInputValue"
+                      (ngModelChange)="onSymbolInput($event)">
+              <nz-option *ngFor="let symbolItem of symbolSuggestionList"
+                         nzLabel="{{symbolItem.symbol}}"
+                         nzValue="{{symbolItem.symbol}}"></nz-option>
+            </nz-select>
           </div>
 
           <!--日期选择-->
