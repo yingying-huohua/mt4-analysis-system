@@ -153,7 +153,7 @@ export class UserProfitListComponent implements OnInit, OnChanges {
         // Map the score column to color
         dimension: 0,
         inRange: {
-          color: ['#0E78EB', '#AA0D7E']
+          color: ['#cf907c', '#9dc5b2']
         }
       },
       series: [
