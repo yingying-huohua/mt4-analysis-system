@@ -46,6 +46,10 @@ nz-progress {
   margin: auto;
 }
 
+.ant-table-tbody > tr.ant-table-row:hover > td {
+  background: #acd06a;
+}
+
 .title{
   height: 40px;
   font-size: 10px;
