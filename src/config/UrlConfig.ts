@@ -3,11 +3,11 @@
  *@author kyy
  *@date 2020/10/24 10:21
  */
+import {environment} from '../environments/environment';
+
 export class UrlConfig {
-  // dev
-  private static domain  = 'http://114.214.164.241:9000';
-  // prod
-  // private static domain  = 'http://47.99.133.60:9000';
+  // Domain
+  private static domain  = environment.domain;
 
   // 用户联想
   public static userList    = `${UrlConfig.domain}/user/list`;
