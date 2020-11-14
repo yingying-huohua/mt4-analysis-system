@@ -12,11 +12,11 @@ export class UserProfitListComponent implements OnInit, OnChanges {
   @Input() symbol;
   option;
   dataList = [];
+  maxValue = 0;
+  minValue = 0;
+
   constructor(private httpService: HttpService,
               private appService: AppService) { }
-  minValue = 0;
-  maxValue = 0;
-  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
     this.getData();

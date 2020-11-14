@@ -14,7 +14,7 @@ export class ActiveUserListComponent implements OnInit, OnChanges {
   dataList = [];
   minValue = 0;
   maxValue = 0;
-  constructor(private httpService: HttpService ) { }
+
   constructor(private httpService: HttpService,
               private appService: AppService) { }
 
