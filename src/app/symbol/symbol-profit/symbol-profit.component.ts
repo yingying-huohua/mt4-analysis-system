@@ -38,13 +38,13 @@ export class SymbolProfitComponent extends BaseComponent implements OnInit {
 
     const object = {
       type: type? type : '',
-      symbol: this.symbolInputValue.trim(),
+      symbol:    this.symbolInputValue?this.symbolInputValue.trim():'',
       sortField: this.sortField,
       direction: this.direction,
       openStart: this.openStart,
-      openEnd: this.openEnd,
-      pageNo: this.pageNo.toString(),
-      pageSize: this.pageSize.toString()
+      openEnd:   this.openEnd,
+      pageNo:    this.pageNo.toString(),
+      pageSize:  this.pageSize.toString()
     }
     this.httpService.symbolProfitList(object).subscribe(observer);
   }
