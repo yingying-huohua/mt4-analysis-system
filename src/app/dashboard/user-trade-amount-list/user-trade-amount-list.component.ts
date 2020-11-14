@@ -64,18 +64,17 @@ export class UserTradeAmountListComponent implements OnInit, OnChanges {
   private formatSourceData(data) {
     for (const dataItem of data) {
       const dataItemArray = [];
-      dataItemArray.push(dataItem.amount);
+      dataItemArray.push(dataItem.totalTradeMount);
       dataItemArray.push(dataItem.accountId);
       this.dataList.push(dataItemArray);
 
       //计算最大值和最小值
-      const amountNum = Number.parseFloat(dataItem.amount);
+      const amountNum = Number.parseFloat(dataItem.totalTradeMount);
       this.calcMaxMinValue(amountNum);
     }
-    this.dataList.reverse();
 
     //添加标记行
-    const axis = ['amount', 'accountId'];
+    const axis = ['totalTradeMount', 'accountId'];
     this.dataList.splice(0, 0, axis);
   }
 
@@ -102,7 +101,7 @@ export class UserTradeAmountListComponent implements OnInit, OnChanges {
       },
       grid: {containLabel: true},
       xAxis: {name: '用户账号', type: 'category'},
-      yAxis: {name: '利润'},
+      yAxis: {name: '交易额'},
       visualMap: {
         orient: 'horizontal',
         left: 'center',
@@ -126,7 +125,7 @@ export class UserTradeAmountListComponent implements OnInit, OnChanges {
             // Map the "amount" column to X axis.
             x: 'accountId',
             // Map the "product" column to Y axis
-            y: 'amount'
+            y: 'totalTradeMount'
           }
         }
       ]
