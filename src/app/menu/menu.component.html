@@ -14,9 +14,10 @@
   </li>
   <li nz-submenu nzTitle="系统配置" nzIcon="setting">
     <ul>
+      <li nz-menu-item (click)="gotoSymbol()">&nbsp;&nbsp;品种管理</li>
       <li nz-menu-item (click)="systemConfig()">&nbsp;&nbsp;基本配置</li>
       <li nz-menu-item (click)="importData()">&nbsp;&nbsp;数据导入</li>
-      <li nz-menu-item (click)="gotoSymbol()">&nbsp;&nbsp;品种管理</li>
+      <li nz-menu-item >&nbsp;&nbsp;任务日志</li>
     </ul>
   </li>
 </ul>
