@@ -44,6 +44,9 @@ export class DashboardComponent implements OnInit {
         }
 
         this.meta = response;
+      },
+      error: any => {
+        this.meta = undefined;
       }
     }
     if(this.category === HeaderMenu.futures) {

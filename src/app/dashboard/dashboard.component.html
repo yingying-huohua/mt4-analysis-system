@@ -28,6 +28,7 @@
       <app-active-user-list [category]="category" [symbol]="symbol" nz-col nzSpan="{{isIntegrativeDashboard() === true ? '6' : '8'}}" class="item border_right"></app-active-user-list>
       <!--活跃用户分布-->
 <!--      <app-active-user-distributed nz-col nzSpan="8" class="item border_right"></app-active-user-distributed>-->
+      <!--用户交易额列表-->
       <app-user-trade-amount-list [symbol]="symbol" *ngIf="isIntegrativeDashboard() === false" nz-col nzSpan="8" class="item border_right"></app-user-trade-amount-list>
       <!--综合看板活跃品种列表-->
       <app-active-symbol-list [category]="category" *ngIf="isIntegrativeDashboard()" nz-col nzSpan="12" class="item border_right"></app-active-symbol-list>

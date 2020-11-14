@@ -47,6 +47,10 @@ export class ActiveUserListComponent implements OnInit, OnChanges {
       next: response => {
         this.formatSourceData(response.result);
         this.setOption();
+      },
+      error: any => {
+        this.formatSourceData([]);
+        this.setOption();
       }
     }
 
@@ -72,6 +76,9 @@ export class ActiveUserListComponent implements OnInit, OnChanges {
    */
   private formatSourceData(data) {
     this.dataList = [];
+    if (!data) {
+      return;
+    }
     for (const dataItem of data) {
       const dataItemArray = [];
       dataItemArray.push(dataItem.totalCount);

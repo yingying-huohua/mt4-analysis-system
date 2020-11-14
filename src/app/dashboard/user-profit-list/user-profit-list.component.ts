@@ -49,6 +49,10 @@ export class UserProfitListComponent implements OnInit, OnChanges {
         }
         this.formatSourceData(response.result);
         this.setOption();
+      },
+      error: any => {
+        this.formatSourceData([]);
+        this.setOption();
       }
     }
 
@@ -76,6 +80,9 @@ export class UserProfitListComponent implements OnInit, OnChanges {
   private formatSourceData(data) {
     this.dataList = [];
 
+    if (!data) {
+      return;
+    }
     for (const dataItem of data) {
       const dataItemArray = [];
       dataItemArray.push(dataItem.profit);
