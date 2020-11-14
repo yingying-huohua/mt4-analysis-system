@@ -29,6 +29,7 @@ nz-layout {
 
 .inner-layout {
   /*padding: 0 24px 24px;*/
+  overflow-y: hidden;
 }
 
 nz-breadcrumb {
