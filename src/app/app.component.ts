@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {registerLocaleData} from "@angular/common";
 import zh from "@angular/common/locales/zh";
 import {HeaderMenu} from "../constant/HeaderMenu";
@@ -12,33 +12,36 @@ registerLocaleData(zh)
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit, OnDestroy{
   headerMenu = [];
   selectedId = HeaderMenu.futures;
   showLeftPanel = false;
   isLoggedIn = false;
+  loginSubscription;
   constructor(private router: Router,
               private appService: AppService,
               private observerService: ObserverService) {}
 
   ngOnInit() {
-    this.isLoggedIn = this.appService.isLogin;
     this.initHeaderMenu();
-    // this.initObserver();
-    this.renderTab(this.selectedId);
+    this.initObserver();
     this.appService.saveSymbolListToStorage();
+  }
+
+  ngOnDestroy() {
+    this.loginSubscription.unsubscribe();
   }
 
   /**
    * 初始化观察者
    */
   initObserver() {
-    this.observerService.getLoginObserver().subscribe((isLogin) => {
+    this.loginSubscription = this.observerService.getLoginObserver().subscribe((isLogin) => {
+      this.isLoggedIn = isLogin;
       if (!isLogin) {
         this.router.navigate(['./login']);
         return;
       }
-      this.isLoggedIn = isLogin;
       this.renderTab(this.selectedId);
     });
   }
