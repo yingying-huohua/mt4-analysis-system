@@ -1,0 +1,20 @@
+<div class="symbol_list_drawer">
+  <!--切换品种-->
+  <div class="type_switch">
+    <nz-radio-group class="radio" [(ngModel)]="radioValue" (ngModelChange)="switchType()">
+      <label class="radio_item" nz-radio-button nzValue="期货">期货</label>
+      <label class="radio_item" nz-radio-button nzValue="外汇">外汇</label>
+    </nz-radio-group>
+  </div>
+  <!--品种列表-->
+  <ul class="symbol_list" *ngIf="symbolList.length > 0">
+    <li *ngFor="let symbolItem of symbolList"
+        class="symbol_list_item"
+        (click)="selectedSymbol(symbolItem)">{{symbolItem.symbol}}</li>
+  </ul>
+
+  <!--暂无数据-->
+  <div class="no_result" *ngIf="symbolList.length === 0">
+    <p>暂无{{radioValue}}品种</p>
+  </div>
+</div>

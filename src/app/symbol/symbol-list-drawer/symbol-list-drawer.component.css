@@ -1,0 +1,52 @@
+.symbol_list_drawer{
+  width: 100%;
+  height: 100%;
+}
+
+.symbol_list_drawer .type_switch{
+  height: 50px;
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.type_switch .radio{
+  margin: auto;
+}
+
+.radio .radio_item{
+  width: 100px;
+  text-align: center;
+}
+
+.symbol_list_drawer .symbol_list{
+  width: 100%;
+  height: calc(100% - 50px);
+  position: relative;
+  overflow: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  margin: 0;
+}
+
+.symbol_list .symbol_list_item{
+  list-style: none;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-bottom: 1px solid #ebebeb;
+  cursor: pointer;
+}
+
+.symbol_list_drawer .no_result{
+  width: 100%;
+  height: calc(100% - 50px);
+
+  display: flex;
+}
+
+.no_result p{
+  padding: 0;
+  margin: auto;
+
+}

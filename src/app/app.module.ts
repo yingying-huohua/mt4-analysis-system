@@ -36,6 +36,9 @@ import {NzIconModule} from 'ng-zorro-antd/icon';
 import {NzGridModule} from "ng-zorro-antd/grid";
 import { SymbolProfitDetailComponent } from './symbol/symbol-profit-detail/symbol-profit-detail.component';
 import { GroupProfitDetailComponent } from './user/group-profit-detail/group-profit-detail.component';
+import { SymbolListDrawerComponent } from './symbol/symbol-list-drawer/symbol-list-drawer.component';
+import {NzRadioModule} from "ng-zorro-antd/radio";
+import {NzDrawerModule} from "ng-zorro-antd/drawer";
 
 @NgModule({
   declarations: [
@@ -51,33 +54,36 @@ import { GroupProfitDetailComponent } from './user/group-profit-detail/group-pro
     MenuComponent,
     SymbolProfitDetailComponent,
     GroupProfitDetailComponent,
+    SymbolListDrawerComponent,
   ],
-  imports: [
-    DashboardModule,
-    SettingModule,
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    NzLayoutModule,
-    NzDropDownModule,
-    BrowserAnimationsModule,
-    NzTableModule,
-    NzDividerModule,
-    NzFormModule,
-    NzMenuModule,
-    NzButtonModule,
-    ReactiveFormsModule,
-    NzInputModule,
-    NzModalModule,
-    FormsModule,
-    NzAutocompleteModule,
-    NzInputNumberModule,
-    NzDatePickerModule,
-    NzSelectModule,
-    NzMessageModule,
-    NzIconModule,
-    NzGridModule
-  ],
+    imports: [
+        DashboardModule,
+        SettingModule,
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        NzLayoutModule,
+        NzDropDownModule,
+        BrowserAnimationsModule,
+        NzTableModule,
+        NzDividerModule,
+        NzFormModule,
+        NzMenuModule,
+        NzButtonModule,
+        ReactiveFormsModule,
+        NzInputModule,
+        NzModalModule,
+        FormsModule,
+        NzAutocompleteModule,
+        NzInputNumberModule,
+        NzDatePickerModule,
+        NzSelectModule,
+        NzMessageModule,
+        NzIconModule,
+        NzGridModule,
+        NzRadioModule,
+        NzDrawerModule
+    ],
   providers: [{provide: NZ_I18N, useValue: zh_CN}],
   bootstrap: [AppComponent]
 })
