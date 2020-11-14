@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {BaseComponent} from "../../BaseComponent";
-import {HttpService} from "../../../service/http/http.service";
+import {BaseComponent} from '../../BaseComponent';
+import {HttpService} from '../../../service/http/http.service';
 import {AppService} from 'src/app/app.service';
 
 @Component({
