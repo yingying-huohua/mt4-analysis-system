@@ -46,19 +46,19 @@ export class ProfitDistributedComponent implements OnInit, OnChanges {
   initData() {
     this.dataList = [
       {
-        lable: this.profitUserCount + '人 盈利',
-        value: this.formatPercent(this.profitRate),
-        strokeStyle: '#108ee9'
-      },
-      {
         lable: this.lossUserCount + '人 亏损',
         value: this.formatPercent(this.lossRate),
+        strokeStyle: '#87d068'
+      },
+      {
+        lable: this.profitUserCount + '人 盈利',
+        value: this.formatPercent(this.profitRate),
         strokeStyle: '#ff4d4f'
       },
       {
         lable: this.breakEvenUserCount + '人 持平',
         value: this.formatPercent(this.profitRate),
-        strokeStyle: '#87d068'
+        strokeStyle: '#108ee9'
       }
     ];
     console.debug('**************', this.dataList);
