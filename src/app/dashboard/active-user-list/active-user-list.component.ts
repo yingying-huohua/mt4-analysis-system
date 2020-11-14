@@ -43,7 +43,6 @@ export class ActiveUserListComponent implements OnInit, OnChanges {
    * 服务端接口获取数据
    */
   getData() {
-    this.dataList = [];
     const observer = {
       next: response => {
         this.formatSourceData(response.result);
@@ -72,6 +71,7 @@ export class ActiveUserListComponent implements OnInit, OnChanges {
    * 格式化数据
    */
   private formatSourceData(data) {
+    this.dataList = [];
     for (const dataItem of data) {
       const dataItemArray = [];
       dataItemArray.push(dataItem.totalCount);

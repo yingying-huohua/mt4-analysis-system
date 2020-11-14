@@ -42,8 +42,6 @@ export class UserProfitListComponent implements OnInit, OnChanges {
    * 服务端接口获取数据
    */
   getData() {
-    this.dataList = [];
-
     const observer = {
       next: response => {
         if (!response) {
@@ -76,6 +74,8 @@ export class UserProfitListComponent implements OnInit, OnChanges {
    * @param data
    */
   private formatSourceData(data) {
+    this.dataList = [];
+
     for (const dataItem of data) {
       const dataItemArray = [];
       dataItemArray.push(dataItem.profit);
