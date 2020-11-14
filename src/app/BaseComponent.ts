@@ -1,6 +1,7 @@
 import * as moment from "moment";
 import {NzTableQueryParams} from "ng-zorro-antd/table";
 import {Config} from "../config/Config";
+import {LocalstorageKey} from "../constant/LocalstorageKey";
 
 /**
  * 基类
@@ -32,6 +33,7 @@ export class BaseComponent {
   constructor() {
     this.initDafaultDate();
     this.initDateRange();
+    this.initSymbolSuggestionList();
   }
 
   /**
@@ -60,6 +62,16 @@ export class BaseComponent {
       '近半年': [half_year, today],
       '近一年': [one_year,  today]
     };
+  }
+
+  initSymbolSuggestionList() {
+    const listStr = localStorage.getItem(LocalstorageKey.symbol_list);
+    if (!listStr) {
+      return;
+    }
+    this.symbolSuggestionList = JSON.parse(listStr);
+    this.symbolInputValue = this.symbolSuggestionList[1].symbol;
+
   }
 
   /**
@@ -125,7 +137,8 @@ export class BaseComponent {
    */
   onSymbolInput(event: Event): void {
     // 初始化联想
-
+    // console.debug('品种输入框option改变：', event);
+    this.initData();
   }
 
   /**

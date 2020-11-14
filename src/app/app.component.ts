@@ -26,6 +26,7 @@ export class AppComponent implements OnInit{
     this.initHeaderMenu();
     // this.initObserver();
     this.renderTab(this.selectedId);
+    this.appService.saveSymbolListToStorage();
   }
 
   /**
