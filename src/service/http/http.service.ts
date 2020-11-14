@@ -104,8 +104,9 @@ export class HttpService {
   /**
    * 品种看板用户收益列表
    */
-  symoblDashboardUserProfitList(pageNo: string, pageSize: string) {
+  symoblDashboardUserProfitList(symbol: string, pageNo: string, pageSize: string) {
     const params = {
+      symbol: symbol,
       pageNo: pageNo,
       pageSize: pageSize
     }
@@ -115,8 +116,9 @@ export class HttpService {
   /**
    * 品种看板活跃用户列表
    */
-  symoblDashboardActiveUserList(pageNo: string, pageSize: string) {
+  symoblDashboardActiveUserList(symbol: string, pageNo: string, pageSize: string) {
     const params = {
+      symbol: symbol,
       pageNo: pageNo,
       pageSize: pageSize
     }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as moment from "moment";
+import {HeaderMenu} from "../constant/HeaderMenu";
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +53,22 @@ export class AppService {
    */
   dateFormat(date: string) {
     return moment(date).format('YYYY-MM-DD');
+  }
+
+  /**
+   * 检查当前看板是否为综合看板
+   */
+  isIntegrativeDashboard(symbol) {
+    let isIntegrative;
+    switch (symbol) {
+      case HeaderMenu.futures:
+      case HeaderMenu.foreign_exchange:
+        isIntegrative = true;
+        break;
+      default:
+        isIntegrative = false;
+        break;
+    }
+    return isIntegrative;
   }
 }

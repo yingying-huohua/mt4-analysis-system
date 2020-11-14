@@ -1,19 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {HttpService} from '../../../service/http/http.service';
 import {Config} from '../../../config/Config';
+import {AppService} from "../../app.service";
 
 @Component({
   selector: 'app-active-user-list',
   templateUrl: './active-user-list.component.html',
   styleUrls: ['./active-user-list.component.css']
 })
-export class ActiveUserListComponent implements OnInit {
+export class ActiveUserListComponent implements OnInit, OnChanges {
+  @Input() symbol;
   option;
   dataList = [];
-  constructor(private httpService: HttpService ) { }
+  constructor(private httpService: HttpService,
+              private appService: AppService) { }
+
 
   ngOnInit(): void {
     this.getData();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    for (const key in changes) {
+      if (!changes.hasOwnProperty(key)) {
+        continue;
+      }
+
+      if (changes[key].firstChange) {
+        continue;
+      }
+
+      this.getData();
+    }
   }
 
   /**
@@ -26,8 +44,16 @@ export class ActiveUserListComponent implements OnInit {
         this.setOption();
       }
     }
-    this.httpService.symoblDashboardActiveUserList(Config.defaultPageNo.toString(),
-      Config.symbolDashboardPageSize.toString()).subscribe(observer);
+
+    // 品种看板时
+    if (!this.appService.isIntegrativeDashboard(this.symbol)) {
+      this.httpService.symoblDashboardActiveUserList(this.symbol, Config.defaultPageNo.toString(),
+        Config.symbolDashboardPageSize.toString()).subscribe(observer);
+      return;
+    }
+
+    // TODO 综合看板时
+
   }
 
   /**
