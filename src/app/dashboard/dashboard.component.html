@@ -1,5 +1,7 @@
 <div class="dashboard">
-  <div class="container" >
+  <div class="container">
+    <!--切换品种-->
+    <div *ngIf="isIntegrativeDashboard() === false" class="switch_symbol" (click)="openSymbolListDrawer()">切换品种</div>
     <!--top-->
     <div nz-row class="header_dashboard">
       <!--总盈亏-->

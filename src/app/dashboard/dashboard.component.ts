@@ -3,6 +3,7 @@ import {HttpService} from '../../service/http/http.service';
 import {SymbolMeta} from '../../entity/SymbolMeta';
 import {ActivatedRoute} from '@angular/router';
 import {AppService} from '../app.service';
+import {ModalService} from "../../service/local/modal.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +16,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(private httpService: HttpService,
               private route: ActivatedRoute,
-              private appService: AppService) { }
+              private appService: AppService,
+              private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: {id: string}) => {
@@ -45,5 +47,12 @@ export class DashboardComponent implements OnInit {
    */
   isIntegrativeDashboard() {
     return this.appService.isIntegrativeDashboard(this.symbol);
+  }
+
+  /**
+   * 打开品种列表抽屉
+   */
+  openSymbolListDrawer() {
+    this.modalService.showSymbolListDrawer();
   }
 }
