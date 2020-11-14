@@ -23,13 +23,14 @@
     <!--bottom-->
     <div nz-row class="bottom_dashboard">
       <!--活跃用户列表-->
-      <app-active-user-list nz-col nzSpan="{{isIntegrativeDashboard() === true ? '6' : '8'}}" class="item border_right"></app-active-user-list>
+      <app-active-user-list [symbol]="symbol" nz-col nzSpan="{{isIntegrativeDashboard() === true ? '6' : '8'}}" class="item border_right"></app-active-user-list>
       <!--活跃用户分布-->
 <!--      <app-active-user-distributed nz-col nzSpan="8" class="item border_right"></app-active-user-distributed>-->
       <div *ngIf="isIntegrativeDashboard() === false" nz-col nzSpan="8" class="item border_right"></div>
+      <!--综合看板活跃品种列表-->
       <app-active-symbol-list *ngIf="isIntegrativeDashboard()" nz-col nzSpan="12" class="item border_right"></app-active-symbol-list>
       <!--用户收益排行-->
-      <app-user-profit-list nz-col nzSpan="{{isIntegrativeDashboard() === true ? '6' : '8'}}" class="item border_right"></app-user-profit-list>
+      <app-user-profit-list [symbol]="symbol" nz-col nzSpan="{{isIntegrativeDashboard() === true ? '6' : '8'}}" class="item border_right"></app-user-profit-list>
     </div>
 
   </div>

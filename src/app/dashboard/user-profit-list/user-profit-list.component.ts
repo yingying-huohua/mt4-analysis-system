@@ -1,19 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Config} from "../../../config/Config";
 import {HttpService} from "../../../service/http/http.service";
+import {AppService} from "../../app.service";
 
 @Component({
   selector: 'app-user-profit-list',
   templateUrl: './user-profit-list.component.html',
   styleUrls: ['./user-profit-list.component.css']
 })
-export class UserProfitListComponent implements OnInit {
+export class UserProfitListComponent implements OnInit, OnChanges {
+  @Input() symbol;
   option;
   dataList = [];
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService,
+              private appService: AppService) { }
 
   ngOnInit(): void {
     this.getData();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    for (const key in changes) {
+      if (!changes.hasOwnProperty(key)) {
+        continue;
+      }
+
+      if (changes[key].firstChange) {
+        continue;
+      }
+
+      this.getData();
+    }
   }
 
   /**
@@ -29,8 +46,15 @@ export class UserProfitListComponent implements OnInit {
         this.setOption();
       }
     }
-    this.httpService.symoblDashboardUserProfitList(Config.defaultPageNo.toString(),
-      Config.symbolDashboardPageSize.toString()).subscribe(observer);
+
+    // 品种看板时
+    if (!this.appService.isIntegrativeDashboard(this.symbol)) {
+      this.httpService.symoblDashboardUserProfitList(this.symbol, Config.defaultPageNo.toString(),
+        Config.symbolDashboardPageSize.toString()).subscribe(observer);
+      return;
+    }
+    // TODO 综合看板时
+
   }
 
   /**
