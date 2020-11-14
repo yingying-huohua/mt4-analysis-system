@@ -38,7 +38,7 @@ export class SymbolProfitComponent extends BaseComponent implements OnInit {
 
     const object = {
       type: type? type : '',
-      symbol: this.symbolInputValue,
+      symbol: this.symbolInputValue.trim(),
       sortField: this.sortField,
       direction: this.direction,
       openStart: this.openStart,

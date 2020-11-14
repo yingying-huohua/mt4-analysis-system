@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "md4-analysis-system"
+    }
+  },
+  "defaultProject": "md4-analysis-system",
+  "cli": {
+    "analytics": "46d86564-a79b-494b-ac77-3708922e88c1"
+  }
 }

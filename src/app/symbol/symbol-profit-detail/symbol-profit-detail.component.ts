@@ -44,7 +44,7 @@ export class SymbolProfitDetailComponent extends BaseComponent implements OnInit
     };
     const object = {
       returnType: this.returnType,
-      symbol: this.symbol,
+      symbol: this.symbol.trim(),
       sortField: this.sortField,
       direction: this.direction,
       openStart: this.date,

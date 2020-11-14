@@ -36,8 +36,8 @@ export class UserProfitComponent extends BaseComponent implements OnInit {
     };
 
     const object = {
-      accountId: this.nameInputValue,
-      symbol: this.symbolInputValue,
+      accountId: this.nameInputValue.trim(),
+      symbol: this.symbolInputValue.trim(),
       minReturn: this.minValue,
       maxReturn: this.maxValue,
       sortField: this.sortField,
