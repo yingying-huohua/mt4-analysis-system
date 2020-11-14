@@ -35,10 +35,11 @@ export class HttpService {
   /**
    * 品种列表
    */
-  symbolList(pageNo: string, pageSize: string) {
+  symbolList(pageNo: string, pageSize: string, type?: string) {
     const params = {
       pageNo: pageNo,
-      pageSize: pageSize
+      pageSize: pageSize,
+      type: type ? type : ''
     }
     return this.http.get(UrlConfig.symbolList, {params: params});
   }
