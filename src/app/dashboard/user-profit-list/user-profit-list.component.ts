@@ -122,8 +122,19 @@ export class UserProfitListComponent implements OnInit, OnChanges {
         color: '#B1B0B0'
       },
       grid: {containLabel: true},
-      xAxis: {name: '利润'},
-      yAxis: {name: '用户账号', type: 'category'},
+      xAxis: {
+        name: '利润',
+        nameTextStyle:{
+          color: '#ffffff'
+        },
+      },
+      yAxis: {
+        name: '用户账号',
+        type: 'category',
+        nameTextStyle:{
+          color: '#ffffff'
+        },
+      },
       visualMap: {
         orient: 'horizontal',
         left: 'center',

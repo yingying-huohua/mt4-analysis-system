@@ -87,6 +87,9 @@ export class ActiveSymbolListComponent implements OnInit, OnChanges {
     this.option = {
       xAxis: {
         name: '品种名称',
+        nameTextStyle:{
+          color: '#ffffff'
+        },
         data: this.dataAxis,
         textStyle: {
           fontSize: '10px',
@@ -109,6 +112,9 @@ export class ActiveSymbolListComponent implements OnInit, OnChanges {
       },
       yAxis: {
         name: '交易次数',
+        nameTextStyle:{
+          color: '#ffffff'
+        },
         axisLine: {
           show: true
         },

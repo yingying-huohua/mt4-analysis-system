@@ -15,8 +15,7 @@ export class UserTradeAmountListComponent implements OnInit, OnChanges {
   maxValue = 0;
   minValue = 0;
 
-  constructor(private httpService: HttpService,
-              private appService: AppService) { }
+  constructor(private httpService: HttpService,) { }
 
   ngOnInit(): void {
     this.getData();
@@ -108,8 +107,19 @@ export class UserTradeAmountListComponent implements OnInit, OnChanges {
         color: '#B1B0B0'
       },
       grid: {containLabel: true},
-      xAxis: {name: '用户账号', type: 'category'},
-      yAxis: {name: '交易额'},
+      xAxis: {
+        name: '用户账号',
+        type: 'category',
+        nameTextStyle:{
+          color: '#ffffff'
+        },
+      },
+      yAxis: {
+        name: '交易额',
+        nameTextStyle:{
+          color: '#ffffff'
+        },
+      },
       visualMap: {
         orient: 'horizontal',
         left: 'center',
