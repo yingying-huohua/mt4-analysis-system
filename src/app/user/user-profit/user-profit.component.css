@@ -33,6 +33,7 @@
 .search_filter_container .search_filter_lable{
   width: 55px;
   line-height: 30px;
+  font-weight: bold;
 }
 
 .user_profit_container .date_filter{

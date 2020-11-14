@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Config} from "../../../config/Config";
 import {HttpService} from "../../../service/http/http.service";
-import {HeaderMenu} from "../../../constant/HeaderMenu";
 import {NzDrawerRef} from "ng-zorro-antd/drawer";
+import {Router} from "@angular/router";
+import {HeaderMenuTitle} from "../../../constant/HeaderMenu";
 
 @Component({
   selector: 'app-symbol-list-drawer',
@@ -11,9 +12,10 @@ import {NzDrawerRef} from "ng-zorro-antd/drawer";
 })
 export class SymbolListDrawerComponent implements OnInit {
   symbolList = [];
-  radioValue = HeaderMenu.foreign_exchange;
+  radioValue = HeaderMenuTitle.foreign_exchange;
   constructor(private httpService: HttpService,
-              private drawerRef: NzDrawerRef) { }
+              private drawerRef: NzDrawerRef,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.initData();
@@ -37,8 +39,7 @@ export class SymbolListDrawerComponent implements OnInit {
   }
 
   selectedSymbol(symbolItem) {
-    // console.debug('选中品种：', symbolItem);
     this.drawerRef.close();
-    // TODO  选中品种，更新路由
+    this.router.navigate([`./dashboard/symbol/${symbolItem.symbol}`]);
   }
 }
