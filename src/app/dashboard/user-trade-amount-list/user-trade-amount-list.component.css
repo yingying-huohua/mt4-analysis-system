@@ -1,0 +1,9 @@
+.user_trade_amount_list{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.user_trade_amount_list .echarts{
+  height: 550px;
+}

@@ -136,5 +136,16 @@ export class HttpService {
     }
     return this.http.get(UrlConfig.symoblDashboardActiveUserList, {params: params});
   }
+  /**
+   * 品种看板用户交易额列表
+   */
+  symbolDashboardUserAmountList(symbol: string, pageNo: string, pageSize: string) {
+    const params = {
+      symbol: symbol,
+      pageNo: pageNo,
+      pageSize: pageSize
+    }
+    return this.http.get(UrlConfig.symbolDashboardUserAmountList, {params: params});
+  }
 
 }

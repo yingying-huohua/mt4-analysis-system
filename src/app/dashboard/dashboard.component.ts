@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpService} from '../../service/http/http.service';
 import {SymbolMeta} from '../../entity/SymbolMeta';
 import {ActivatedRoute} from '@angular/router';
-import {HeaderMenu} from '../../constant/HeaderMenu';
-import {AppService} from "../app.service";
+import {AppService} from '../app.service';
 
 @Component({
   selector: 'app-dashboard',
