@@ -42,4 +42,24 @@ export class UrlConfig {
   public static symoblDashboardUserProfitList      = `${UrlConfig.domain}/dashboard/symbol/user/profit/list`;
   // 品种看板用户交易额列表
   public static symbolDashboardUserAmountList      = `${UrlConfig.domain}/dashboard/symbol/user/amount/list`;
+
+  // 期货看板
+  //期货看板meta信息
+  public static futuresIndexDashboardMeta                = `${UrlConfig.domain}/dashboard/futuresIndex/meta`;
+  //期货看板活跃用户列表
+  public static futuresIndexDashboardActiveUserList      = `${UrlConfig.domain}/dashboard/futuresIndex/user/active/list`;
+  //期货看板用户收益列表
+  public static futuresIndexDashboardUserProfitList      = `${UrlConfig.domain}/dashboard/futuresIndex/user/profit/list`;
+  //期货看板活跃品种
+  public static futuresIndexDashboardActiveSymbolList      = `${UrlConfig.domain}/dashboard/futuresIndex/symbol/active/list`;
+
+  // 外汇看板
+  //外汇看板meta信息
+  public static forexIndexDashboardMeta           = `${UrlConfig.domain}/dashboard/forexIndex/meta`;
+  //外汇看板活跃用户列表
+  public static forexDashboardActiveUserList      = `${UrlConfig.domain}/dashboard/forexIndex/user/active/list`;
+  //外汇看板用户收益列表
+  public static forexDashboardUserProfitList      = `${UrlConfig.domain}/dashboard/forexIndex/user/profit/list`;
+  //外汇看板活跃品种
+  public static forexDashboardActiveSymbolList      = `${UrlConfig.domain}/dashboard/forexIndex/symbol/active/list`;
 }

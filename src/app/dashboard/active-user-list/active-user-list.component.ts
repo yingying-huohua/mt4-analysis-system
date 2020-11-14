@@ -1,7 +1,8 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {HttpService} from '../../../service/http/http.service';
 import {Config} from '../../../config/Config';
-import {AppService} from "../../app.service";
+import {AppService} from '../../app.service';
+import {HeaderMenu} from 'src/constant/HeaderMenu';
 
 @Component({
   selector: 'app-active-user-list',
@@ -10,6 +11,7 @@ import {AppService} from "../../app.service";
 })
 export class ActiveUserListComponent implements OnInit, OnChanges {
   @Input() symbol;
+  @Input() category;
   option;
   dataList = [];
   minValue = 0;
@@ -41,6 +43,7 @@ export class ActiveUserListComponent implements OnInit, OnChanges {
    * 服务端接口获取数据
    */
   getData() {
+    this.dataList = [];
     const observer = {
       next: response => {
         this.formatSourceData(response.result);
@@ -48,15 +51,21 @@ export class ActiveUserListComponent implements OnInit, OnChanges {
       }
     }
 
-    // 品种看板时
-    if (!this.appService.isIntegrativeDashboard(this.symbol)) {
-      this.httpService.symoblDashboardActiveUserList(this.symbol, Config.defaultPageNo.toString(),
+    // 综合看板时
+    if(this.category === HeaderMenu.futures) {
+      this.httpService.futuresIndexDashboardActiveUserList(this.symbol, Config.defaultPageNo.toString(),
+        Config.symbolDashboardPageSize.toString()).subscribe(observer);
+      return;
+    }
+    if(this.category === HeaderMenu.foreign_exchange) {
+      this.httpService.forexDashboardActiveUserList(this.symbol, Config.defaultPageNo.toString(),
         Config.symbolDashboardPageSize.toString()).subscribe(observer);
       return;
     }
 
-    // TODO 综合看板时
-
+    // 品种看板时
+    this.httpService.symoblDashboardActiveUserList(this.symbol, Config.defaultPageNo.toString(),
+      Config.symbolDashboardPageSize.toString()).subscribe(observer);
   }
 
   /**

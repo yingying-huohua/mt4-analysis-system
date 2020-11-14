@@ -1,7 +1,8 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {Config} from "../../../config/Config";
-import {HttpService} from "../../../service/http/http.service";
-import {AppService} from "../../app.service";
+import {Config} from '../../../config/Config';
+import {HttpService} from '../../../service/http/http.service';
+import {AppService} from '../../app.service';
+import {HeaderMenu} from 'src/constant/HeaderMenu';
 
 @Component({
   selector: 'app-user-profit-list',
@@ -10,6 +11,7 @@ import {AppService} from "../../app.service";
 })
 export class UserProfitListComponent implements OnInit, OnChanges {
   @Input() symbol;
+  @Input() category;
   option;
   dataList = [];
   maxValue = 0;
@@ -40,6 +42,8 @@ export class UserProfitListComponent implements OnInit, OnChanges {
    * 服务端接口获取数据
    */
   getData() {
+    this.dataList = [];
+
     const observer = {
       next: response => {
         if (!response) {
@@ -50,14 +54,21 @@ export class UserProfitListComponent implements OnInit, OnChanges {
       }
     }
 
-    // 品种看板时
-    if (!this.appService.isIntegrativeDashboard(this.symbol)) {
-      this.httpService.symoblDashboardUserProfitList(this.symbol, Config.defaultPageNo.toString(),
+    // 综合看板时
+    if(this.category === HeaderMenu.futures) {
+      this.httpService.futuresIndexDashboardUserProfitList(this.symbol, Config.defaultPageNo.toString(),
         Config.symbolDashboardPageSize.toString()).subscribe(observer);
       return;
     }
-    // TODO 综合看板时
+    if(this.category === HeaderMenu.foreign_exchange) {
+      this.httpService.forexDashboardUserProfitList(this.symbol, Config.defaultPageNo.toString(),
+        Config.symbolDashboardPageSize.toString()).subscribe(observer);
+      return;
+    }
 
+    // 品种看板时
+    this.httpService.symoblDashboardUserProfitList(this.symbol, Config.defaultPageNo.toString(),
+      Config.symbolDashboardPageSize.toString()).subscribe(observer);
   }
 
   /**

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {UrlConfig} from "../../config/UrlConfig";
+import {HttpClient} from '@angular/common/http';
+import {UrlConfig} from '../../config/UrlConfig';
 
 @Injectable({
   providedIn: 'root'
@@ -117,7 +117,6 @@ export class HttpService {
     return this.http.get(UrlConfig.symbolProfitUserList, {params: params});
   }
 
-
   /**
    * 品种看板meta信息
    */
@@ -158,6 +157,96 @@ export class HttpService {
       pageSize: pageSize
     }
     return this.http.get(UrlConfig.symbolDashboardUserAmountList, {params: params});
+  }
+
+  /**************************期货看板*************************************/
+
+  /**
+   * 期货看板meta信息
+   */
+  futuresIndexDashboardMeta(symbol: string) {
+    return this.http.get(UrlConfig.futuresIndexDashboardMeta, {params: {symbol: symbol}});
+  }
+
+  /**
+   * 期货看板活跃用户列表
+   */
+  futuresIndexDashboardActiveUserList(symbol: string, pageNo: string, pageSize: string) {
+    const params = {
+      symbol: symbol,
+      pageNo: pageNo,
+      pageSize: pageSize
+    }
+    return this.http.get(UrlConfig.futuresIndexDashboardActiveUserList, {params: params});
+  }
+
+  /**
+   * 期货看板用户收益列表
+   */
+  futuresIndexDashboardUserProfitList(symbol: string, pageNo: string, pageSize: string) {
+    const params = {
+      symbol: symbol,
+      pageNo: pageNo,
+      pageSize: pageSize
+    }
+    return this.http.get(UrlConfig.futuresIndexDashboardUserProfitList, {params: params});
+  }
+
+  /**
+   * 期货看板活跃用户列表
+   */
+  futuresIndexDashboardActiveSymbolList(symbol: string, pageNo: string, pageSize: string) {
+    const params = {
+      symbol: symbol,
+      pageNo: pageNo,
+      pageSize: pageSize
+    }
+    return this.http.get(UrlConfig.futuresIndexDashboardActiveSymbolList, {params: params});
+  }
+
+  /**************************外汇看板*************************************/
+
+  /**
+   * 外汇看板meta信息
+   */
+  forexIndexDashboardMeta(symbol: string) {
+    return this.http.get(UrlConfig.forexIndexDashboardMeta, {params: {symbol: symbol}});
+  }
+
+  /**
+   * 外汇看板活跃用户列表
+   */
+  forexDashboardActiveUserList(symbol: string, pageNo: string, pageSize: string) {
+    const params = {
+      symbol: symbol,
+      pageNo: pageNo,
+      pageSize: pageSize
+    }
+    return this.http.get(UrlConfig.forexDashboardActiveUserList, {params: params});
+  }
+
+  /**
+   * 外汇看板用户收益列表
+   */
+  forexDashboardUserProfitList(symbol: string, pageNo: string, pageSize: string) {
+    const params = {
+      symbol: symbol,
+      pageNo: pageNo,
+      pageSize: pageSize
+    }
+    return this.http.get(UrlConfig.forexDashboardUserProfitList, {params: params});
+  }
+
+  /**
+   * 外汇看板活跃用户列表
+   */
+  forexDashboardActiveSymbolList(symbol: string, pageNo: string, pageSize: string) {
+    const params = {
+      symbol: symbol,
+      pageNo: pageNo,
+      pageSize: pageSize
+    }
+    return this.http.get(UrlConfig.forexDashboardActiveSymbolList, {params: params});
   }
 
 }

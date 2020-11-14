@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, ElementRef, OnInit} from '@angular/core';
+import {AfterContentInit, Component, ElementRef, Input, OnInit} from '@angular/core';
 import * as echarts from 'echarts';
 
 @Component({
@@ -7,6 +7,7 @@ import * as echarts from 'echarts';
   styleUrls: ['./active-symbol-list.component.css']
 })
 export class ActiveSymbolListComponent implements OnInit, AfterContentInit {
+  @Input() category;
   option;
   dataAxis = ['点', '击', '柱', '子', '或', '者', '两', '指', '在', '触', '屏', '上', '滑', '动', '能', '够', '自', '动', '缩', '放'];
   data = [220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125, 220];
