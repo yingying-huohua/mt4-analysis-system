@@ -25,7 +25,7 @@ export class AppComponent implements OnInit{
     this.isLoggedIn = this.appService.isLogin;
     this.initHeaderMenu();
     // this.initObserver();
-
+    this.renderTab(this.selectedId);
   }
 
   /**
