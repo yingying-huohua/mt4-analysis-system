@@ -10,6 +10,7 @@
 .group_profit .group_profit_container{
   padding: 0 20px;
   margin-top: 20px;
+  cursor: pointer;
 }
 
 .group_profit_container .title{
