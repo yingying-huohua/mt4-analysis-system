@@ -3,6 +3,9 @@ import {registerLocaleData} from "@angular/common";
 import zh from "@angular/common/locales/zh";
 import {HeaderMenu} from "../constant/HeaderMenu";
 import {Router} from "@angular/router";
+import {AppService} from "./app.service";
+import {ObserverService} from "../service/local/observer.service";
+
 registerLocaleData(zh)
 @Component({
   selector: 'app-root',
@@ -13,11 +16,29 @@ export class AppComponent implements OnInit{
   headerMenu = [];
   selectedId = HeaderMenu.futures;
   showLeftPanel = false;
-  constructor(private router: Router) {}
+  isLoggedIn = true;
+  constructor(private router: Router,
+              private appService: AppService,
+              private observerService: ObserverService) {}
 
   ngOnInit() {
+    this.isLoggedIn = this.appService.isLogin;
     this.initHeaderMenu();
-    this.renderTab(this.selectedId);
+    this.initObserver();
+  }
+
+  /**
+   * 初始化观察者
+   */
+  initObserver() {
+    this.observerService.getLoginObserver().subscribe((isLogin) => {
+      if (!isLogin) {
+        this.router.navigate(['./login']);
+        return;
+      }
+      this.isLoggedIn = isLogin;
+      this.renderTab(this.selectedId);
+    });
   }
 
   /**

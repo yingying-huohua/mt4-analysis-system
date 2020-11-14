@@ -5,7 +5,7 @@ import * as moment from "moment";
   providedIn: 'root'
 })
 export class AppService {
-
+  public isLogin = false;
   constructor() { }
 
   moneyFormat(value: string) {

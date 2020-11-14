@@ -5,20 +5,17 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class ObserverService {
-  private symbolAddObserver: BehaviorSubject<object>;
-  private symbolUpdateObserver: BehaviorSubject<object>;
-  constructor() { }
+  private loginObserver: BehaviorSubject<boolean>;
+  constructor() {
+    this.init();
+  }
 
   init() {
-    this.symbolAddObserver = new BehaviorSubject(null);
-    this.symbolUpdateObserver = new BehaviorSubject(null);
+    this.loginObserver = new BehaviorSubject<boolean>(false);
   }
 
-  getSymbolAddObserver() {
-    return this.symbolAddObserver;
+  getLoginObserver() {
+    return this.loginObserver;
   }
 
-  getSymbolUpdateObserver() {
-    return this.symbolUpdateObserver;
-  }
 }

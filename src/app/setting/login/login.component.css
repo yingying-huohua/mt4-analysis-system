@@ -1,0 +1,118 @@
+.cms_register_bg{
+  width: 100%;
+  min-width: 320px;
+  margin: 0 auto;
+  background-image: url("../../../assets/background.png");
+  background-size: cover;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  /*background-size: cover;*/
+  position: relative;
+  z-index: 1;
+}
+.cms_register_bg::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /*background: -webkit-linear-gradient(bottom,#FFBB66, #D28EFF);*/
+  /*background: -o-linear-gradient(bottom, #FFBB66,#D28EFF);*/
+  /*background: -moz-linear-gradient(bottom, #FFBB66,#D28EFF);*/
+  /*background: linear-gradient(#FFBB66, #D28EFF);*/
+  opacity: 0.6;
+}
+.cms_register_bg .cms_register_content{
+  width: 390px;
+  height: 100%;
+  margin-left: 50px ;
+  margin-top: 50px;
+}
+.cms_promptText{
+  display: block;
+  width: 390px;
+  height:15px;
+  border: 1px red  solid;
+}
+.cms_register_bar{
+  width: 480px;
+  height: 480px;
+  background-color: hsla(0,0%,100%,.3);
+  border-radius: 25px;
+  position: absolute;
+  right: 100px;
+}
+/*系统标题*/
+.cms_register_content .register_header_text{
+  width: 100%;
+  font-weight: 600;
+  font-size: 30px;
+  color: #ff7744;
+  text-align: center ;
+  margin-bottom: 50px;
+}
+
+/*input通用样式*/
+.cms_register_content .cms_register_inputPublic{
+  width: 100%;
+  height: 50px;
+  font-size: 15px;
+  color: #333333;
+  outline: none;
+  border: 1px #fff solid ;
+  border-radius: 2px;
+  padding: 0 30px 0 40px;
+  cursor: default;
+  z-index: 20;
+  border-radius: 6px;
+}
+/*!*输入手机号码*!*/
+/*.cms_register_content  .cms_register_phoneInput{*/
+/*background: #FFFFFF url("../../../assets/login/my.png") no-repeat 12px;*/
+/*background-size: 24px;*/
+/*}*/
+/*!*输入密码*!*/
+/*.cms_register_content  .cms_register_password{*/
+/*background: #FFFFFF url("../../../assets/login/password.png") no-repeat 12px;*/
+/*background-size: 24px;*/
+/*}*/
+/*登录文字*/
+.cms_register_content  .cms_register_button{
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  color: white;
+  background: #FF7744;
+  outline: none;
+  border: 1px #FF7744 solid ;
+  border-radius: 2px;
+  margin-top: 25px;
+}
+/*底部文字*/
+.cms_register_CopyrightText{
+  margin-top: 80px;
+  width: 100%;
+  text-align: center ;
+  font-size: 16px;
+  color:#DDDDDD;
+}
+
+::ng-deep.ant-message-notice-content {
+  padding: 10px 16px;
+  border-radius: 4px;
+  /*background: #ff1100;*/
+  display: inline-block;
+  pointer-events: all;
+  /*color:#DDDDDD;*/
+}
+.cms_form_error{
+  margin-top: 4px;
+}

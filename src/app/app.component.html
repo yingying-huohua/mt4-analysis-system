@@ -1,4 +1,4 @@
-<nz-layout>
+<nz-layout *ngIf="isLoggedIn === true">
   <nz-header>
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
@@ -12,7 +12,11 @@
       <app-menu></app-menu>
     </nz-sider>
     <nz-layout class="inner-layout">
-      <nz-content><router-outlet></router-outlet></nz-content>
+      <nz-content>
+        <router-outlet></router-outlet>
+      </nz-content>
     </nz-layout>
   </nz-layout>
 </nz-layout>
+
+<app-login *ngIf="isLoggedIn === false"></app-login>

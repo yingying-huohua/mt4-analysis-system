@@ -1,1 +1,36 @@
-<p>login works!</p>
+<div class="cms_register_bg">
+  <div class="cms_register_bar">
+    <!--内容-->
+    <div class="cms_register_content">
+      <!--系统标题-->
+      <p class="register_header_text" >数据分析系统</p>
+      <form   nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <!--输入手机号码-->
+        <nz-form-item>
+          <nz-form-control [nzErrorTip]="accoundErrorTpl">
+            <input class="cms_register_phoneInput cms_register_inputPublic"  type="text"  autocomplete="off"  nz-input
+                   [(ngModel)]="account"  formControlName="account" placeholder="请输入账号"  />
+            <ng-template #accoundErrorTpl class="cms_form_error">
+              <ng-container *ngIf="validateForm.get('account').hasError('required')">必须填写</ng-container>
+              <ng-container  *ngIf="validateForm.get('account').hasError('maxlength')">最多11个字</ng-container>
+              <ng-container *ngIf="validateForm.get('account').hasError('phoneError')">请输入正确的手机号码</ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item >
+
+        <!--输入密码-->
+        <nz-form-item style="margin-top: 20px;">
+          <nz-form-control [nzErrorTip]="passwordErrorTip">
+            <input   class="cms_register_password cms_register_inputPublic"  type="password" autocomplete="off" nz-input  [(ngModel)]="password"  formControlName="password" placeholder="请输入密码" />
+            <ng-template #passwordErrorTip class="cms_form_error">
+              <ng-container  *ngIf="validateForm.get('password').hasError('required')"> 必须填写</ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <!--登录文字-->
+        <button   nz-button nzType="dashed" class="cms_register_button"  nzType="primary" >登录</button>
+
+      </form>
+    </div>
+  </div>
+</div>

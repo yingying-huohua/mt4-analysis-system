@@ -7,10 +7,12 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {SymbolAddComponent} from './setting/symbol-add/symbol-add.component';
 import {SymbolListComponent} from './symbol/symbol-list/symbol-list.component';
 import {MenuComponent} from './menu/menu.component';
+import {LoginComponent} from "./setting/login/login.component";
 
 
 const routes: Routes = [
-  {path: '',                redirectTo: 'dashboard',  pathMatch: 'full'},
+  {path: '',                redirectTo: 'login',  pathMatch: 'full'},
+  {path: 'login',           component: LoginComponent},
   {path: 'dashboard',       component: DashboardComponent},
   {path: 'dashboard/:id',   component: DashboardComponent},
   {path: 'menu',            component: MenuComponent},
