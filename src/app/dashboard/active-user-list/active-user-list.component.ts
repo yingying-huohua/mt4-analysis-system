@@ -10,6 +10,8 @@ import {Config} from '../../../config/Config';
 export class ActiveUserListComponent implements OnInit {
   option;
   dataList = [];
+  minValue = 0;
+  maxValue = 0;
   constructor(private httpService: HttpService ) { }
 
   ngOnInit(): void {
@@ -34,13 +36,29 @@ export class ActiveUserListComponent implements OnInit {
    * 格式化数据
    */
   private formatSourceData(data) {
-    const axis =  ['totalCount', 'accountId'];
-    this.dataList.push(axis);
     for (const dataItem of data) {
       const dataItemArray = [];
       dataItemArray.push(dataItem.totalCount);
       dataItemArray.push(dataItem.accountId);
       this.dataList.push(dataItemArray);
+
+      //计算最大值和最小值
+      const account = Number.parseFloat(dataItem.totalCount);
+      this.calcMaxMinValue(account);
+    }
+    this.dataList.reverse();
+
+    //添加标记行
+    const axis =  ['totalCount', 'accountId'];
+    this.dataList.splice(0, 0, axis);
+  }
+
+  private calcMaxMinValue(value) {
+    if(value > this.maxValue) {
+      this.maxValue = value;
+    }
+    if(value < this.minValue) {
+      this.minValue = value;
     }
   }
 
@@ -62,8 +80,8 @@ export class ActiveUserListComponent implements OnInit {
       visualMap: {
         orient: 'horizontal',
         left: 'center',
-        min: 10000,
-        max: 50000,
+        min: this.minValue,
+        max: this.maxValue,
         text: ['高', '低'],
         textStyle: {
           fontSize: '10px',
@@ -80,7 +98,7 @@ export class ActiveUserListComponent implements OnInit {
           type: 'bar',
           encode: {
             // Map the "amount" column to X axis.
-            x: '交易笔数',
+            x: 'totalCount',
             // Map the "product" column to Y axis
             y: 'accountId'
           }

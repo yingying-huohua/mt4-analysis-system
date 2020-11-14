@@ -10,6 +10,8 @@ import {HttpService} from "../../../service/http/http.service";
 export class UserProfitListComponent implements OnInit {
   option;
   dataList = [];
+  minValue = 0;
+  maxValue = 0;
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
@@ -38,13 +40,29 @@ export class UserProfitListComponent implements OnInit {
    * @param data
    */
   private formatSourceData(data) {
-    const axis =  ['profit', 'accountId'];
-    this.dataList.push(axis);
     for (const dataItem of data) {
       const dataItemArray = [];
       dataItemArray.push(dataItem.profit);
       dataItemArray.push(dataItem.accountId);
       this.dataList.push(dataItemArray);
+
+      //计算最大值和最小值
+      const profitNum = Number.parseFloat(dataItem.profit);
+      this.calcMaxMinValue(profitNum);
+    }
+    this.dataList.reverse();
+
+    //添加标记行
+    const axis = ['profit', 'accountId'];
+    this.dataList.splice(0, 0, axis);
+  }
+
+  private calcMaxMinValue(value) {
+    if(value > this.maxValue) {
+      this.maxValue = value;
+    }
+    if(value < this.minValue) {
+      this.minValue = value;
     }
   }
 
@@ -66,8 +84,8 @@ export class UserProfitListComponent implements OnInit {
       visualMap: {
         orient: 'horizontal',
         left: 'center',
-        min: 0,
-        max: 1000,
+        min: this.minValue,
+        max: this.maxValue,
         text: ['高', '低'],
         textStyle: {
           fontSize: '10px',
@@ -84,7 +102,7 @@ export class UserProfitListComponent implements OnInit {
           type: 'bar',
           encode: {
             // Map the "amount" column to X axis.
-            x: '利润',
+            x: 'profit',
             // Map the "product" column to Y axis
             y: 'accountId'
           }
