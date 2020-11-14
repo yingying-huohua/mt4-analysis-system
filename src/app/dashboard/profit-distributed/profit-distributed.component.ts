@@ -1,11 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 
 @Component({
   selector: 'app-profit-distributed',
   templateUrl: './profit-distributed.component.html',
   styleUrls: ['./profit-distributed.component.css']
 })
-export class ProfitDistributedComponent implements OnInit {
+export class ProfitDistributedComponent implements OnInit, OnChanges {
   @Input()
   lossRate;
   @Input()
@@ -23,8 +23,20 @@ export class ProfitDistributedComponent implements OnInit {
 
   dataList = [];
 
-  constructor() {
+  constructor() {}
 
+  ngOnChanges(changes: SimpleChanges) {
+    for (const key in changes) {
+      if (!changes.hasOwnProperty(key)) {
+        continue;
+      }
+
+      if (changes[key].firstChange) {
+        continue;
+      }
+
+      this.initData();
+    }
   }
 
   ngOnInit(): void {
@@ -34,17 +46,17 @@ export class ProfitDistributedComponent implements OnInit {
   initData() {
     this.dataList = [
       {
-        lable: this.profitUserCount + '盈利',
+        lable: this.profitUserCount + '人 盈利',
         value: this.formatPercent(this.profitRate),
         strokeStyle: '#108ee9'
       },
       {
-        lable: this.lossUserCount + '亏损',
+        lable: this.lossUserCount + '人 亏损',
         value: this.formatPercent(this.lossRate),
         strokeStyle: '#ff4d4f'
       },
       {
-        lable: this.breakEvenUserCount + '持平',
+        lable: this.breakEvenUserCount + '人 持平',
         value: this.formatPercent(this.profitRate),
         strokeStyle: '#87d068'
       }
