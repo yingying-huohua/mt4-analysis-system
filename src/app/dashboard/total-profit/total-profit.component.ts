@@ -10,12 +10,10 @@ export class TotalProfitComponent implements OnInit {
   @Input() totalMoney;
   constructor(private appService: AppService) { }
 
-  ngOnInit(): void {
-    this.formatNum();
-  }
+  ngOnInit(): void { }
 
-  formatNum() {
-    this.totalMoney = this.appService.moneyFormat(this.totalMoney.toString());
+  formatNum(value) {
+    return this.appService.moneyFormatWithUnit(value);
   }
 
 }
