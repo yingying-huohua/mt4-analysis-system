@@ -29,14 +29,8 @@ export class DashboardComponent implements OnInit {
       if (params.id) {
         this.symbol = params.id;
       } else {
-        this.symbol = '';
-      }
-
-      //FIXME url参数配置完成后，删除默认值
-      if(!this.isIntegrativeDashboard()) {
         this.symbol = 'AUDCHF';
       }
-
       console.debug(`this.category:${this.category}, this.symbol:${this.symbol}`);
       this.getMetaData();
     });
