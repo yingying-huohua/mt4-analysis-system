@@ -16,7 +16,7 @@ export class AppComponent implements OnInit{
   headerMenu = [];
   selectedId = HeaderMenu.futures;
   showLeftPanel = false;
-  isLoggedIn = true;
+  isLoggedIn = false;
   constructor(private router: Router,
               private appService: AppService,
               private observerService: ObserverService) {}
@@ -24,7 +24,8 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.isLoggedIn = this.appService.isLogin;
     this.initHeaderMenu();
-    this.initObserver();
+    // this.initObserver();
+
   }
 
   /**
