@@ -9,3 +9,8 @@ export const HeaderMenu = {
   symbol: 'symbol',
   data: '数据'
 }
+
+export const HeaderMenuTitle = {
+  futures: '期货',
+  foreign_exchange: '外汇',
+}
