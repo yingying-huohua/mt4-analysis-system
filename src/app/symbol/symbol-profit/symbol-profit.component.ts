@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {BaseComponent} from "../../BaseComponent";
-import {HttpService} from "../../../service/http/http.service";
-import {ActivatedRoute} from "@angular/router";
-import {AppService} from "../../app.service";
+import {BaseComponent} from '../../BaseComponent';
+import {HttpService} from '../../../service/http/http.service';
+import {ActivatedRoute} from '@angular/router';
+import {AppService} from '../../app.service';
 
 @Component({
   selector: 'app-symbol-profit',
@@ -10,6 +10,7 @@ import {AppService} from "../../app.service";
   styleUrls: ['./symbol-profit.component.css']
 })
 export class SymbolProfitComponent extends BaseComponent implements OnInit {
+  type:string;
   showDetail = false;
   currentSymbol; //当前选中品种
   currentReturnType; //当前选中盈亏类型
@@ -21,7 +22,9 @@ export class SymbolProfitComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.route.params.subscribe((params: {type: string}) => {
+      this.type = params.type;
       this.initData(params.type);
     });
   }
