@@ -30,9 +30,9 @@ export class ActiveSymbolListComponent implements OnInit, OnChanges {
       if (changes[key].firstChange) {
         continue;
       }
-    }
 
-    this.getData();
+      this.getData();
+    }
   }
 
   /**
