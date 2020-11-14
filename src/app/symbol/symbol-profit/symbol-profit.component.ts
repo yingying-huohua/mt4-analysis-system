@@ -11,8 +11,9 @@ import {AppService} from "../../app.service";
 })
 export class SymbolProfitComponent extends BaseComponent implements OnInit {
   showDetail = false;
-  currentSymbol;
-  currentReturnType;
+  currentSymbol; //当前选中品种
+  currentReturnType; //当前选中盈亏类型
+  currentDate; //当前选中日期
   constructor(private httpService: HttpService,
               private route: ActivatedRoute,
               private appService: AppService) {
@@ -53,6 +54,7 @@ export class SymbolProfitComponent extends BaseComponent implements OnInit {
     console.debug('查看详情:', item);
     this.currentSymbol = item.symbol;
     this.currentReturnType = returnType;
+    this.currentDate = this.dateFormat(item.tradeDate);
     this.selectedIndex = index;
     this.showDetail = true;
   }

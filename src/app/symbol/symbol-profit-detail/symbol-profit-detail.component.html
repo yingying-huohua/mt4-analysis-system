@@ -18,7 +18,7 @@
     <th>账号</th>
     <th>盈亏</th>
     <th>开仓时间</th>
-    <th>关仓时间</th>
+    <th>平仓时间</th>
   </tr>
   </thead>
   <!--表格数据-->
@@ -35,5 +35,5 @@
 </nz-table>
 <!--头部-->
 <ng-template #title>
-  <B class="title">品种【{{symbol}}】明细</B>
+  <B class="title">品种【{{symbol}} {{date}}】收益明细</B>
 </ng-template>

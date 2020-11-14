@@ -9,7 +9,8 @@ import {HttpService} from "../../../service/http/http.service";
 })
 export class SymbolProfitDetailComponent extends BaseComponent implements OnInit, OnChanges {
   @Input() returnType; // 1:盈利， 2：亏损， 3：持平
-  @Input() symbol;
+  @Input() symbol; //品种
+  @Input() date; //日期
   constructor(private httpService: HttpService) {
     super();
   }
@@ -44,8 +45,8 @@ export class SymbolProfitDetailComponent extends BaseComponent implements OnInit
       symbol: this.symbol,
       sortField: this.sortField,
       direction: this.direction,
-      openStart: this.openStart,
-      openEnd: this.openEnd,
+      openStart: this.date,
+      openEnd: this.date,
       pageNo: this.pageNo.toString(),
       pageSize: this.pageSize.toString()
     }
