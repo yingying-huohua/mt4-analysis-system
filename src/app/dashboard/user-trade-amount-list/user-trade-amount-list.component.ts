@@ -47,6 +47,10 @@ export class UserTradeAmountListComponent implements OnInit, OnChanges {
         }
         this.formatSourceData(response.result);
         this.setOption();
+      },
+      error: any => {
+        this.formatSourceData([]);
+        this.setOption();
       }
     }
 
@@ -62,6 +66,10 @@ export class UserTradeAmountListComponent implements OnInit, OnChanges {
    * @param data
    */
   private formatSourceData(data) {
+    this.dataList = [];
+    if (!data) {
+      return;
+    }
     for (const dataItem of data) {
       const dataItemArray = [];
       dataItemArray.push(dataItem.totalTradeMount);
@@ -121,6 +129,7 @@ export class UserTradeAmountListComponent implements OnInit, OnChanges {
       series: [
         {
           type: 'bar',
+          barWidth: 20,
           encode: {
             // Map the "amount" column to X axis.
             x: 'accountId',

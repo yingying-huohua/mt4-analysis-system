@@ -143,6 +143,7 @@ export class UserProfitListComponent implements OnInit, OnChanges {
       series: [
         {
           type: 'bar',
+          barWidth: 20,
           encode: {
             // Map the "amount" column to X axis.
             x: 'profit',
