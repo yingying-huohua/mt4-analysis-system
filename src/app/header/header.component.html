@@ -1,20 +1,13 @@
 <div class="header">
-  <div class="title_container">
-    <p class="title">数据分析系统</p>
-    <div style="color:white" (click)="showMenu()">菜单</div>
-<!--    <div nz-dropdown class="setting"-->
-<!--         [nzDropdownMenu]="menu"-->
-<!--         nzPlacement="bottomRight"-->
-<!--         nzTrigger="click">设置</div>-->
-<!--    <nz-dropdown-menu #menu="nzDropdownMenu">-->
-<!--      <ul nz-menu style="top: -20px">-->
-<!--        <li nz-menu-item (click)="importData()">导入数据</li>-->
-<!--        <li nz-menu-item (click)="systemConfig()">系统配置</li>-->
-<!--        <li nz-menu-item (click)="gotoSymbol()">金融品种</li>-->
-<!--        <li nz-menu-item (click)="gotoUserProfit()">用户收益</li>-->
-<!--        <li nz-menu-item (click)="gotoGroupProfit()">用户组收益</li>-->
-<!--      </ul>-->
-<!--    </nz-dropdown-menu>-->
-  </div>
+  <div class="logo"></div>
+  <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+    <li nz-menu-item *ngFor="let item of headerMenu"
+        [nzSelected]="item.id === selectedId"
+        (click)="selectTab(item.id)">{{item.title}}</li>
+  </ul>
 
+  <div nz-row class="logout" (click)="loginOut()">
+    <div class="icon"><img src="assets/img/login-out.svg"></div>
+    <div class="text">退出系统</div>
+  </div>
 </div>

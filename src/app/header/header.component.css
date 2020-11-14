@@ -4,27 +4,43 @@
   line-height: 64px;
   background: #001529;
   border-bottom: 1px solid rgba(255, 255, 255, .3);
-}
-.header .title_container{
-  margin: 0 50px;
   position: relative;
-  display: flex;
+}
+.header .logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 30px 16px 0;
+  float: left;
 }
 
-.title_container .title{
-  margin: auto;
-  font-size: 24px;
-  color: #ffffff;
-  text-align: center;
+.header .header-menu {
+  line-height: 64px;
 }
 
-.title_container .setting{
-  width: 30px;
-  height: 100%;
-  font-size: 15px;
-  color: #ffffff;
+.header .logout{
   position: absolute;
+  top: 0;
   right: 0;
+  height: 43px;
+  display: flex;
   cursor: pointer;
-  z-index: 10;
+}
+
+.logout .icon{
+  width: 12px;
+  height: 14px;
+  margin-right: 10px;
+}
+
+.icon img{
+  width: 12px;
+  height: 14px;
+}
+
+.logout .text{
+  margin-top: 2px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #FFFFFF;
 }
