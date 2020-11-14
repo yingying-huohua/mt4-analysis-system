@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpService} from "../../service/http/http.service";
-import {SymbolMeta} from "../../entity/SymbolMeta";
-import {ActivatedRoute} from "@angular/router";
-import {HeaderMenu} from "../../constant/HeaderMenu";
+import {HttpService} from '../../service/http/http.service';
+import {SymbolMeta} from '../../entity/SymbolMeta';
+import {ActivatedRoute} from '@angular/router';
+import {HeaderMenu} from '../../constant/HeaderMenu';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +12,7 @@ import {HeaderMenu} from "../../constant/HeaderMenu";
 export class DashboardComponent implements OnInit {
   meta: SymbolMeta;
   id = 'AUDCHF';
+
   constructor(private httpService: HttpService,
               private route: ActivatedRoute) { }
 
@@ -23,7 +24,6 @@ export class DashboardComponent implements OnInit {
       }
       this.getMetaData();
     });
-
   }
 
   getMetaData() {
@@ -32,7 +32,9 @@ export class DashboardComponent implements OnInit {
         if (!response) {
           return;
         }
+
         this.meta = response;
+        console.debug('meta', this.meta);
       }
     }
 

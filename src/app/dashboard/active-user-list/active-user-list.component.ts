@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpService} from "../../../service/http/http.service";
-import {Config} from "../../../config/Config";
+import {HttpService} from '../../../service/http/http.service';
+import {Config} from '../../../config/Config';
 
 @Component({
   selector: 'app-active-user-list',
@@ -32,7 +32,6 @@ export class ActiveUserListComponent implements OnInit {
 
   /**
    * 格式化数据
-   * @param data
    */
   private formatSourceData(data) {
     const axis =  ['totalCount', 'accountId'];

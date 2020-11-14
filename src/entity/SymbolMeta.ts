@@ -8,5 +8,9 @@ export class SymbolMeta {
   profitRate: number;
   symbol: string;
   totalProfit: string;
+
   userCount: number;
+  profitUserCount: number;
+  lossUserCount: number;
+  breakEvenUserCount: number;
 }

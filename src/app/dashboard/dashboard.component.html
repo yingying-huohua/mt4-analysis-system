@@ -9,10 +9,15 @@
       <!--品种趋势图-->
       <app-symbol-trend nz-col nzSpan="8" class="item border_right"></app-symbol-trend>
       <!--盈亏分布-->
-      <app-profit-distributed [lossRate]="meta ? meta.lossRate : ''"
-                              [breakEvenRate]="meta ? meta.breakEvenRate: ''"
-                              [profitRate]="meta ? meta.profitRate: ''"
-                              nz-col nzSpan="8" class="item"></app-profit-distributed>
+      <app-profit-distributed [lossRate]          ="meta ? meta.lossRate : ''"
+                              [breakEvenRate]     ="meta ? meta.breakEvenRate: ''"
+                              [profitRate]        ="meta ? meta.profitRate: ''"
+                              [profitUserCount]   ="meta ? meta.profitUserCount : ''"
+                              [lossUserCount]     ="meta ? meta.lossUserCount: ''"
+                              [breakEvenUserCount]="meta ? meta.breakEvenUserCount: ''"
+                              nz-col nzSpan="8" class="item">
+
+      </app-profit-distributed>
     </div>
 
     <!--bottom-->
