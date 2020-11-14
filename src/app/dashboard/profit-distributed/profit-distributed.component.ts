@@ -61,7 +61,6 @@ export class ProfitDistributedComponent implements OnInit, OnChanges {
         strokeStyle: '#108ee9'
       }
     ];
-    console.debug('**************', this.dataList);
   }
 
   formatPercent(value) {
