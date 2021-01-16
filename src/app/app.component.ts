@@ -14,7 +14,7 @@ registerLocaleData(zh)
 })
 export class AppComponent implements OnInit, OnDestroy{
   headerMenu = [];
-  selectedId = HeaderMenu.futures;
+  selectedId = HeaderMenu.data;
   showLeftPanel = false;
   isLoggedIn = false;
   loginSubscription;
@@ -55,7 +55,7 @@ export class AppComponent implements OnInit, OnDestroy{
     switch (id) {
       case HeaderMenu.data:
         this.showLeftPanel = true;
-        this.router.navigate(['./symbol/profit']);
+        this.router.navigate(['./user/profit/ranking']);
         break;
       case HeaderMenu.futures:
         this.showLeftPanel = false;
@@ -77,18 +77,18 @@ export class AppComponent implements OnInit, OnDestroy{
    */
   private initHeaderMenu() {
     this.headerMenu = [
-      {
-        id: HeaderMenu.futures,
-        title: '期货看板'
-      },
-      {
-        id: HeaderMenu.foreign_exchange,
-        title: '外汇看板'
-      },
-      {
-        id: HeaderMenu.symbol,
-        title: '品种看板'
-      },
+      // {
+      //   id: HeaderMenu.futures,
+      //   title: '期货看板'
+      // },
+      // {
+      //   id: HeaderMenu.foreign_exchange,
+      //   title: '外汇看板'
+      // },
+      // {
+      //   id: HeaderMenu.symbol,
+      //   title: '品种看板'
+      // },
       {
         id: HeaderMenu.data,
         title: '数据分析'
