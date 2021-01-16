@@ -1,23 +1,26 @@
 <ul nz-menu nzMode="inline" nzTheme="dark" [nzInlineCollapsed]="isCollapsed">
-  <li nz-submenu nzTitle="品种" nzIcon="appstore" [nzOpen]="true">
-    <ul>
-      <li nz-menu-item (click)="gotoSymbolProfitByType('期货')">&nbsp;&nbsp;期货</li>
-      <li nz-menu-item (click)="gotoSymbolProfitByType('外汇')">&nbsp;&nbsp;外汇</li>
-      <li nz-menu-item (click)="gotoSymbolProfit()">&nbsp;&nbsp;综合</li>
-    </ul>
-  </li>
+<!--  <li nz-submenu nzTitle="品种" nzIcon="appstore" [nzOpen]="true">-->
+<!--    <ul>-->
+<!--      <li nz-menu-item (click)="gotoSymbolProfitByType('期货')">&nbsp;&nbsp;期货</li>-->
+<!--      <li nz-menu-item (click)="gotoSymbolProfitByType('外汇')">&nbsp;&nbsp;外汇</li>-->
+<!--      <li nz-menu-item (click)="gotoSymbolProfit()">&nbsp;&nbsp;综合</li>-->
+<!--    </ul>-->
+<!--  </li>-->
   <li nz-submenu nzTitle="用户" nzIcon="appstore" [nzOpen]="true">
     <ul>
-      <li nz-menu-item (click)="gotoUserProfit()">&nbsp;&nbsp;用户收益</li>
+<!--      <li nz-menu-item (click)="gotoUserProfit()">&nbsp;&nbsp;用户收益</li>-->
 <!--      <li nz-menu-item (click)="gotoGroupProfit()">&nbsp;&nbsp;用户组收益</li>-->
+      <li nz-menu-item (click)="gotoUserProfitRanking()">用户收益排行</li>
+      <li nz-menu-item (click)="gotoSymbolProfitRanking()">品种收益排行</li>
+      <li nz-menu-item (click)="gotoTradeBehaviour()">交易行为</li>
     </ul>
   </li>
-  <li nz-submenu nzTitle="系统配置" nzIcon="setting">
-    <ul>
-      <li nz-menu-item (click)="gotoSymbol()">&nbsp;&nbsp;品种管理</li>
-      <li nz-menu-item (click)="systemConfig()">&nbsp;&nbsp;基本配置</li>
-      <li nz-menu-item (click)="importData()">&nbsp;&nbsp;数据导入</li>
-      <li nz-menu-item >&nbsp;&nbsp;任务日志</li>
-    </ul>
-  </li>
+<!--  <li nz-submenu nzTitle="系统配置" nzIcon="setting">-->
+<!--    <ul>-->
+<!--      <li nz-menu-item (click)="gotoSymbol()">&nbsp;&nbsp;品种管理</li>-->
+<!--      <li nz-menu-item (click)="systemConfig()">&nbsp;&nbsp;基本配置</li>-->
+<!--      <li nz-menu-item (click)="importData()">&nbsp;&nbsp;数据导入</li>-->
+<!--      <li nz-menu-item >&nbsp;&nbsp;任务日志</li>-->
+<!--    </ul>-->
+<!--  </li>-->
 </ul>
