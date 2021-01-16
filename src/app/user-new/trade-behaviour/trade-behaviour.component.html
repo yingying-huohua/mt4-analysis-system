@@ -1,0 +1,103 @@
+<div class="trade_behaviour">
+  <div class="trade_behaviour_container">
+    <!--筛选条件-->
+    <div class="search_filter_div">
+      <B class="title">交易行为</B>
+      <!--筛选与搜索-->
+      <div class="search_filter_container">
+        <!--按名称搜索-->
+        <div class="search">
+          <span class="search_filter_lable">账号：</span>
+          <input #nameInput class="search_input" placeholder="请输入名称" nz-input
+                 [maxLength]="20"
+                 [(ngModel)]="nameInputValue"
+                 (input)="onNameInput(nameInput.value)"
+                 [nzAutocomplete]="auto"
+                 (keydown.enter)="search(1)"/>
+          <nz-autocomplete nzBackfill #auto>
+            <nz-auto-option *ngFor="let userItem of nameSuggestionList"
+                            [nzValue]="userItem.accountId.toString()"
+                            (click)="selectedNameSuggestionItem(userItem.accountId)">{{userItem.accountId.toString()}}</nz-auto-option>
+          </nz-autocomplete>
+        </div>
+        <!--按品种搜索-->
+        <div class="search">
+          <span class="search_filter_lable">品种：</span>
+          <nz-select class="search_input" nzShowSearch nzAllowClear nzPlaceHolder="请输入品种"
+                     [(ngModel)]="symbolInputValue"
+                     (ngModelChange)="onSymbolInput($event)">
+            <nz-option *ngFor="let symbolItem of symbolSuggestionList"
+                       nzLabel="{{symbolItem.standardSymbol}}"
+                       nzValue="{{symbolItem.standardSymbol}}"></nz-option>
+          </nz-select>
+        </div>
+        <!--日期选择-->
+        <div class="date_filter">
+          <span class="search_filter_lable">时间范围：</span>
+          <nz-range-picker class="date_picker"
+                           [(ngModel)]="date"
+                           [nzRanges]="ranges"
+                           (ngModelChange)="onDateChange($event)"></nz-range-picker>
+        </div>
+        <!--查询按钮-->
+        <button nz-button nzType="primary" class="search_button" (click)="search(1)">查询</button>
+      </div>
+    </div>
+    <!--图表区域-->
+    <div nz-row class="dashboard_div">
+      <!--品种多空分布-->
+      <app-symbol-long-short-distribution nz-col nzSpan="8" class="border_right"></app-symbol-long-short-distribution>
+      <!--多空盈亏分布-->
+      <app-long-short-profit-distribute nz-col nzSpan="8" class="border_right"></app-long-short-profit-distribute>
+      <!--持仓时间分布-->
+      <app-holding-time-distribution nz-col nzSpan="8" ></app-holding-time-distribution>
+<!--      <div nz-col nzSpan="6">K线图</div>-->
+    </div>
+    <!--数据列表-->
+    <div class="list_div">
+      <!--switch-->
+      <div class="switch">
+        <nz-radio-group class="radio" [(ngModel)]="radioValue" (ngModelChange)="switchType()">
+          <label class="radio_item" nz-radio-button nzValue="期货">当前持仓</label>
+          <label class="radio_item" nz-radio-button nzValue="外汇">资金一览</label>
+        </nz-radio-group>
+      </div>
+      <!--列表-->
+      <div>
+        <div class="user_profit_ranking_container">
+          <nz-table #basicTable
+                    nzBordered
+                    [nzData]="dataList"
+                    [nzTitle]=""
+                    [nzLoading]="isLoading"
+                    [nzNoResult]="'暂无数据'"
+                    [nzTotal]="totalCount"
+                    [nzFrontPagination]="false"
+                    [nzPageSize]="pageSize"
+                    [(nzPageIndex)]="pageNo"
+                    (nzPageIndexChange)="onPageIndexChange($event)"
+                    (nzQueryParams)="onQueryParamsChange($event)">
+            <!--表头-->
+            <thead>
+            <tr>
+              <th nzColumnKey="accountId" [nzSortFn]="true">账号</th>
+              <th nzColumnKey="standardSymbol">品种</th>
+              <th nzColumnKey="totalProfit" [nzSortFn]="true">开仓均价</th>
+              <th nzColumnKey="totalProfit" [nzSortFn]="true">手数</th>
+            </tr>
+            </thead>
+            <!--表格数据-->
+            <tbody>
+            <tr *ngFor="let data of basicTable['data']; index as i" [class.selected]="i === selectedIndex">
+              <td >{{ data.accountId }}</td>
+              <td>{{ data.standardSymbol ? data.standardSymbol : '-'}}</td>
+              <td>1000</td>
+              <td>20</td>
+            </tr>
+            </tbody>
+          </nz-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

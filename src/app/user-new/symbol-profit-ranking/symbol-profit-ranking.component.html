@@ -1,0 +1,66 @@
+<div class="user_profit_ranking">
+  <div nz-row>
+    <!--用户收益排名-->
+    <div nz-col class="user_profit_ranking_container">
+      <nz-table #basicTable
+                nzBordered
+                [nzData]="dataList"
+                [nzTitle]="title"
+                [nzLoading]="isLoading"
+                [nzNoResult]="'暂无数据'"
+                [nzTotal]="totalCount"
+                [nzFrontPagination]="false"
+                [nzPageSize]="pageSize"
+                [(nzPageIndex)]="pageNo"
+                (nzPageIndexChange)="onPageIndexChange($event)"
+                (nzQueryParams)="onQueryParamsChange($event)">
+        <!--表头-->
+        <thead>
+        <tr>
+          <th nzColumnKey="standardSymbol" [nzSortFn]="true">品种</th>
+          <th nzColumnKey="totalProfit" [nzSortFn]="true">盈亏金额（$）</th>
+        </tr>
+        </thead>
+        <!--表格数据-->
+        <tbody>
+        <tr *ngFor="let data of basicTable['data']; index as i" [class.selected]="i === selectedIndex">
+          <td >{{ data.standardSymbol }}</td>
+          <td>{{ moneyFormat(data.totalProfit) }}</td>
+        </tr>
+        </tbody>
+      </nz-table>
+      <!--头部-->
+      <ng-template #title>
+        <B class="title">品种收益排行</B>
+
+        <!--筛选与搜索-->
+        <div class="search_filter_container">
+          <!--按品种搜索-->
+          <div class="search">
+            <span class="search_filter_lable">品种：</span>
+            <nz-select class="search_input" nzShowSearch nzAllowClear nzPlaceHolder="请输入品种"
+                       [(ngModel)]="symbolInputValue"
+                       (ngModelChange)="onSymbolInput($event)">
+              <nz-option *ngFor="let symbolItem of symbolSuggestionList"
+                         nzLabel="{{symbolItem.standardSymbol}}"
+                         nzValue="{{symbolItem.standardSymbol}}"></nz-option>
+            </nz-select>
+          </div>
+          <!--日期选择-->
+          <div class="date_filter">
+            <span class="search_filter_lable">时间范围：</span>
+            <nz-range-picker class="date_picker"
+                             [(ngModel)]="date"
+                             [nzRanges]="ranges"
+                             (ngModelChange)="onDateChange($event)"></nz-range-picker>
+          </div>
+          <!--查询按钮-->
+          <button nz-button nzType="primary" class="search_button" (click)="search(1)">查询</button>
+
+        </div>
+
+      </ng-template>
+    </div>
+  </div>
+
+</div>

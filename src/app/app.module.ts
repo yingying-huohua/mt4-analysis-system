@@ -39,6 +39,13 @@ import { GroupProfitDetailComponent } from './user/group-profit-detail/group-pro
 import { SymbolListDrawerComponent } from './symbol/symbol-list-drawer/symbol-list-drawer.component';
 import {NzRadioModule} from "ng-zorro-antd/radio";
 import {NzDrawerModule} from "ng-zorro-antd/drawer";
+import { UserProfitRankingComponent } from './user-new/user-profit-ranking/user-profit-ranking.component';
+import { TradeBehaviourComponent } from './user-new/trade-behaviour/trade-behaviour.component';
+import { SymbolProfitRankingComponent } from './user-new/symbol-profit-ranking/symbol-profit-ranking.component';
+import { SymbolLongShortDistributionComponent } from './user-new/trade-behaviour/symbol-long-short-distribution/symbol-long-short-distribution.component';
+import { LongShortProfitDistributeComponent } from './user-new/trade-behaviour/long-short-profit-distribute/long-short-profit-distribute.component';
+import { HoldingTimeDistributionComponent } from './user-new/trade-behaviour/holding-time-distribution/holding-time-distribution.component';
+import {NgxEchartsModule} from "ngx-echarts";
 
 @NgModule({
   declarations: [
@@ -55,35 +62,42 @@ import {NzDrawerModule} from "ng-zorro-antd/drawer";
     SymbolProfitDetailComponent,
     GroupProfitDetailComponent,
     SymbolListDrawerComponent,
+    UserProfitRankingComponent,
+    TradeBehaviourComponent,
+    SymbolProfitRankingComponent,
+    SymbolLongShortDistributionComponent,
+    LongShortProfitDistributeComponent,
+    HoldingTimeDistributionComponent,
   ],
-    imports: [
-        DashboardModule,
-        SettingModule,
-        BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
-        NzLayoutModule,
-        NzDropDownModule,
-        BrowserAnimationsModule,
-        NzTableModule,
-        NzDividerModule,
-        NzFormModule,
-        NzMenuModule,
-        NzButtonModule,
-        ReactiveFormsModule,
-        NzInputModule,
-        NzModalModule,
-        FormsModule,
-        NzAutocompleteModule,
-        NzInputNumberModule,
-        NzDatePickerModule,
-        NzSelectModule,
-        NzMessageModule,
-        NzIconModule,
-        NzGridModule,
-        NzRadioModule,
-        NzDrawerModule
-    ],
+  imports: [
+    DashboardModule,
+    SettingModule,
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    NzLayoutModule,
+    NzDropDownModule,
+    BrowserAnimationsModule,
+    NzTableModule,
+    NzDividerModule,
+    NzFormModule,
+    NzMenuModule,
+    NzButtonModule,
+    ReactiveFormsModule,
+    NzInputModule,
+    NzModalModule,
+    FormsModule,
+    NzAutocompleteModule,
+    NzInputNumberModule,
+    NzDatePickerModule,
+    NzSelectModule,
+    NzMessageModule,
+    NzIconModule,
+    NzGridModule,
+    NzRadioModule,
+    NzDrawerModule,
+    NgxEchartsModule
+  ],
   providers: [{provide: NZ_I18N, useValue: zh_CN}],
   bootstrap: [AppComponent]
 })

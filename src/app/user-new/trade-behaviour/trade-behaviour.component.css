@@ -1,0 +1,82 @@
+.trade_behaviour{
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  position: relative;
+  overflow: auto;
+}
+.trade_behaviour .trade_behaviour_container{
+  width: 100%;
+  height: 100%;
+}
+.trade_behaviour_container .border_right{
+  border-right: #ebebeb 1px solid;
+}
+
+.trade_behaviour_container .search_filter_div{
+  padding: 20px;
+  width: 100%;
+  height: 125px;
+  border-bottom: #ebebeb 1px solid;
+}
+
+.search_filter_div .title{
+  height: 40px;
+  font-size: 24px;
+  line-height: 40px;
+}
+.search_filter_div .search_filter_container{
+  width: 100%;
+  height: 30px;
+  display: flex;
+  margin-top: 10px;
+}
+
+.search_filter_container .search{
+  margin-right: 10px;
+  display: flex;
+}
+
+.search .search_input{
+  width: 120px;
+}
+
+.search_filter_container .search_filter_lable{
+  width: 55px;
+  line-height: 30px;
+  font-weight: bold;
+}
+
+.search_filter_div .date_filter{
+  margin-left: 10px;
+}
+
+.search_filter_container .search_button{
+  width: 100px;
+  margin-left: 20px;
+}
+
+.trade_behaviour_container .dashboard_div{
+  height: 431px;
+  width: 100%;
+}
+
+.trade_behaviour_container .list_div{
+  width: 100%;
+  position: relative;
+
+}
+.list_div .switch{
+  height: 32px;
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid #ebebeb;
+}
+.switch .radio{
+  width: 100%;
+}
+
+.switch .radio_item{
+  width: 50%;
+  text-align: center;
+}
