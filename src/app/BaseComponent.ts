@@ -25,6 +25,11 @@ export class BaseComponent {
   symbolInputValue = ''; // 品种输入框value
   nameSuggestionList = [];  // 名称联想
   symbolSuggestionList = []; //品种搜索联想
+
+  userSelectValue = [];
+  productInputValue ='';
+  futuresProductList = [];
+  futureUserList = [];
   minValue = ''; // 最小收益率
   maxValue = ''; // 最大收益率
 
@@ -35,6 +40,8 @@ export class BaseComponent {
     this.initDafaultDate();
     this.initDateRange();
     this.initSymbolSuggestionList();
+    this.initFuturesProductList();
+    this.initFuturesUserList();
   }
 
   /**
@@ -75,11 +82,27 @@ export class BaseComponent {
 
   }
 
+  private initFuturesProductList() {
+    const listStr = localStorage.getItem(LocalstorageKey.future_product_list);
+    if (!listStr) {
+      return;
+    }
+    this.futuresProductList = JSON.parse(listStr);
+  }
+
+  private initFuturesUserList() {
+    const listStr = localStorage.getItem(LocalstorageKey.future_user_list);
+    if (!listStr) {
+      return;
+    }
+    this.futureUserList = JSON.parse(listStr);
+  }
+
   /**
    * 初始化名称输入框联想数据
    * @param searchText
    */
-  initNameSuggestionList(searchText) {}
+  initNameSuggestionList(searchText?) {}
 
 
   /**
@@ -167,6 +190,16 @@ export class BaseComponent {
    * @param event
    */
   onSymbolInput(event: Event): void {
+    // 初始化联想
+    // console.debug('品种输入框option改变：', event);
+    this.initData();
+  }
+
+  /**
+   * 期货品种联系
+   * @param event
+   */
+  onProductInput(event: Event) {
     // 初始化联想
     // console.debug('品种输入框option改变：', event);
     this.initData();

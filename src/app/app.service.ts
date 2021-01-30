@@ -4,6 +4,7 @@ import {HeaderMenu} from "../constant/HeaderMenu";
 import {HttpService} from "../service/http/http.service";
 import {Config} from "../config/Config";
 import {LocalstorageKey} from "../constant/LocalstorageKey";
+import {FuturesService} from "../service/http/futures.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ import {LocalstorageKey} from "../constant/LocalstorageKey";
 export class AppService {
   public isLogin = false;
   public currentSymbol = 'AUDCHF';
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService,
+              private futuresService: FuturesService) { }
 
   /**
    * 数字格式化，保留两位小数
@@ -88,6 +90,36 @@ export class AppService {
       }
     };
     this.httpService.symbolList(Config.defaultPageNo.toString(), Config.pageSize_1000.toString()).subscribe(observer);
+  }
+
+  saveFutureProductToStorage() {
+    console.debug('保存期货中品种列表至storage');
+    const observer = {
+      next: response => {
+        if (!response || !response.result) {
+          return;
+        }
+        console.debug(response)
+        const symbolList = response.result;
+        localStorage.setItem(LocalstorageKey.future_product_list, JSON.stringify(symbolList));
+      }
+    };
+    this.futuresService.symbolList().subscribe(observer);
+  }
+
+  saveUserListToStorage() {
+    console.debug('保存期货中用户列表至storage');
+    const observer = {
+      next: response => {
+        if (!response || !response.result) {
+          return;
+        }
+        console.debug(response)
+        const symbolList = response.result;
+        localStorage.setItem(LocalstorageKey.future_user_list, JSON.stringify(symbolList));
+      }
+    };
+    this.futuresService.userList().subscribe(observer);
   }
 
   getSymbolListFromStorage(type?) {

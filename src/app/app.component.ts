@@ -26,6 +26,8 @@ export class AppComponent implements OnInit, OnDestroy{
     this.initHeaderMenu();
     this.initObserver();
     this.appService.saveSymbolListToStorage();
+    this.appService.saveFutureProductToStorage();
+    this.appService.saveUserListToStorage()
   }
 
   ngOnDestroy() {
