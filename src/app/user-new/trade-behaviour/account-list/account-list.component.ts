@@ -41,18 +41,8 @@ export class AccountListComponent extends BaseComponent implements OnInit, OnCha
         this.isLoading = false;
         this.dataList = response.result;
         this.totalCount = response.count;
-
-        console.debug('初始化交易', response);
       }
     };
-
-
-    // account_id: "2019010"
-    // close_profit: 4060
-    // exchange_margin: 0
-    // position_profit: -16680
-
-
 
     const object = {
       accountIds: this.userSelectValue.length ? this.userSelectValue.join(',') : '',

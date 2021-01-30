@@ -20,12 +20,6 @@ export class TradeBehaviourComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  switchType() {
-    console.debug('切换tab', this.radioValue);
-    // 重新渲染数据
-
-  }
-
   moneyFormat(value) {
     return this.appService.moneyFormat(value.toString());
   }

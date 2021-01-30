@@ -48,9 +48,15 @@
     <!--图表区域-->
     <div nz-row class="dashboard_div">
       <!--品种多空分布-->
-      <app-symbol-long-short-distribution nz-col nzSpan="8" class="border_right"></app-symbol-long-short-distribution>
+      <app-symbol-long-short-distribution nz-col nzSpan="8" class="border_right"
+                                          [userSelectValue]="userSelectValue"
+                                          [openEnd]="openEnd"
+                                          [openStart]="openStart"></app-symbol-long-short-distribution>
       <!--多空盈亏分布-->
-      <app-long-short-profit-distribute nz-col nzSpan="8" class="border_right"></app-long-short-profit-distribute>
+      <app-long-short-profit-distribute nz-col nzSpan="8" class="border_right"
+                                        [userSelectValue]="userSelectValue"
+                                        [openEnd]="openEnd"
+                                        [openStart]="openStart"></app-long-short-profit-distribute>
       <!--持仓时间分布-->
       <app-holding-time-distribution nz-col nzSpan="8" ></app-holding-time-distribution>
 <!--      <div nz-col nzSpan="6">K线图</div>-->
@@ -59,7 +65,7 @@
     <div class="list_div">
       <!--switch-->
       <div class="switch">
-        <nz-radio-group class="radio" [(ngModel)]="radioValue" (ngModelChange)="switchType()">
+        <nz-radio-group class="radio" [(ngModel)]="radioValue" >
           <label class="radio_item" nz-radio-button nzValue="{{FutureSwitchType.position}}">当前持仓</label>
           <label class="radio_item" nz-radio-button nzValue="{{FutureSwitchType.account}}">资金一览</label>
         </nz-radio-group>

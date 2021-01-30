@@ -58,16 +58,14 @@ export class FuturesService {
   /**
    * 品种多空分布
    */
-  bbd(params: {accountIds: string, sortField: string, direction: string,
-    openStart: string, openEnd: string, pageNo: string, pageSize: string}) {
+  bbd(params: {accountIds: string, openStart: string, openEnd: string,}) {
     return this.http.get(FuturesUrlConfig.bbd, {params: params});
   }
 
   /**
    * 多空盈亏分布
    */
-  bbp(params: {accountIds: string, sortField: string, direction: string,
-    openStart: string, openEnd: string, pageNo: string, pageSize: string}) {
+  bbp(params: {accountIds: string, openStart: string, openEnd: string}) {
     return this.http.get(FuturesUrlConfig.bbp, {params: params});
   }
 }

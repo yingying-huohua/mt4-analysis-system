@@ -1,42 +1,69 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {FuturesService} from "../../../../service/http/futures.service";
 
 @Component({
   selector: 'app-symbol-long-short-distribution',
   templateUrl: './symbol-long-short-distribution.component.html',
   styleUrls: ['./symbol-long-short-distribution.component.css']
 })
-export class SymbolLongShortDistributionComponent implements OnInit {
-
+export class SymbolLongShortDistributionComponent implements OnInit, OnChanges {
+  @Input() userSelectValue = [];
+  @Input() openStart = '';
+  @Input() openEnd = '';
   option;
-  constructor() { }
+  noResult = false;
+  constructor(private futureService: FuturesService) { }
 
   ngOnInit(): void {
-    this.initData();
+    this.getData();
   }
 
-  initData() {
-    // var weatherIcons = {
-    //   'Sunny': ROOT_PATH + '/data/asset/img/weather/sunny_128.png',
-    //   'Cloudy': ROOT_PATH + '/data/asset/img/weather/cloudy_128.png',
-    //   'Showers': ROOT_PATH + '/data/asset/img/weather/showers_128.png'
-    // };
+  ngOnChanges(changes: SimpleChanges) {
+    for (const key in changes) {
+      if (!changes.hasOwnProperty(key)) {
+        continue;
+      }
 
+      if (changes[key].firstChange) {
+        continue;
+      }
+
+      this.getData();
+    }
+  }
+
+  getData() {
+    const observer = {
+      next: response => {
+        if (!response || response.length === 0) {
+          this.noResult = true;
+          return;
+        }
+        console.debug(response);
+        this.setOption(response);
+      }
+    }
+
+    const object = {
+      accountIds: this.userSelectValue.length ? this.userSelectValue.join(',') : '',
+      openStart: this.openStart,
+      openEnd: this.openEnd,
+    }
+
+    this.futureService.bbd(object).subscribe(observer);
+  }
+
+  setOption(sourceData) {
+    this.noResult = false;
+    sourceData = this.formatData(sourceData);
     this.option = {
-      // title: {
-      //   text: '天气情况统计',
-      //   subtext: '虚构数据',
-      //   left: 'center'
-      // },
-      // tooltip: {
-      //   trigger: 'item',
-      //   formatter: '{a} <br/>{b} : {c} ({d}%)'
-      // },
       legend: {
-        // orient: 'vertical',
-        // top: 'middle',
         bottom: 10,
         left: 'center',
-        data: ['西凉', '益州', '兖州', '荆州', '幽州']
+        data: sourceData.data
+      },
+      dataset: {
+        source: sourceData.source
       },
       series: [
         {
@@ -44,13 +71,7 @@ export class SymbolLongShortDistributionComponent implements OnInit {
           radius: '65%',
           center: ['50%', '50%'],
           selectedMode: 'single',
-          data: [
-            { value: 1548,name: '幽州'},
-            {value: 535, name: '荆州'},
-            {value: 510, name: '兖州'},
-            {value: 634, name: '益州'},
-            {value: 735, name: '西凉'}
-          ],
+          // data: this.data,
           emphasis: {
             itemStyle: {
               shadowBlur: 10,
@@ -61,5 +82,24 @@ export class SymbolLongShortDistributionComponent implements OnInit {
         }
       ]
     };
+  }
+
+
+  private formatData(dataList) {
+    const newdataList = [];
+    const sourceList = [];
+    for (const data of dataList) {
+      const object = {
+        name: data.direction,
+        value: data.count
+      }
+      sourceList.push(object);
+      newdataList.push(data.direction);
+    }
+
+    return {
+      data: newdataList,
+      source: sourceList
+    }
   }
 }

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./holding-time-distribution.component.css']
 })
 export class HoldingTimeDistributionComponent implements OnInit {
-
+  noResult = false;
   option;
   constructor() { }
 
