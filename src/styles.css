@@ -68,6 +68,14 @@ nz-progress {
 }
 
 .dashboard_item_title{
+  width: 100%;
+  font-size: 20px;
+  color: #ffffff;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.dashboard_item_title_new{
   position: absolute;
   z-index: 2;
   width: 100%;
