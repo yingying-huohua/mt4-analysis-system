@@ -80,6 +80,10 @@ export class AppComponent implements OnInit, OnDestroy{
   private initHeaderMenu() {
     this.headerMenu = [
       {
+        id: HeaderMenu.data,
+        title: '数据分析'
+      },
+      {
         id: HeaderMenu.futures,
         title: '期货看板'
       },
@@ -90,12 +94,7 @@ export class AppComponent implements OnInit, OnDestroy{
       {
         id: HeaderMenu.symbol,
         title: '品种看板'
-      },
-      {
-        id: HeaderMenu.data,
-        title: '数据分析'
       }
-
     ]
   }
 }
