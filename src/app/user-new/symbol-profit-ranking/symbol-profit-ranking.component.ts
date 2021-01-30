@@ -4,6 +4,7 @@ import {HttpService} from "../../../service/http/http.service";
 import {AppService} from "../../app.service";
 import {Config} from "../../../config/Config";
 import {BaseComponent} from "../../BaseComponent";
+import {FuturesService} from "../../../service/http/futures.service";
 
 @Component({
   selector: 'app-symbol-profit-ranking',
@@ -13,7 +14,7 @@ import {BaseComponent} from "../../BaseComponent";
 export class SymbolProfitRankingComponent extends BaseComponent implements OnInit {
 
   constructor(private modalService: ModalService,
-              private httpService: HttpService,
+              private futuresService: FuturesService,
               private appService: AppService) {
     super();
   }
@@ -30,13 +31,8 @@ export class SymbolProfitRankingComponent extends BaseComponent implements OnIni
       }
     };
 
-    console.debug(this.nameInputValue);
-
     const object = {
-      accountId: this.nameInputValue ? this.nameInputValue.trim() : '',
-      standardSymbol:    this.symbolInputValue ? this.symbolInputValue.trim() :'',
-      minReturn: this.minValue,
-      maxReturn: this.maxValue,
+      productId: this.productInputValue ? this.productInputValue.trim() :'',
       sortField: this.sortField,
       direction: this.direction,
       openStart: this.openStart,
@@ -44,22 +40,8 @@ export class SymbolProfitRankingComponent extends BaseComponent implements OnIni
       pageNo: this.pageNo.toString(),
       pageSize: this.pageSize.toString()
     }
-    this.httpService.userProfitlist(object).subscribe(observer);
+    this.futuresService.symbolProfitList(object).subscribe(observer);
   }
-
-  initNameSuggestionList(searchText){
-    const observer = {
-      next: response => {
-        if (!response || !response.result) {
-          return;
-        }
-        this.nameSuggestionList = response.result
-      }
-    };
-    this.httpService.userList(searchText, Config.defaultPageNo.toString(),
-      Config.defaultPageSize.toString()).subscribe(observer);
-  }
-
   moneyFormat(value) {
     return this.appService.moneyFormat(value.toString());
   }
