@@ -35,15 +35,14 @@
 
         <!--筛选与搜索-->
         <div class="search_filter_container">
-          <!--按品种搜索-->
           <div class="search">
             <span class="search_filter_lable">品种：</span>
             <nz-select class="search_input" nzShowSearch nzAllowClear nzPlaceHolder="请输入品种"
-                       [(ngModel)]="symbolInputValue"
-                       (ngModelChange)="onSymbolInput($event)">
-              <nz-option *ngFor="let symbolItem of symbolSuggestionList"
-                         nzLabel="{{symbolItem.standardSymbol}}"
-                         nzValue="{{symbolItem.standardSymbol}}"></nz-option>
+                       [(ngModel)]="productInputValue"
+                       (ngModelChange)="onProductInput($event)">
+              <nz-option *ngFor="let symbolItem of futuresProductList"
+                         nzLabel="{{symbolItem.product_name}}"
+                         nzValue="{{symbolItem.product_id}}"></nz-option>
             </nz-select>
           </div>
           <!--日期选择-->
