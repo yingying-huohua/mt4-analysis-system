@@ -22,14 +22,14 @@ const routes: Routes = [
   {path: 'menu',            component: MenuComponent},
   {path: 'symbol',          component: SymbolListComponent},
   {path: 'symbol/profit',   component: SymbolProfitComponent},
-  // {path: 'symbol/profit/:type',   component: SymbolProfitComponent},
+  {path: 'symbol/profit/:type',   component: SymbolProfitComponent},
   {path: 'user/profit',     component: UserProfitComponent},
   {path: 'group/profit',    component: GroupProfitComponent},
   {path: 'setting',         loadChildren: () => import('./setting/setting.module').then(m => m.SettingModule)},
   {path: 'symbol/add',      component: SymbolAddComponent},
 
   {path: 'user/profit/ranking',     component: UserProfitRankingComponent},
-  {path: 'symbol/profit/ranking',     component: SymbolProfitRankingComponent},
+  {path: 'product/profit/ranking',     component: SymbolProfitRankingComponent},
   {path: 'trade/behaviour',         component: TradeBehaviourComponent}
 ];
 

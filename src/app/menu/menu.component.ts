@@ -56,8 +56,8 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['./user/profit/ranking']);
   }
 
-  gotoSymbolProfitRanking() {
-    this.router.navigate(['./symbol/profit/ranking']);
+  gotoProductProfitRanking() {
+    this.router.navigate(['./product/profit/ranking']);
   }
 
   gotoTradeBehaviour() {

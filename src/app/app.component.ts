@@ -83,10 +83,10 @@ export class AppComponent implements OnInit, OnDestroy{
         id: HeaderMenu.data,
         title: '数据分析'
       },
-      {
-        id: HeaderMenu.futures,
-        title: '期货看板'
-      },
+      // {
+      //   id: HeaderMenu.futures,
+      //   title: '期货看板'
+      // },
       {
         id: HeaderMenu.foreign_exchange,
         title: '外汇看板'
