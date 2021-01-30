@@ -14,3 +14,8 @@ export const HeaderMenuTitle = {
   futures: '期货',
   foreign_exchange: '外汇',
 }
+
+export const FutureSwitchType = {
+  position: 'position',
+  account: 'account'
+}

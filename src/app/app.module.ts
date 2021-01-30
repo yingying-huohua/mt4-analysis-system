@@ -46,6 +46,8 @@ import { SymbolLongShortDistributionComponent } from './user-new/trade-behaviour
 import { LongShortProfitDistributeComponent } from './user-new/trade-behaviour/long-short-profit-distribute/long-short-profit-distribute.component';
 import { HoldingTimeDistributionComponent } from './user-new/trade-behaviour/holding-time-distribution/holding-time-distribution.component';
 import {NgxEchartsModule} from "ngx-echarts";
+import { PositionListComponent } from './user-new/trade-behaviour/position-list/position-list.component';
+import { AccountListComponent } from './user-new/trade-behaviour/account-list/account-list.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,8 @@ import {NgxEchartsModule} from "ngx-echarts";
     SymbolLongShortDistributionComponent,
     LongShortProfitDistributeComponent,
     HoldingTimeDistributionComponent,
+    PositionListComponent,
+    AccountListComponent,
   ],
   imports: [
     DashboardModule,

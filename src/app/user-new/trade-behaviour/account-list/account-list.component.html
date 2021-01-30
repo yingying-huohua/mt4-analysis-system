@@ -1,0 +1,33 @@
+<div class="user_profit_ranking_container">
+  <nz-table #basicTable
+            nzBordered
+            [nzData]="dataList"
+            [nzTitle]=""
+            [nzLoading]="isLoading"
+            [nzNoResult]="'暂无数据'"
+            [nzTotal]="totalCount"
+            [nzFrontPagination]="false"
+            [nzPageSize]="pageSize"
+            [(nzPageIndex)]="pageNo"
+            (nzPageIndexChange)="onPageIndexChange($event)"
+            (nzQueryParams)="onQueryParamsChange($event)">
+    <!--表头-->
+    <thead>
+    <tr>
+      <th nzColumnKey="account_id" [nzSortFn]="true">投资者代码</th>
+      <th nzColumnKey="close_profit" [nzSortFn]="true">平仓盈亏</th>
+      <th nzColumnKey="position_profit" [nzSortFn]="true">持仓盈亏</th>
+      <th nzColumnKey="exchange_delivery_margin" [nzSortFn]="true">交易所交割保证金</th>
+    </tr>
+    </thead>
+    <!--表格数据-->
+    <tbody>
+    <tr *ngFor="let data of basicTable['data']; index as i" [class.selected]="i === selectedIndex">
+      <td >{{ data.account_id }}</td>
+      <td>{{moneyFormat(data.close_profit)}}</td>
+      <td>{{moneyFormat(data.position_profit)}}</td>
+      <td>{{moneyFormat(data.exchange_delivery_margin)}}</td>
+    </tr>
+    </tbody>
+  </nz-table>
+</div>

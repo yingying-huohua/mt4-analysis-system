@@ -1,0 +1,33 @@
+<div class="user_profit_ranking_container">
+  <nz-table #basicTable
+            nzBordered
+            [nzData]="dataList"
+            [nzTitle]=""
+            [nzLoading]="isLoading"
+            [nzNoResult]="'暂无数据'"
+            [nzTotal]="totalCount"
+            [nzFrontPagination]="false"
+            [nzPageSize]="pageSize"
+            [(nzPageIndex)]="pageNo"
+            (nzPageIndexChange)="onPageIndexChange($event)"
+            (nzQueryParams)="onQueryParamsChange($event)">
+    <!--表头-->
+    <thead>
+    <tr>
+      <th nzColumnKey="investor_id" [nzSortFn]="true">账号</th>
+      <th nzColumnKey="instrument_id">品种</th>
+      <th nzColumnKey="avg_open_price" [nzSortFn]="true">开仓均价</th>
+      <th nzColumnKey="volume" [nzSortFn]="true">手数</th>
+    </tr>
+    </thead>
+    <!--表格数据-->
+    <tbody>
+    <tr *ngFor="let data of basicTable['data']; index as i" [class.selected]="i === selectedIndex">
+      <td >{{ data.investor_id }}</td>
+      <td>{{ data.instrument_id}}</td>
+      <td>{{moneyFormat(data.avg_open_price)}}</td>
+      <td>{{data.volume}}</td>
+    </tr>
+    </tbody>
+  </nz-table>
+</div>

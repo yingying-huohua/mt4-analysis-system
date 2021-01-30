@@ -16,7 +16,7 @@ export class Config {
 
   public static pageSize_1000 = 1000;
   // 默认排序字段
-  public static sortField = 'id';
+  public static sortField = '';
   // 默认排序 desc||asc
   public static direction = Config.DESC
 

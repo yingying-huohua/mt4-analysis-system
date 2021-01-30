@@ -17,7 +17,7 @@ export class FuturesUrlConfig {
   // 品种收益列表
   public static symbolProfitList = `${FuturesUrlConfig.domain}/futures/orderRh/product/list`;
   // 持仓列表
-  public static positionList     = `${FuturesUrlConfig.domain}/futures/position/lis`;
+  public static positionList     = `${FuturesUrlConfig.domain}/futures/position/list`;
   // 资金列表
   public static accountList      = `${FuturesUrlConfig.domain}/futures/tradingAccount/account/list`;
   // 品种多空分布
