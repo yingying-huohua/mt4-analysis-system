@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ModalService} from "../../../service/local/modal.service";
-import {AppService} from "../../app.service";
-import {BaseComponent} from "../../BaseComponent";
-import {FuturesService} from "../../../service/http/futures.service";
+import {ModalService} from '../../../service/local/modal.service';
+import {AppService} from '../../app.service';
+import {BaseComponent} from '../../BaseComponent';
+import {FuturesService} from '../../../service/http/futures.service';
 
 @Component({
   selector: 'app-user-profit-ranking',
@@ -43,9 +43,11 @@ export class UserProfitRankingComponent extends BaseComponent implements OnInit 
     this.futuresService.userProfitList(object).subscribe(observer);
   }
 
-
   moneyFormat(value) {
     return this.appService.moneyFormat(value.toString());
   }
 
+  dateTImeFormat(date) {
+    return this.appService.dateTimeFormat(date);
+  }
 }

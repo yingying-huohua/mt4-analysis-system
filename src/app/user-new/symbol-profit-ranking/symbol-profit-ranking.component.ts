@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalService} from "../../../service/local/modal.service";
-import {HttpService} from "../../../service/http/http.service";
-import {AppService} from "../../app.service";
-import {Config} from "../../../config/Config";
-import {BaseComponent} from "../../BaseComponent";
-import {FuturesService} from "../../../service/http/futures.service";
+import {ModalService} from '../../../service/local/modal.service';
+import {HttpService} from '../../../service/http/http.service';
+import {AppService} from '../../app.service';
+import {Config} from '../../../config/Config';
+import {BaseComponent} from '../../BaseComponent';
+import {FuturesService} from '../../../service/http/futures.service';
 
 @Component({
   selector: 'app-symbol-profit-ranking',
@@ -42,7 +42,12 @@ export class SymbolProfitRankingComponent extends BaseComponent implements OnIni
     }
     this.futuresService.symbolProfitList(object).subscribe(observer);
   }
+
   moneyFormat(value) {
     return this.appService.moneyFormat(value.toString());
+  }
+
+  dateTImeFormat(date) {
+    return this.appService.dateTimeFormat(date);
   }
 }

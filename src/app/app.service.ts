@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import * as moment from "moment";
-import {HeaderMenu} from "../constant/HeaderMenu";
-import {HttpService} from "../service/http/http.service";
-import {Config} from "../config/Config";
-import {LocalstorageKey} from "../constant/LocalstorageKey";
-import {FuturesService} from "../service/http/futures.service";
+import * as moment from 'moment';
+import {HeaderMenu} from '../constant/HeaderMenu';
+import {HttpService} from '../service/http/http.service';
+import {Config} from '../config/Config';
+import {LocalstorageKey} from '../constant/LocalstorageKey';
+import {FuturesService} from '../service/http/futures.service';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +59,14 @@ export class AppService {
    */
   dateFormat(date: string) {
     return moment(date).format('YYYY-MM-DD');
+  }
+
+  /**
+   * 日期格式化 （年-月-日 时分秒）
+   * @param date 时间
+   */
+  dateTimeFormat(date: string) {
+    return moment(date).format('YYYY-MM-DD HH:mm:ss');
   }
 
   /**
