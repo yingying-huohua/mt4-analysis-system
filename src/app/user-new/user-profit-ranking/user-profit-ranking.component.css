@@ -1,6 +1,7 @@
 .user_profit_ranking{
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 }
 
 .user_profit_ranking .user_profit_ranking_container{

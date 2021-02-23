@@ -4,6 +4,7 @@
   padding: 15px;
   position: relative;
   overflow: auto;
+  overflow-x: hidden;
 }
 .trade_behaviour .trade_behaviour_container{
   width: 100%;
