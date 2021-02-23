@@ -46,6 +46,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   loginOut() {
-    this.observerService.getLoginObserver().next(false);
+    this.observerService.getLoginoutObserver().next(true);
   }
 }

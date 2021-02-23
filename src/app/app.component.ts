@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {registerLocaleData} from "@angular/common";
 import zh from "@angular/common/locales/zh";
 import {HeaderMenu} from "../constant/HeaderMenu";
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 import {AppService} from "./app.service";
 import {ObserverService} from "../service/local/observer.service";
 
@@ -23,15 +23,25 @@ export class AppComponent implements OnInit, OnDestroy{
               private observerService: ObserverService) {}
 
   ngOnInit() {
+    this.init();
     this.initHeaderMenu();
     this.initObserver();
     this.appService.saveSymbolListToStorage();
     this.appService.saveFutureProductToStorage();
-    this.appService.saveUserListToStorage()
+    this.appService.saveUserListToStorage();
   }
 
   ngOnDestroy() {
     this.loginSubscription.unsubscribe();
+  }
+
+  init() {
+    this.isLoggedIn = this.checkLogin();
+    // 若未登录，显示登录页面， 隐藏顶部与左侧tab
+    if (!this.isLoggedIn) {
+      this.router.navigate(['./login']);
+    }
+
   }
 
   /**
@@ -39,13 +49,46 @@ export class AppComponent implements OnInit, OnDestroy{
    */
   initObserver() {
     this.loginSubscription = this.observerService.getLoginObserver().subscribe((isLogin) => {
-      this.isLoggedIn = isLogin;
       if (!isLogin) {
-        this.router.navigate(['./login']);
         return;
       }
+      this.isLoggedIn = isLogin;
       this.renderTab(this.selectedId);
+      localStorage.setItem('isLogin', JSON.stringify(isLogin));
     });
+
+    this.observerService.getLoginoutObserver().subscribe((isLogout) => {
+      if (!isLogout) {
+        return;
+      }
+      // 更新标识
+      this.isLoggedIn = false;
+      // 显示登录页面
+      this.router.navigate(['./login']);
+      // 删除localstorage维护数据
+      localStorage.removeItem('isLogin');
+    });
+
+    this.router.events.subscribe((event: any) => {
+      if (event instanceof NavigationEnd) {
+        // 检查路由，选中顶部导航对应tab
+        if (event.url.indexOf(`dashboard/${HeaderMenu.foreign_exchange}`) > -1) {
+          this.selectedId = HeaderMenu.foreign_exchange;
+        } else if (event.url.indexOf(`dashboard/${HeaderMenu.symbol}`) > -1) {
+          this.selectedId = HeaderMenu.symbol;
+        } else {
+          this.selectedId = HeaderMenu.data;
+        }
+
+        if (event.url.indexOf('dashboard') > -1) {
+          this.showLeftPanel = false;
+          return;
+        }
+        this.showLeftPanel = true;
+      }
+    });
+
+
   }
 
   /**
@@ -96,5 +139,13 @@ export class AppComponent implements OnInit, OnDestroy{
         title: '品种看板'
       }
     ]
+  }
+
+  private checkLogin(): boolean {
+    const str = localStorage.getItem('isLogin');
+    if (!str) {
+      return false;
+    }
+    return str == 'true';
   }
 }

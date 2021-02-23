@@ -29,7 +29,7 @@ const routes: Routes = [
   {path: 'symbol/add',      component: SymbolAddComponent},
 
   {path: 'user/profit/ranking',     component: UserProfitRankingComponent},
-  {path: 'product/profit/ranking',     component: SymbolProfitRankingComponent},
+  {path: 'product/profit/ranking',  component: SymbolProfitRankingComponent},
   {path: 'trade/behaviour',         component: TradeBehaviourComponent}
 ];
 
