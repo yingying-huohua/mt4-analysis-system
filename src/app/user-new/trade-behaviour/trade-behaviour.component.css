@@ -16,7 +16,6 @@
 .trade_behaviour_container .search_filter_div{
   padding: 20px;
   width: 100%;
-  height: 125px;
   border-bottom: #ebebeb 1px solid;
 }
 
@@ -27,7 +26,6 @@
 }
 .search_filter_div .search_filter_container{
   width: 100%;
-  height: 30px;
   display: flex;
   margin-top: 10px;
 }
@@ -42,7 +40,8 @@
 }
 
 .search_filter_container .search_filter_lable{
-  width: 55px;
+  width: 70px;
+  min-width: 70px;
   line-height: 30px;
   font-weight: bold;
 }
