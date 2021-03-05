@@ -58,7 +58,10 @@
                                         [openEnd]="openEnd"
                                         [openStart]="openStart"></app-long-short-profit-distribute>
       <!--持仓时间分布-->
-      <app-holding-time-distribution nz-col nzSpan="8" ></app-holding-time-distribution>
+      <app-holding-time-distribution nz-col nzSpan="8"
+                                     [userSelectValue]="userSelectValue"
+                                     [openEnd]="openEnd"
+                                     [openStart]="openStart"></app-holding-time-distribution>
 <!--      <div nz-col nzSpan="6">K线图</div>-->
     </div>
     <!--数据列表-->

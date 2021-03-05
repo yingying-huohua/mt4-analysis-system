@@ -25,4 +25,5 @@ export class FuturesUrlConfig {
   // 多空盈亏分布
   public static bbp              = `${FuturesUrlConfig.domain}/futures/orderRh/bbp`
   // 持仓时间分布
+  public static positionDistribute = `${FuturesUrlConfig.domain}/futures/orderRh/position/distribute`
 }
